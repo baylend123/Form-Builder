@@ -1,0 +1,13 @@
+.form{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    color: blue;
+    height:auto;
+    padding: 5px;
+}
+.form-div{
+    border: 1px solid black;
+    height: auto;
+    width: auto;
+}

@@ -9,6 +9,8 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SideBar from "./components/SideBar";
 import FormBuilder from "./components/FormBuilder"
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider } from 'react-dnd'
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 
@@ -31,27 +33,31 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar>
-        <>
-          <Route path="/login" exact={true}>
-            <LoginForm />
-          </Route>
-          <Route path="/sign-up" exact={true}>
-            <SignUpForm />
-          </Route>
-          <ProtectedRoute path="/users" exact={true} >
-            <UsersList />
-          </ProtectedRoute>
-          <ProtectedRoute path="/users/:userId" exact={true} >
-            <User />
-          </ProtectedRoute>
-        </>
       </NavBar>
+
+      <Switch>
+        <Route path="/login" exact={true}>
+          <LoginForm />
+        </Route>
+        <Route path="/sign-up" exact={true}>
+          <SignUpForm />
+        </Route>
+        <ProtectedRoute path="/users" exact={true} >
+          <UsersList />
+        </ProtectedRoute>
+        <ProtectedRoute path="/users/:userId" exact={true} >
+          <User />
+        </ProtectedRoute>
+      </Switch>
+
 
       <Switch>
         <ProtectedRoute path="/" exact={true}>
           <div className="main-page">
-            <SideBar />
-            <FormBuilder />
+            <DndProvider backend={HTML5Backend}>
+              <SideBar />
+              <FormBuilder />
+            </DndProvider>
           </div>
         </ProtectedRoute>
       </Switch>
