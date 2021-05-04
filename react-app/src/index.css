@@ -1,1 +1,8 @@
 /* TODO Add site wide styles */
+body {
+    background-color: #8f9496
+}
+.main-page{
+    display: flex;
+    flex-direction: row;justify-content: space-between;
+}
