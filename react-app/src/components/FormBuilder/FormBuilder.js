@@ -1,22 +1,33 @@
 import React from 'react';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import parse from 'html-react-parser';
+import { renderToStaticMarkup } from 'react-dom/server'
 import './FormBuilder.css'
 import './form.css'
 
 const FormBuilder = () => {
     const [formContentText, setFormContentText] = useState('')
     const [cssContentText, setCSSContentText] = useState('')
+
+    useEffect(() => {
+        setCSSContentText(document.querySelector("head > style:nth-child(7)").innerHTML)
+    }, [document.querySelector("head > style:nth-child(7)")])
     const drop = e => {
         e.preventDefault();
         const elementId = e.dataTransfer.getData('elementId')
         const element = document.getElementById(elementId)
-        const elementClone = element.cloneNode(true)
 
+        const elementClone = element.cloneNode(true)
 
         e.target.appendChild(elementClone)
 
-        setFormContentText(e.target.outerHTML)
-        setCSSContentText(document.querySelector("head > style:nth-child(7)").innerHTML)
+
+
+        const text = renderToStaticMarkup(parse(e.target.outerHTML))
+
+        setFormContentText(text)
+        console.log(e)
+        // setCSSContentText(document.querySelector("head > style:nth-child(7)").innerHTML)
     }
     const dragOver = e => {
         e.preventDefault();
@@ -26,15 +37,14 @@ const FormBuilder = () => {
 
 
 
-
-
     return (
         <div className='form-builder'>
             <div className="form-div"
                 onDragOver={dragOver}
                 onDrop={drop}
+                id="form-div"
             >
-                <form class="form" id="form">
+                <form className="form" id="form">
                     <h1 id="form-header">form</h1>
                 </form>
             </div>
