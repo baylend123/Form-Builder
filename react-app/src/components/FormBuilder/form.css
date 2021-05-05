@@ -1,16 +1,19 @@
-:root{
-    --color : black
+html{
+    --color : white;
 }
 
 .form{
     display:flex;
     flex-direction:column;
     align-items:center;
-    color: blue;
+    color: black;
     height:auto;
     padding: 5px;
 }
 .form-div{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
     border: 1px solid black;
     height: auto;
     width: auto;

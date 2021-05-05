@@ -1,17 +1,14 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
-import parse from 'html-react-parser';
-import { renderToStaticMarkup } from 'react-dom/server'
 import './FormBuilder.css'
 import './form.css'
 
 const FormBuilder = () => {
+
     const [formContentText, setFormContentText] = useState('')
     const [cssContentText, setCSSContentText] = useState('')
 
-    useEffect(() => {
-        setCSSContentText(document.querySelector("head > style:nth-child(7)").innerHTML)
-    }, [document.querySelector("head > style:nth-child(7)")])
+
     const drop = e => {
         e.preventDefault();
         const elementId = e.dataTransfer.getData('elementId')
@@ -21,19 +18,30 @@ const FormBuilder = () => {
 
         e.target.appendChild(elementClone)
 
-
-
-        const text = renderToStaticMarkup(parse(e.target.outerHTML))
-
-        setFormContentText(text)
-        console.log(e)
-        // setCSSContentText(document.querySelector("head > style:nth-child(7)").innerHTML)
     }
     const dragOver = e => {
         e.preventDefault();
 
     }
+    const getCss = () => {
+        const CSS = document.querySelector("head > style:nth-child(7)").innerHTML.split(';')
+        CSS.forEach((ele, i) => {
+            let item = ele.split(':')
+            if (item[0].includes('--color')) {
 
+                item[1] = window.getComputedStyle(document.documentElement).getPropertyValue('--color')
+            }
+            CSS[i] = item.join(':')
+
+        })
+
+        const CSSText = CSS.join(';')
+        setCSSContentText(CSSText)
+    }
+    const getHtml = () => {
+        const form = document.getElementsByTagName('form')[0].parentElement
+        setFormContentText(form.innerHTML)
+    }
 
 
 
@@ -49,14 +57,16 @@ const FormBuilder = () => {
                 </form>
             </div>
             <div className='code-area'>
-                <div className='HTML'>
+                <button onClick={getCss}>get css</button>
+                <button onClick={getHtml}>get html</button>
+                <code className='HTML'>
                     <h3>HTML</h3>
                     {formContentText}
-                </div>
-                <div className='CSS'>
+                </code>
+                <code className='CSS'>
                     <h3>CSS</h3>
                     {cssContentText}
-                </div>
+                </code>
 
             </div>
 
