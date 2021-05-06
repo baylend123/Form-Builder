@@ -7,18 +7,23 @@ import jsxToString from 'jsx-to-string';
 
 import './FormBuilder.css'
 import './form.css'
-let formBackgroundColor;
+let styleState;
 
 const FormBuilder = () => {
     const myForm = useRef(null)
     const [formContentText, setFormContentText] = useState('')
     const [cssContentText, setCSSContentText] = useState('')
-    let formBackgroundColor = useSelector(state => state?.stylesReducer)
-    console.log(formBackgroundColor)
+    let styleState = useSelector(state => state?.stylesReducer)
+    const [stateFormBackgroundColor, setStateFormBackgroundColor] = useState(styleState)
+    const [stateFormRadius, setStateFormRadius] = useState(styleState)
+
 
     useEffect(() => {
-        formBackgroundColor = formBackgroundColor.formBackground
-    }, [])
+        setStateFormBackgroundColor(styleState.formBackground)
+        setStateFormRadius(styleState.backgroundRadius)
+        console.log(styleState.backgroundRadius)
+
+    }, [styleState])
 
     const drop = e => {
         e.preventDefault();
@@ -52,21 +57,31 @@ const FormBuilder = () => {
     const getHtml = () => {
 
         const form = document.getElementsByTagName('form')[0].parentElement
-        console.log(parse(form.outerHTML))
-        setFormContentText(form.outerHTML)
+        console.log(jsxToString(parse(form.outerHTML)))
+        setFormContentText(jsxToString(parse(form.outerHTML)))
     }
 
 
 
     return (
         <div className='form-builder'>
-            <div className="form-div"
+            <div
                 onDragOver={dragOver}
                 onDrop={drop}
                 id="form-div"
                 ref={myForm}
+                style={{
+                    backgroundColor: stateFormBackgroundColor,
+                    borderRadius: stateFormRadius,
+                }}
             >
-                <form style={{ backgroundColor: formBackgroundColor }} id="form">
+                <form id="form"
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center'
+                    }}
+                >
                     <h1 id="form-header">form</h1>
                 </form>
             </div>

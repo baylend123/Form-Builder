@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
 import { useDrag } from 'react-dnd'
-import { changeFormBackgroundThunk } from '../../store/styles'
+import { changeFormBackgroundThunk, formBorderRadiusThunk } from '../../store/styles'
 import { useDispatch } from 'react-redux'
 import './Sidebar.css'
 const Sidebar = () => {
@@ -33,6 +33,10 @@ const Sidebar = () => {
         // document.documentElement.style.setProperty(formBackground, e.target.value)
         dispatch(changeFormBackgroundThunk(e.target.value))
 
+    }
+    const setFormBorderRadius = (e) => {
+
+        dispatch(formBorderRadiusThunk(e.target.value.toString() + 'px'))
     }
 
 
@@ -101,13 +105,14 @@ const Sidebar = () => {
                                 <input value={passwordPlaceholder} type='text' onChange={(e) => setPasswordPlaceholder(e.target.value)} />
                             </div>
                             <div className='form'
-                                onDragStart={dragStart}
                                 draggable='true'
+                                onDragStart={dragStart}
                                 id='elementId'
                             >
 
                                 <input type='password'
                                     className='form'
+
                                     placeholder={passwordPlaceholder}
                                 ></input>
                             </div>
@@ -152,6 +157,14 @@ const Sidebar = () => {
                 <h3>Form background color</h3>
                 <input type="color"
                     onChange={setFormColor}
+                />
+                <h3>Form Border radius</h3>
+                <input
+                    type='range'
+                    onChange={setFormBorderRadius}
+                    min={0}
+                    max={30}
+                    default={2}
                 />
             </div>
         </div>
