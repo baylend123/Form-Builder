@@ -58,7 +58,7 @@ const Sidebar = () => {
                                 <input type='text'
                                     className='form'
                                     placeholder={textPlaceholder}
-                                ></input>
+                                />
                             </div>
                         </>
                         : ''
