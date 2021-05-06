@@ -1,8 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
 import { useDrag } from 'react-dnd'
+import { changeFormBackgroundThunk } from '../../store/styles'
+import { useDispatch } from 'react-redux'
 import './Sidebar.css'
 const Sidebar = () => {
+    const dispatch = useDispatch();
     const [textPlaceholder, setTextPlaceholder] = useState('')
     const [emailPlaceholder, setEmailPlaceholder] = useState('')
     const [passwordPlaceholder, setPasswordPlaceholder] = useState('')
@@ -27,7 +30,9 @@ const Sidebar = () => {
     }
     const setFormColor = (e) => {
         const formBackground = '--color'
-        document.documentElement.style.setProperty(formBackground, e.target.value)
+        // document.documentElement.style.setProperty(formBackground, e.target.value)
+        dispatch(changeFormBackgroundThunk(e.target.value))
+
     }
 
 

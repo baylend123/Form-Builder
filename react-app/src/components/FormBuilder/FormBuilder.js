@@ -1,13 +1,24 @@
 import React from 'react';
-import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useState, useEffect, useRef } from 'react'
+import { renderToString } from 'react-dom/server'
+import parse from 'html-react-parser';
+import jsxToString from 'jsx-to-string';
+
 import './FormBuilder.css'
 import './form.css'
+let formBackgroundColor;
 
 const FormBuilder = () => {
-
+    const myForm = useRef(null)
     const [formContentText, setFormContentText] = useState('')
     const [cssContentText, setCSSContentText] = useState('')
+    let formBackgroundColor = useSelector(state => state?.stylesReducer)
+    console.log(formBackgroundColor)
 
+    useEffect(() => {
+        formBackgroundColor = formBackgroundColor.formBackground
+    }, [])
 
     const drop = e => {
         e.preventDefault();
@@ -39,8 +50,10 @@ const FormBuilder = () => {
         setCSSContentText(CSSText)
     }
     const getHtml = () => {
+
         const form = document.getElementsByTagName('form')[0].parentElement
-        setFormContentText(form.innerHTML)
+        console.log(parse(form.outerHTML))
+        setFormContentText(form.outerHTML)
     }
 
 
@@ -51,8 +64,9 @@ const FormBuilder = () => {
                 onDragOver={dragOver}
                 onDrop={drop}
                 id="form-div"
+                ref={myForm}
             >
-                <form className="form" id="form">
+                <form style={{ backgroundColor: formBackgroundColor }} id="form">
                     <h1 id="form-header">form</h1>
                 </form>
             </div>
