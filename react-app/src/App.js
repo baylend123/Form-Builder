@@ -9,6 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SideBar from "./components/SideBar";
 import FormBuilder from "./components/FormBuilder"
+import TestComp from "./components/TestComp"
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
 // import { authenticate } from "./services/auth";
@@ -59,6 +60,9 @@ function App() {
               <FormBuilder />
             </DndProvider>
           </div>
+        </ProtectedRoute>
+        <ProtectedRoute path="/test">
+          <TestComp />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter >

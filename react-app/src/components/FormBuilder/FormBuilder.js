@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux'
 import { useState, useEffect, useRef } from 'react'
-import { renderToString } from 'react-dom/server'
+import { renderToStaticMarkup } from 'react-dom/server'
 import parse from 'html-react-parser';
 import jsxToString from 'jsx-to-string';
 
@@ -16,12 +16,19 @@ const FormBuilder = () => {
     let styleState = useSelector(state => state?.stylesReducer)
     const [stateFormBackgroundColor, setStateFormBackgroundColor] = useState(styleState)
     const [stateFormRadius, setStateFormRadius] = useState(styleState)
+    const [stateFormPadding, setStateFormPadding] = useState(styleState)
 
 
     useEffect(() => {
+        const input = document.getElementById('input-text')
+        if (input) {
+            console.log(input.style)
+            input.style.borderRadius = '40px'
+        }
         setStateFormBackgroundColor(styleState.formBackground)
         setStateFormRadius(styleState.backgroundRadius)
-        console.log(styleState.backgroundRadius)
+        setStateFormPadding(styleState.padding)
+
 
     }, [styleState])
 
@@ -57,9 +64,10 @@ const FormBuilder = () => {
     const getHtml = () => {
 
         const form = document.getElementsByTagName('form')[0].parentElement
-        console.log(jsxToString(parse(form.outerHTML)))
+        console.log(renderToStaticMarkup(parse(form.outerHTML)))
         setFormContentText(jsxToString(parse(form.outerHTML)))
     }
+
 
 
 
@@ -73,16 +81,20 @@ const FormBuilder = () => {
                 style={{
                     backgroundColor: stateFormBackgroundColor,
                     borderRadius: stateFormRadius,
+
+
                 }}
             >
                 <form id="form"
                     style={{
+                        padding: stateFormPadding,
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'center'
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
                     }}
                 >
-                    <h1 id="form-header">form</h1>
+                    <h1 id="form-header" style={{ top: '10px' }}>form</h1>
                 </form>
             </div>
             <div className='code-area'>

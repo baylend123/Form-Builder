@@ -2,6 +2,7 @@
 
 const FORMBACKGROUNDLOAD = 'FORMBACKGROUND/load'
 const FORMRADIUS = 'FORMRADIUS/load'
+const FORMPADDING = 'FORMPADDING/load'
 
 
 const changeFormBackground = (color) => {
@@ -16,6 +17,12 @@ const changeFormRadius = (number) => {
         payload: number
     }
 }
+const changeFormPadding = (number) => {
+    return {
+        type: FORMPADDING,
+        payload: number
+    }
+}
 
 
 export const changeFormBackgroundThunk = (color) => async (dispatch) => {
@@ -23,6 +30,9 @@ export const changeFormBackgroundThunk = (color) => async (dispatch) => {
 }
 export const formBorderRadiusThunk = (number) => async (dispatch) => {
     dispatch(changeFormRadius(number))
+}
+export const formPaddingThunk = (number) => async (dispatch) => {
+    dispatch(changeFormPadding(number))
 }
 
 
@@ -34,6 +44,9 @@ const stylesReducer = (state = {}, action) => {
 
         case FORMRADIUS:
             state.backgroundRadius = action.payload
+            return { ...state }
+        case FORMPADDING:
+            state.padding = action.payload
             return { ...state }
 
         default:
