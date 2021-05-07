@@ -6,6 +6,6 @@
     height: 90vh;
     width: 25vw;
     border: 4px solid black;
-    overflow: hidden;
+
     overflow : scroll;
 }
