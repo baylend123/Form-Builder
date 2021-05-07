@@ -27,6 +27,7 @@ const Sidebar = () => {
     const [textInputBoxShadowRight, setInputBoxShadowRight] = useState('2')
     const [textInputBoxShadowBlur, setInputBoxShadowBlur] = useState('2')
     const [textInputBoxShadowColor, steInputBoxShadowColor] = useState('red')
+    const [formFont, setFormFont] = useState('')
 
 
     // open close input menus
@@ -94,6 +95,7 @@ const Sidebar = () => {
             <div>
                 <button
                     style={{
+
                         cursor: 'pointer',
                         fontFamily: 'Source Code Pro ',
                         width: '100%',
@@ -131,17 +133,21 @@ const Sidebar = () => {
                 {openFormHeader ?
                     <>
                         <label htmlFor="font-select">Select Font Below</label>
-                        <select name='font-select'>
-                            <option style={{ fontFamily: 'Source Code Pro ' }}>This is What The Font Looks Like</option>
-                            <option style={{ fontFamily: 'Archivo' }}>This is What The Font Looks Like</option>
-                            <option style={{ fontFamily: 'Bree Serif ' }}>This is What The Font Looks Like</option>
-                            <option style={{ fontFamily: 'Cormorant Garamond ' }}>This is What The Font Looks Like</option>
-                            <option style={{ fontFamily: 'Jost ' }}>This is What The Font Looks Like</option>
-                            <option style={{ fontFamily: 'Lobster ' }}>This is What The Font Looks Like</option>
-                            <option style={{ fontFamily: 'Permanent Marker' }}>This is What The Font Looks Like</option>
-                            <option style={{ fontFamily: 'Questrial ' }}>This is What The Font Looks Like</option>
-                            <option style={{ fontFamily: 'Rokkitt ' }}>This is What The Font Looks Like</option>
-                            <option style={{ fontFamily: 'Sacramento ' }}>This is What The Font Looks Like</option>
+                        <select name='font-select'
+                            value={formFont}
+                            onChange={(e) => setFormFont(e.target.value)}
+                        >
+                            <option value='' style={{ fontFamily: formFont }}> --choose an option</option>
+                            <option value='Source Code Pro' style={{ fontFamily: 'Source Code Pro ' }}>This is What The Font Looks Like</option>
+                            <option value='Archivo' style={{ fontFamily: 'Archivo' }}>This is What The Font Looks Like</option>
+                            <option value='Bree Serif' style={{ fontFamily: 'Bree Serif ' }}>This is What The Font Looks Like</option>
+                            <option value='Cormorant Garamond' style={{ fontFamily: 'Cormorant Garamond ' }}>This is What The Font Looks Like</option>
+                            <option value='Jost' style={{ fontFamily: 'Jost ' }}>This is What The Font Looks Like</option>
+                            <option value='Lobster' style={{ fontFamily: 'Lobster ' }}>This is What The Font Looks Like</option>
+                            <option value='Permanent Marker' style={{ fontFamily: 'Permanent Marker' }}>This is What The Font Looks Like</option>
+                            <option value='Questrial' style={{ fontFamily: 'Questrial ' }}>This is What The Font Looks Like</option>
+                            <option value='Rokkitt' style={{ fontFamily: 'Rokkitt ' }}>This is What The Font Looks Like</option>
+                            <option value='Sacramento ' style={{ fontFamily: 'Sacramento ' }}>This is What The Font Looks Like</option>
 
 
                         </select>
@@ -189,6 +195,7 @@ const Sidebar = () => {
                                 id='input-text'
                                 placeholder={textPlaceholder}
                                 style={{
+                                    fontFamily: `${formFont}`,
                                     marginTop: '20px',
                                     borderRadius: textInputRadius,
                                     backgroundColor: textInputcolor,
@@ -364,6 +371,7 @@ const Sidebar = () => {
 
                             <input type='email'
                                 style={{
+                                    fontFamily: `${formFont}`,
                                     marginTop: '20px',
                                     borderRadius: textInputRadius,
                                     backgroundColor: textInputcolor,
@@ -529,6 +537,7 @@ const Sidebar = () => {
                                 <input type='text'
 
                                     style={{
+                                        fontFamily: `${formFont}`,
                                         webkitTextSecurity: 'disc',
                                         marginTop: '20px',
                                         borderRadius: textInputRadius,
@@ -691,7 +700,7 @@ const Sidebar = () => {
                                 <input type='number'
                                     name="numberInput"
                                     style={{
-
+                                        fontFamily: `${formFont}`,
                                         borderRadius: textInputRadius,
                                         backgroundColor: textInputcolor,
                                         border: `${textInputBorderSize}px ${textInputBorder} ${textInputBorderColor}`,
@@ -835,7 +844,7 @@ const Sidebar = () => {
                     <>
                         <h3>Button Text:</h3>
                         <input type="text" onChange={setButtonText}></input>
-                        <button style={{ marginTop: '10px' }} type='submit' id='submit' draggable='true' onDragStart={dragStart}>Submit</button>
+                        <button style={{ marginTop: '10px', fontFamily: `${formFont}`, }} type='submit' id='submit' draggable='true' onDragStart={dragStart}>Submit</button>
                     </>
                     : ''
                 }
