@@ -3,7 +3,16 @@
 const FORMBACKGROUNDLOAD = 'FORMBACKGROUND/load'
 const FORMRADIUS = 'FORMRADIUS/load'
 const FORMPADDING = 'FORMPADDING/load'
+const FORMHEIGHT = 'FORMHEIGHT/load'
+const FORMWIDTH = 'FORMWIDTH/load'
+const FORMHEADERCOLOR = 'FORMHEADERCOLOR/load'
 
+const changeFOrmHeaderColor = (color) => {
+    return {
+        type: FORMHEADERCOLOR,
+        payload: color
+    }
+}
 
 const changeFormBackground = (color) => {
     return {
@@ -23,6 +32,18 @@ const changeFormPadding = (number) => {
         payload: number
     }
 }
+const changeFormHeight = (number) => {
+    return {
+        type: FORMHEIGHT,
+        payload: number
+    }
+}
+const changeFormWidth = (number) => {
+    return {
+        type: FORMWIDTH,
+        payload: number
+    }
+}
 
 
 export const changeFormBackgroundThunk = (color) => async (dispatch) => {
@@ -34,6 +55,15 @@ export const formBorderRadiusThunk = (number) => async (dispatch) => {
 export const formPaddingThunk = (number) => async (dispatch) => {
     dispatch(changeFormPadding(number))
 }
+export const formHeightThunk = (number) => async (dispatch) => {
+    dispatch(changeFormHeight(number))
+}
+export const formWidthThunk = (number) => async (dispatch) => {
+    dispatch(changeFormWidth(number))
+}
+export const formHeaderColorThunk = (color) => async (dispatch) => {
+    dispatch(changeFOrmHeaderColor(color))
+}
 
 
 const stylesReducer = (state = {}, action) => {
@@ -41,12 +71,21 @@ const stylesReducer = (state = {}, action) => {
         case FORMBACKGROUNDLOAD:
             state.formBackground = action.payload
             return { ...state }
+        case FORMHEADERCOLOR:
+            state.headerColor = action.payload
+            return { ...state }
 
         case FORMRADIUS:
             state.backgroundRadius = action.payload
             return { ...state }
         case FORMPADDING:
             state.padding = action.payload
+            return { ...state }
+        case FORMHEIGHT:
+            state.height = action.payload
+            return { ...state }
+        case FORMWIDTH:
+            state.width = action.payload
             return { ...state }
 
         default:

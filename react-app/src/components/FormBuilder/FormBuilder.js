@@ -14,9 +14,13 @@ const FormBuilder = () => {
     const [formContentText, setFormContentText] = useState('')
     const [cssContentText, setCSSContentText] = useState('')
     let styleState = useSelector(state => state?.stylesReducer)
-    const [stateFormBackgroundColor, setStateFormBackgroundColor] = useState(styleState)
+    const [stateFormBackgroundColor, setStateFormBackgroundColor] = useState('')
+
     const [stateFormRadius, setStateFormRadius] = useState(styleState)
     const [stateFormPadding, setStateFormPadding] = useState(styleState)
+    const [stateFormHeight, setStateFormHeight] = useState(styleState)
+    const [stateFormWidth, setStateFormWidth] = useState(styleState)
+    const [stateHeaderColor, setStateHeaderColor] = useState(styleState)
 
 
     useEffect(() => {
@@ -28,6 +32,9 @@ const FormBuilder = () => {
         setStateFormBackgroundColor(styleState.formBackground)
         setStateFormRadius(styleState.backgroundRadius)
         setStateFormPadding(styleState.padding)
+        setStateFormHeight(styleState.height)
+        setStateFormWidth(styleState.width)
+        setStateHeaderColor(styleState.headerColor)
 
 
     }, [styleState])
@@ -79,22 +86,24 @@ const FormBuilder = () => {
                 id="form-div"
                 ref={myForm}
                 style={{
-                    backgroundColor: stateFormBackgroundColor,
+                    backgroundColor: stateFormBackgroundColor ? stateFormBackgroundColor : 'white',
                     borderRadius: stateFormRadius,
-
+                    width: stateFormWidth ? stateFormWidth : '500px',
+                    height: stateFormHeight ? stateFormHeight : '500px',
 
                 }}
             >
                 <form id="form"
                     style={{
+                        height: stateFormHeight ? stateFormHeight : '500px',
+                        width: 'auto',
                         padding: stateFormPadding,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
-                        justifyContent: 'space-between',
                     }}
                 >
-                    <h1 id="form-header" style={{ top: '10px' }}>form</h1>
+                    <h1 id="form-header" style={{ top: '10px', color: `${stateHeaderColor}` }}>form</h1>
                 </form>
             </div>
             <div className='code-area'>
