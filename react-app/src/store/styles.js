@@ -6,8 +6,9 @@ const FORMPADDING = 'FORMPADDING/load'
 const FORMHEIGHT = 'FORMHEIGHT/load'
 const FORMWIDTH = 'FORMWIDTH/load'
 const FORMHEADERCOLOR = 'FORMHEADERCOLOR/load'
+const FORMFONT = 'FORMFONT/load'
 
-const changeFOrmHeaderColor = (color) => {
+const changeFormHeaderColor = (color) => {
     return {
         type: FORMHEADERCOLOR,
         payload: color
@@ -44,6 +45,12 @@ const changeFormWidth = (number) => {
         payload: number
     }
 }
+const changeFormFont = (font) => {
+    return {
+        type: FORMFONT,
+        payload: font
+    }
+}
 
 
 export const changeFormBackgroundThunk = (color) => async (dispatch) => {
@@ -62,7 +69,10 @@ export const formWidthThunk = (number) => async (dispatch) => {
     dispatch(changeFormWidth(number))
 }
 export const formHeaderColorThunk = (color) => async (dispatch) => {
-    dispatch(changeFOrmHeaderColor(color))
+    dispatch(changeFormHeaderColor(color))
+}
+export const formFontThunk = (font) => async (dispatch) => {
+    dispatch(changeFormFont(font))
 }
 
 
@@ -86,6 +96,9 @@ const stylesReducer = (state = {}, action) => {
             return { ...state }
         case FORMWIDTH:
             state.width = action.payload
+            return { ...state }
+        case FORMFONT:
+            state.font = action.payload
             return { ...state }
 
         default:

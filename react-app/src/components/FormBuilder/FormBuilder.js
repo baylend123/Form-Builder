@@ -21,21 +21,17 @@ const FormBuilder = () => {
     const [stateFormHeight, setStateFormHeight] = useState(styleState)
     const [stateFormWidth, setStateFormWidth] = useState(styleState)
     const [stateHeaderColor, setStateHeaderColor] = useState(styleState)
+    const [stateFormFont, setStateFormFont] = useState(styleState)
 
 
     useEffect(() => {
-        const input = document.getElementById('input-text')
-        if (input) {
-            console.log(input.style)
-            input.style.borderRadius = '40px'
-        }
         setStateFormBackgroundColor(styleState.formBackground)
         setStateFormRadius(styleState.backgroundRadius)
         setStateFormPadding(styleState.padding)
         setStateFormHeight(styleState.height)
         setStateFormWidth(styleState.width)
         setStateHeaderColor(styleState.headerColor)
-
+        setStateFormFont(styleState.font)
 
     }, [styleState])
 
@@ -86,6 +82,7 @@ const FormBuilder = () => {
                 id="form-div"
                 ref={myForm}
                 style={{
+                    fontFamily: stateFormFont,
                     backgroundColor: stateFormBackgroundColor ? stateFormBackgroundColor : 'white',
                     borderRadius: stateFormRadius,
                     width: stateFormWidth ? stateFormWidth : '500px',
@@ -95,6 +92,7 @@ const FormBuilder = () => {
             >
                 <form id="form"
                     style={{
+                        fontFamily: stateFormFont,
                         height: stateFormHeight ? stateFormHeight : '500px',
                         width: 'auto',
                         padding: stateFormPadding,
@@ -103,7 +101,7 @@ const FormBuilder = () => {
                         alignItems: 'center',
                     }}
                 >
-                    <h1 id="form-header" style={{ top: '10px', color: `${stateHeaderColor}` }}>form</h1>
+                    <h1 id="form-header" style={{ top: '10px', color: `${stateHeaderColor}`, fontFamily: stateFormFont, }}>form</h1>
                 </form>
             </div>
             <div className='code-area'>
