@@ -24,6 +24,10 @@ const FormBuilder = () => {
     const [stateFormFont, setStateFormFont] = useState(styleState)
 
 
+    const [stateFormBorderType, setStateFormBorderType] = useState(styleState)
+    const [stateFormBorderSize, setStateFormBorderSize] = useState(styleState)
+    const [stateFormBorderColor, setStateFormBorderColor] = useState(styleState)
+
     useEffect(() => {
         setStateFormBackgroundColor(styleState.formBackground)
         setStateFormRadius(styleState.backgroundRadius)
@@ -32,6 +36,9 @@ const FormBuilder = () => {
         setStateFormWidth(styleState.width)
         setStateHeaderColor(styleState.headerColor)
         setStateFormFont(styleState.font)
+        setStateFormBorderType(styleState.borderType)
+        setStateFormBorderSize(styleState.borderSize)
+        setStateFormBorderColor(styleState.borderColor)
 
     }, [styleState])
 
@@ -87,18 +94,20 @@ const FormBuilder = () => {
                     borderRadius: stateFormRadius,
                     width: stateFormWidth ? stateFormWidth : '500px',
                     height: stateFormHeight ? stateFormHeight : '500px',
+                    border: `${stateFormBorderSize ? stateFormBorderSize : '2'}px ${stateFormBorderType ? stateFormBorderType : 'solid'} ${stateFormBorderColor ? stateFormBorderColor : 'black'}`
 
                 }}
             >
                 <form id="form"
                     style={{
                         fontFamily: stateFormFont,
-                        height: stateFormHeight ? stateFormHeight : '500px',
+                        height: 'auto',
                         width: 'auto',
                         padding: stateFormPadding,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
+
                     }}
                 >
                     <h1 id="form-header" style={{ top: '10px', color: `${stateHeaderColor}`, fontFamily: stateFormFont, }}>form</h1>

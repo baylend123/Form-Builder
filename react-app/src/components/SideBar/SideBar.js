@@ -9,6 +9,9 @@ import {
     formWidthThunk,
     formHeaderColorThunk,
     formFontThunk,
+    formBorderTypeThunk,
+    formBorderColorThunk,
+    formBorderSizeThunk
 } from '../../store/styles'
 import { useDispatch } from 'react-redux'
 import './Sidebar.css'
@@ -43,14 +46,18 @@ const Sidebar = () => {
     const [formFont, setFormFont] = useState('')
 
 
-    //buton styling state variables
+    //button styling state variables
     const [buttonBorderRadius, setButtonBorderRadius] = useState('')
     const [buttonBorderType, setButtonBorderType] = useState('')
-    const [buttonBorderSize, setButtonBorderSize] = useState('')
+    const [buttonBorderSize, setButtonBorderSize] = useState('2')
     const [buttonBorderColor, setButtonBorderColor] = useState('')
     const [buttonWidth, setButtonWidth] = useState('')
     const [buttonHeight, setButtonHeight] = useState('')
     const [buttonColor, setButtonColor] = useState('')
+    const [buttonShadowRight, setButtonShadowRight] = useState('2')
+    const [buttonShadowBottom, setButtonShadowBottom] = useState('2')
+    const [buttonShadowBlur, setButtonShadowBlur] = useState('2')
+    const [buttonShadowColor, setButtonShadowColor] = useState('black')
 
 
     // open close input menus
@@ -109,6 +116,15 @@ const Sidebar = () => {
     const setFormFont2 = (e) => {
         dispatch(formFontThunk(e.target.value))
         setFormFont(e.target.value)
+    }
+    const setFormBorderType = (type) => {
+        dispatch(formBorderTypeThunk(type))
+    }
+    const setFormBorderSize = (e) => {
+        dispatch(formBorderSizeThunk(e.target.value.toString()))
+    }
+    const setFormBorderColor = (e) => {
+        dispatch(formBorderColorThunk(e.target.value))
     }
 
 
@@ -877,11 +893,12 @@ const Sidebar = () => {
                             <button style={{
                                 marginTop: '10px',
                                 fontFamily: `${formFont}`,
-                                borderRadius: buttonBorderRadius,
-                                border: `${buttonBorderSize} ${buttonBorderType} ${buttonBorderColor}`,
+                                borderRadius: `${buttonBorderRadius}px`,
+                                border: `${buttonBorderSize}px ${buttonBorderType} ${buttonBorderColor}`,
                                 backgroundColor: buttonColor,
-                                height: buttonHeight,
-                                width: buttonWidth
+                                height: `${buttonHeight}px`,
+                                width: `${buttonWidth}px`,
+                                boxShadow: `${buttonShadowRight}px ${buttonShadowBottom}px ${buttonShadowBlur}px ${buttonShadowColor}`
                             }}
                                 type='submit'
                                 id='submit'
@@ -892,7 +909,16 @@ const Sidebar = () => {
                              </button>
                             <h3>Normal Button :</h3>
                             <input style={{ marginRight: '10px' }} type="text" onChange={setNormalButtonText}></input>
-                            <button style={{ marginTop: '10px', fontFamily: `${formFont}` }}
+                            <button style={{
+                                marginTop: '10px',
+                                fontFamily: `${formFont}`,
+                                borderRadius: `${buttonBorderRadius}px`,
+                                border: `${buttonBorderSize}px ${buttonBorderType} ${buttonBorderColor}`,
+                                backgroundColor: buttonColor,
+                                height: `${buttonHeight}px`,
+                                width: `${buttonWidth}px`,
+                                boxShadow: `${buttonShadowRight}px ${buttonShadowBottom}px ${buttonShadowBlur}px ${buttonShadowColor}`
+                            }}
 
                                 id='normal-button' draggable='true' onDragStart={dragStart}>Click me
                                 </button>
@@ -903,6 +929,168 @@ const Sidebar = () => {
                                 <h3 style={{ marginTop: '10px' }}>Button Styles :</h3>
 
                             </div>
+                            <div>
+                                <label>Button Background Color :</label>
+                            </div>
+                            <div>
+                                <input type='color'
+                                    onChange={(e) => setButtonColor(e.target.value)}
+                                >
+
+                                </input>
+                            </div>
+                            <div>
+                                <label htmlFor='button-border-radius'>Button Border Radius</label>
+                            </div>
+                            <div>
+                                <input type='range'
+                                    onChange={(e) => setButtonBorderRadius(e.target.value.toString())}
+                                    min={0}
+                                    max={30}
+                                ></input>
+                            </div>
+                            <div>
+                                <label >Button Width</label>
+                            </div>
+                            <div>
+                                <input type='range'
+                                    onChange={(e) => setButtonWidth(e.target.value.toString())}
+                                    min={50}
+                                    max={300}
+                                ></input>
+
+                            </div>
+                            <div>
+                                <label >Button height</label>
+                            </div>
+                            <div>
+                                <input type='range'
+                                    onChange={(e) => setButtonHeight(e.target.value.toString())}
+                                    min={10}
+                                    max={100}
+                                ></input>
+                            </div>
+                            <div>
+                                <label>Button Border Type</label>
+                            </div>
+                            <div>
+
+
+                                <div style={{ margin: '10px' }}>
+                                    None
+                                    <input type='radio'
+                                        onClick={() => setButtonBorderType('')}
+                                    >
+
+                                    </input>
+
+                                </div>
+
+                                <div style={{ border: '3px solid black', marginTop: '10px' }}>
+                                    <input
+                                        name='textborderstyle'
+                                        type='radio'
+                                        onClick={() => setButtonBorderType('solid')}
+
+                                    />
+                                </div>
+                                <div style={{ border: '3px dotted black', marginTop: '10px' }}>
+                                    <input
+                                        name='textborderstyle'
+                                        type='radio'
+                                        onClick={() => setButtonBorderType('dotted')}
+
+                                    />
+                                </div>
+                                <div style={{ border: '3px dashed black', marginTop: '10px' }}>
+                                    <input
+                                        name='textborderstyle'
+                                        type='radio'
+                                        onClick={() => setButtonBorderType('dashed')}
+
+                                    />
+                                </div>
+                            </div>
+                            <div>
+                                <label>Button Border Size</label>
+                            </div>
+                            <div>
+                                <input type='range'
+                                    min={0}
+                                    max={10}
+                                    onChange={(e) => setButtonBorderSize(e.target.value.toString())}
+                                >
+
+                                </input>
+                            </div>
+                            <div>
+                                <label>Button Border Color</label>
+                            </div>
+                            <div>
+                                <input type='color'
+                                    onChange={(e) => setButtonBorderColor(e.target.value)}
+                                >
+                                </input>
+                            </div>
+                            <div>
+                                <label>Button Shadow Options</label>
+                            </div>
+
+                            <div style={{ marginTop: '10px' }}>
+                                <div>
+                                    <label htmlFor='textInputBoxShadowRight' >Box Shadow length Right </label>
+                                </div>
+                                <div>
+
+                                    <input name='textInputBoxShadowRight' type='range'
+                                        min={0}
+                                        max={25}
+                                        onChange={(e) => setButtonShadowRight(e.target.value.toString())}
+                                    />
+                                </div>
+
+                                {/* box shadow length bottom picker */}
+                                <div>
+
+                                    <label htmlFor='textInputBoxShadowBottom' >Box Shadow Length Bottom </label>
+                                </div>
+                                <div>
+
+                                    <input name='textInputBoxShadowBottom' type='range'
+                                        min={0}
+                                        max={25}
+                                        onChange={(e) => setButtonShadowBottom(e.target.value.toString())}
+                                    />
+                                </div>
+
+
+                                {/* Box shadow blur picker */}
+                                <div>
+
+                                    <label htmlFor='textInputBoxShadowBlur' > Box Shadow blur </label>
+                                </div>
+                                <div>
+
+                                    <input name='textInputBoxShadowBlur' type='range'
+                                        min={0}
+                                        max={25}
+                                        onChange={(e) => setButtonShadowBlur(e.target.value.toString())}
+                                    />
+                                </div>
+
+                                {/* box shadow color picker */}
+                                <div>
+
+                                    <label htmlFor='textInputBoxShadowColor' >Box Shadow color </label>
+                                </div>
+                                <div>
+
+                                    <input type='color'
+                                        onChange={(e) => setButtonShadowColor(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+
                         </>
                         : ''
                     }
@@ -944,6 +1132,64 @@ const Sidebar = () => {
                             default={2}
                         />
 
+                        <h3>Form Border Type</h3>
+                        <div>
+
+                            <label>Choose a Border Type</label>
+                        </div>
+                        <div>
+
+                            <div style={{ margin: '10px' }}>
+                                <input type='radio'
+                                    name='formBorderType'
+                                    onClick={() => setFormBorderType('none')}
+                                ></input>
+
+                            </div>
+                            <div style={{ margin: '10px', border: '1px solid black' }}>
+                                <input type='radio'
+                                    name='formBorderType'
+                                    onClick={() => setFormBorderType('solid')}
+                                ></input>
+
+                            </div>
+                            <div style={{ margin: '10px', border: '1px dashed black' }}>
+                                <input type='radio'
+                                    name='formBorderType'
+                                    onClick={() => setFormBorderType('dashed')}
+                                ></input>
+
+                            </div>
+                            <div style={{ margin: '10px', border: '1px dotted black' }}>
+                                <input type='radio'
+                                    name='formBorderType'
+                                    onClick={() => setFormBorderType('dotted')}
+                                ></input>
+
+                            </div>
+
+                        </div>
+                        <div>
+                            <h3>Border Size</h3>
+                        </div>
+                        <div>
+                            <input type='range'
+                                min={1}
+                                max={10}
+                                onChange={setFormBorderSize}
+                            ></input>
+                        </div>
+                        <div><h3>
+                            Border Color
+                            </h3>
+                        </div>
+                        <div>
+                            <input type="color"
+                                onChange={setFormBorderColor}
+                            >
+
+                            </input>
+                        </div>
                         {/* form padding picker, CHANGE THIS */}
                         <h3>Form Padding</h3>
                         <input type='range'
