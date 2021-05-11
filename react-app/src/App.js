@@ -11,6 +11,7 @@ import SideBar from "./components/SideBar";
 import FormBuilder from "./components/FormBuilder"
 import TestComp from "./components/TestComp"
 import MyForms from "./components/MyForms"
+import FormBrowser from "./components/FormBrowser"
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
 // import { authenticate } from "./services/auth";
@@ -67,6 +68,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/my-forms">
           <MyForms />
+        </ProtectedRoute>
+        <ProtectedRoute path="/form-browser">
+          <FormBrowser />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter >

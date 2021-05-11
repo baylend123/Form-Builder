@@ -1,31 +1,26 @@
 import React from 'react';
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getMyFormsThunk, formDeleteThunk } from '../../store/forms'
+import { formsThatArentMineThunk } from '../../store/forms'
 import parse from 'html-react-parser';
 import jsxToString from 'jsx-to-string';
 
-const MyForms = () => {
+const FormBrowser = () => {
     const [showMeTheCode, setShowMeTheCode] = useState(false)
-    const myForms = useSelector(state => state?.myFormsReducer?.myForms)
-    const dispatch = useDispatch();
+    const notMyForms = useSelector(state => state?.myFormsReducer?.notMyForms)
+    const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(getMyFormsThunk())
-    }, [myForms?.length])
+        dispatch(formsThatArentMineThunk())
+    }, [])
 
 
-
-    const formDelete = (id) => {
-        dispatch(formDeleteThunk(id))
-    }
     return (
         <div style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
         }}>
-            {myForms?.map((form => {
-
+            {notMyForms?.map((form => {
                 const jsxForm = parse(form.JSX)
                 const jsxString = jsxToString(jsxForm)
                 return (
@@ -37,9 +32,6 @@ const MyForms = () => {
                             <button
                                 onClick={() => setShowMeTheCode(!showMeTheCode)}
                             >Show Me Code!!</button>
-                            <button
-                                onClick={() => formDelete(form.id)}
-                            >Yeet Me</button>
                         </div>
                         <div>
                             {showMeTheCode ? <div style={{
@@ -54,11 +46,11 @@ const MyForms = () => {
                             </div> : ''}
                         </div>
                     </>
-
                 )
             }))}
+
         </div>
     )
 }
 
-export default MyForms
+export default FormBrowser

@@ -32,6 +32,11 @@ const NavBar = () => {
           </NavLink>
         </div>
         <div>
+          <NavLink to="/form-browser" exact={true} activeClassName="active">
+            FormBrowser
+          </NavLink>
+        </div>
+        <div>
           <LogoutButton />
         </div>
       </div>

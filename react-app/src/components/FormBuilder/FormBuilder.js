@@ -72,7 +72,7 @@ const FormBuilder = () => {
     const getHtml = () => {
 
         const form = document.getElementsByTagName('form')[0].parentElement
-        console.log(renderToStaticMarkup(parse(form.outerHTML)))
+
         setFormContentText(jsxToString(parse(form.outerHTML)))
     }
     const saveToMyForms = async (e) => {
@@ -85,7 +85,7 @@ const FormBuilder = () => {
         const form = document.getElementsByTagName('form')[0].parentElement
         const string = form.outerHTML
 
-        console.log(string)
+
         const response = await fetch('/api/forms/add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -137,9 +137,13 @@ const FormBuilder = () => {
                 </button>
             </div>
             <div className='code-area'>
-                <button onClick={getHtml}>get html</button>
-                <pre className='HTML'>
-                    <h3>HTML</h3>
+                <button onClick={getHtml}>Get JSX</button>
+                <pre className='HTML' style={{
+                    height: '200px',
+                    width: '100%',
+                    overflow: 'scroll'
+                }}>
+                    <h3>JSX</h3>
                     {formContentText}
                 </pre>
 

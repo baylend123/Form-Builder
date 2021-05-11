@@ -12,9 +12,11 @@ def index():
     myForms = Form.query.filter(current_user.id == Form.userId).all()
     formsList = []
     for form in myForms:
-        formsList.append(form.to_dict()['JSX'])
+        formDict = {'id': form.to_dict()['id'],
+                    'JSX': form.to_dict()['JSX']
+                    }
+        formsList.append(formDict)
 
-    print(formsList)
     return {'myForms': formsList}
 
 
@@ -27,5 +29,29 @@ def add():
     newForm.JSX = request.get_json()['jsx']
     print(request.get_json())
     db.session.add(newForm)
+    db.session.commit()
+    return {'': ''}
+
+
+@form_routes.route('/all')
+@login_required
+def all():
+    user = current_user
+    allFormsThatArentMine = Form.query.filter(
+        Form.userId != user.id).all()
+    notMineFormsList = []
+    for form in allFormsThatArentMine:
+        formDict = {'id': form.to_dict()['id'],
+                    'JSX': form.to_dict()['JSX']
+                    }
+        notMineFormsList.append(formDict)
+    return {'notMyForms': notMineFormsList}
+
+
+@form_routes.route('/<id>', methods=['DELETE'])
+@login_required
+def delete(id):
+    deletedForm = Form.query.filter(Form.id == id).first()
+    db.session.delete(deletedForm)
     db.session.commit()
     return {'': ''}
