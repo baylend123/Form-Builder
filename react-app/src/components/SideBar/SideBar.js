@@ -1124,7 +1124,7 @@ const Sidebar = () => {
                             <h3>Submit Button :</h3>
                             <input style={{ marginRight: '10px' }} type="text" onChange={setSubmitButtonText}></input>
                             <button style={{
-                                marginTop: '10px',
+                                marginTop: '20px',
                                 fontFamily: `${formFont}`,
                                 borderRadius: `${buttonBorderRadius}px`,
                                 border: `${buttonBorderSize}px ${buttonBorderType} ${buttonBorderColor}`,
@@ -1143,7 +1143,7 @@ const Sidebar = () => {
                             <h3>Normal Button :</h3>
                             <input style={{ marginRight: '10px' }} type="text" onChange={setNormalButtonText}></input>
                             <button style={{
-                                marginTop: '10px',
+                                marginTop: '20px',
                                 fontFamily: `${formFont}`,
                                 borderRadius: `${buttonBorderRadius}px`,
                                 border: `${buttonBorderSize}px ${buttonBorderType} ${buttonBorderColor}`,
