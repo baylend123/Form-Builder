@@ -8,6 +8,7 @@
     margin-top: 5px;
 }
 .code-area{
+    margin-top: 20px;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
@@ -18,7 +19,8 @@ width: 100%;
 
     border: 1px solid black;
     top: 0;
-    width : 40%;
+    width : 100%;
+    overflow: scroll;
 
 }
 .CSS{

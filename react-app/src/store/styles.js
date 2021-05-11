@@ -10,6 +10,10 @@ const FORMFONT = 'FORMFONT/load'
 const FORMBORDERTYPE = 'FORMBORDERTYPE/load'
 const FORMBORDERSIZE = 'FORMBORDERSIZE/load'
 const FORMBORDERCOLOR = 'FORMBORDERCOLOR/load'
+const FORMSHADOWRIGHT = 'FORMSHADOWRIGHT/load'
+const FORMSHADOWBOTTOM = 'FORMSHADOWBOTTOM/load'
+const FORMSHADOWBLUR = 'FORMSHADOWBLUR/load'
+const FORMSHADOWCOLOR = 'FORMSHADOWCOLOR/load'
 
 const changeFormHeaderColor = (color) => {
     return {
@@ -72,6 +76,30 @@ const changeFormBorderColor = (borderColor) => {
         payload: borderColor
     }
 }
+const changeFormShadowRight = (number) => {
+    return {
+        type: FORMSHADOWRIGHT,
+        payload: number
+    }
+}
+const changeFormShadowBottom = (number) => {
+    return {
+        type: FORMSHADOWBOTTOM,
+        payload: number
+    }
+}
+const changeFormShadowBlur = (number) => {
+    return {
+        type: FORMSHADOWBLUR,
+        payload: number
+    }
+}
+const changeFormShadowColor = (color) => {
+    return {
+        type: FORMSHADOWCOLOR,
+        payload: color
+    }
+}
 
 
 export const changeFormBackgroundThunk = (color) => async (dispatch) => {
@@ -104,7 +132,18 @@ export const formBorderSizeThunk = (size) => async (dispatch) => {
 export const formBorderColorThunk = (color) => async (dispatch) => {
     dispatch(changeFormBorderColor(color))
 }
-
+export const formShadowRightThunk = (number) => async (dispatch) => {
+    dispatch(changeFormShadowRight(number))
+}
+export const formShadowBottomThunk = (number) => async (dispatch) => {
+    dispatch(changeFormShadowBottom(number))
+}
+export const formShadowBlurThunk = (number) => async (dispatch) => {
+    dispatch(changeFormShadowBlur(number))
+}
+export const formShadowColorThunk = (color) => async (dispatch) => {
+    dispatch(changeFormShadowColor(color))
+}
 
 const stylesReducer = (state = {}, action) => {
     switch (action.type) {
@@ -138,6 +177,18 @@ const stylesReducer = (state = {}, action) => {
             return { ...state }
         case FORMBORDERCOLOR:
             state.borderColor = action.payload
+            return { ...state }
+        case FORMSHADOWRIGHT:
+            state.shadowRight = action.payload
+            return { ...state }
+        case FORMSHADOWBOTTOM:
+            state.shadowBottom = action.payload
+            return { ...state }
+        case FORMSHADOWBLUR:
+            state.shadowBlur = action.payload
+            return { ...state }
+        case FORMSHADOWCOLOR:
+            state.shadowColor = action.payload
             return { ...state }
 
         default:

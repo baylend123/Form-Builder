@@ -11,7 +11,11 @@ import {
     formFontThunk,
     formBorderTypeThunk,
     formBorderColorThunk,
-    formBorderSizeThunk
+    formBorderSizeThunk,
+    formShadowRightThunk,
+    formShadowBottomThunk,
+    formShadowBlurThunk,
+    formShadowColorThunk,
 } from '../../store/styles'
 import { useDispatch } from 'react-redux'
 import './Sidebar.css'
@@ -125,6 +129,18 @@ const Sidebar = () => {
     }
     const setFormBorderColor = (e) => {
         dispatch(formBorderColorThunk(e.target.value))
+    }
+    const setFormShadowRight = (e) => {
+        dispatch(formShadowRightThunk(e.target.value.toString()))
+    }
+    const setFormShadowBottom = (e) => {
+        dispatch(formShadowBottomThunk(e.target.value.toString()))
+    }
+    const setFormShadowBlur = (e) => {
+        dispatch(formShadowBlurThunk(e.target.value.toString()))
+    }
+    const setFormShadowColor = (e) => {
+        dispatch(formShadowColorThunk(e.target.value))
     }
 
 
@@ -1186,6 +1202,47 @@ const Sidebar = () => {
                         <div>
                             <input type="color"
                                 onChange={setFormBorderColor}
+                            >
+
+                            </input>
+                        </div>
+
+                        <div>
+                            <h3>Form Shaddow Right</h3>
+                        </div>
+                        <div>
+                            <input type='range'
+                                min={0}
+                                max={50}
+                                onChange={setFormShadowRight}
+                            ></input>
+                        </div>
+                        <div>
+                            <h3>Form Shadow Bottom</h3>
+                        </div>
+                        <div>
+                            <input type='range'
+                                min={0}
+                                max={50}
+                                onChange={setFormShadowBottom}
+                            ></input>
+                        </div>
+                        <div>
+                            <h3>Form Shadow Blur</h3>
+                        </div>
+                        <div>
+                            <input type='range'
+                                min={0}
+                                max={50}
+                                onChange={setFormShadowBlur}
+                            ></input>
+                        </div>
+                        <div>
+                            <h3>Form Shadow Color</h3>
+                        </div>
+                        <div>
+                            <input type='color'
+                                onChange={setFormShadowColor}
                             >
 
                             </input>

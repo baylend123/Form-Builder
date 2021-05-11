@@ -28,6 +28,14 @@ const FormBuilder = () => {
     const [stateFormBorderSize, setStateFormBorderSize] = useState(styleState)
     const [stateFormBorderColor, setStateFormBorderColor] = useState(styleState)
 
+    const [stateBorderShadowRight, setStateBorderShadowRight] = useState('2')
+    const [stateBorderShadowBottom, setStateBorderShadowBottom] = useState('2')
+    const [stateBorderShadowBlur, setStateBorderShadowBlur] = useState('2')
+    const [stateBorderShadowColor, setStateBorderShadowColor] = useState('black')
+
+
+    const [addToMyFormsText, setAddToMyFormsText] = useState('Add To My Forms')
+
     useEffect(() => {
         setStateFormBackgroundColor(styleState.formBackground)
         setStateFormRadius(styleState.backgroundRadius)
@@ -39,6 +47,10 @@ const FormBuilder = () => {
         setStateFormBorderType(styleState.borderType)
         setStateFormBorderSize(styleState.borderSize)
         setStateFormBorderColor(styleState.borderColor)
+        setStateBorderShadowRight(styleState.shadowRight)
+        setStateBorderShadowBottom(styleState.shadowBottom)
+        setStateBorderShadowBlur(styleState.shadowBlur)
+        setStateBorderShadowColor(styleState.shadowColor)
 
     }, [styleState])
 
@@ -56,34 +68,38 @@ const FormBuilder = () => {
         e.preventDefault();
 
     }
-    const getCss = () => {
-        const CSS = document.querySelector("head > style:nth-child(7)").innerHTML.split(';')
-        CSS.forEach((ele, i) => {
-            let item = ele.split(':')
-            if (item[0].includes('--color')) {
 
-                item[1] = window.getComputedStyle(document.documentElement).getPropertyValue('--color')
-            }
-            CSS[i] = item.join(':')
-
-        })
-
-        const CSSText = CSS.join(';')
-        setCSSContentText(CSSText)
-    }
     const getHtml = () => {
 
         const form = document.getElementsByTagName('form')[0].parentElement
         console.log(renderToStaticMarkup(parse(form.outerHTML)))
         setFormContentText(jsxToString(parse(form.outerHTML)))
     }
+    const saveToMyForms = async (e) => {
+        if (addToMyFormsText === 'Added!') {
+            return
+        }
 
+        e.preventDefault();
+        setAddToMyFormsText('Added!')
+        const form = document.getElementsByTagName('form')[0].parentElement
+        const string = form.outerHTML
+
+        console.log(string)
+        const response = await fetch('/api/forms/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 'jsx': string })
+        })
+
+    }
 
 
 
     return (
         <div className='form-builder'>
             <div
+
                 onDragOver={dragOver}
                 onDrop={drop}
                 id="form-div"
@@ -94,15 +110,15 @@ const FormBuilder = () => {
                     borderRadius: stateFormRadius,
                     width: stateFormWidth ? stateFormWidth : '500px',
                     height: stateFormHeight ? stateFormHeight : '500px',
-                    border: `${stateFormBorderSize ? stateFormBorderSize : '2'}px ${stateFormBorderType ? stateFormBorderType : 'solid'} ${stateFormBorderColor ? stateFormBorderColor : 'black'}`
-
+                    border: `${stateFormBorderSize ? stateFormBorderSize : '2'}px ${stateFormBorderType ? stateFormBorderType : 'solid'} ${stateFormBorderColor ? stateFormBorderColor : 'black'}`,
+                    boxShadow: `${stateBorderShadowRight ? stateBorderShadowRight : '2'}px ${stateBorderShadowBottom ? stateBorderShadowBottom : '2'}px ${stateBorderShadowBlur ? stateBorderShadowBlur : '2'}px ${stateBorderShadowColor ? stateBorderShadowColor : 'black'}`
                 }}
             >
                 <form id="form"
                     style={{
                         fontFamily: stateFormFont,
-                        height: 'auto',
-                        width: 'auto',
+                        width: stateFormWidth ? stateFormWidth : '500px',
+                        height: stateFormHeight ? stateFormHeight : '500px',
                         padding: stateFormPadding,
                         display: 'flex',
                         flexDirection: 'column',
@@ -113,17 +129,19 @@ const FormBuilder = () => {
                     <h1 id="form-header" style={{ top: '10px', color: `${stateHeaderColor}`, fontFamily: stateFormFont, }}>form</h1>
                 </form>
             </div>
+            <div style={{ marginTop: '40px' }}>
+                <button type="submit"
+                    onClick={saveToMyForms}
+                >
+                    {addToMyFormsText}
+                </button>
+            </div>
             <div className='code-area'>
-                <button onClick={getCss}>get css</button>
                 <button onClick={getHtml}>get html</button>
-                <code className='HTML'>
+                <pre className='HTML'>
                     <h3>HTML</h3>
                     {formContentText}
-                </code>
-                <code className='CSS'>
-                    <h3>CSS</h3>
-                    {cssContentText}
-                </code>
+                </pre>
 
             </div>
 

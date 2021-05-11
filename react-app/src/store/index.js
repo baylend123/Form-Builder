@@ -2,11 +2,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from 'redux-thunk';
 import session from './session'
 import stylesReducer from './styles'
+import myFormsReducer from './forms'
 
 
 const rootReducer = combineReducers({
     session,
-    stylesReducer
+    stylesReducer,
+    myFormsReducer
 });
 
 let enhancer;
