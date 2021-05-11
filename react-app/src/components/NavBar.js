@@ -1,29 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom';
+import { logoutStylesThunk } from '../store/styles'
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 const NavBar = () => {
+  const dispatch = useDispatch();
   return (
     <nav>
       <div className='navbar'>
         <div>
-          <NavLink to="/" exact={true} activeClassName="active">
+          <NavLink to="/" exact={true} activeClassName="active"
+            onClick={() => dispatch(logoutStylesThunk())}
+          >
             Home
-          </NavLink>
-        </div>
-        <div>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink>
-        </div>
-        <div>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink>
-        </div>
-        <div>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
           </NavLink>
         </div>
         <div>

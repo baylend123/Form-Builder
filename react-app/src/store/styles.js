@@ -14,6 +14,15 @@ const FORMSHADOWRIGHT = 'FORMSHADOWRIGHT/load'
 const FORMSHADOWBOTTOM = 'FORMSHADOWBOTTOM/load'
 const FORMSHADOWBLUR = 'FORMSHADOWBLUR/load'
 const FORMSHADOWCOLOR = 'FORMSHADOWCOLOR/load'
+const LOGOUT = 'LOGOUT'
+
+const logout = () => {
+    return {
+        type: LOGOUT,
+        payload: {}
+    }
+}
+
 
 const changeFormHeaderColor = (color) => {
     return {
@@ -101,6 +110,9 @@ const changeFormShadowColor = (color) => {
     }
 }
 
+export const logoutStylesThunk = () => async (dispatch) => {
+    dispatch(logout())
+}
 
 export const changeFormBackgroundThunk = (color) => async (dispatch) => {
     dispatch(changeFormBackground(color))
@@ -190,6 +202,9 @@ const stylesReducer = (state = {}, action) => {
         case FORMSHADOWCOLOR:
             state.shadowColor = action.payload
             return { ...state }
+        case LOGOUT:
+            state = action.payload
+            return state
 
         default:
             return state

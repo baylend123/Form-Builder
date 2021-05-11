@@ -5,15 +5,13 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
+
 import SideBar from "./components/SideBar";
 import FormBuilder from "./components/FormBuilder"
 import TestComp from "./components/TestComp"
 import MyForms from "./components/MyForms"
 import FormBrowser from "./components/FormBrowser"
-import { HTML5Backend } from 'react-dnd-html5-backend'
-import { DndProvider } from 'react-dnd'
+
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 
@@ -35,8 +33,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar>
-      </NavBar>
 
       <Switch>
         <Route path="/login" exact={true}>
@@ -45,31 +41,35 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path="/users" exact={true} >
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true} >
-          <User />
-        </ProtectedRoute>
+
       </Switch>
 
 
       <Switch>
         <ProtectedRoute path="/" exact={true}>
+          <NavBar>
+          </NavBar>
+
           <div className="main-page">
-            <DndProvider backend={HTML5Backend}>
-              <SideBar />
-              <FormBuilder />
-            </DndProvider>
+
+            <SideBar />
+            <FormBuilder />
+
           </div>
         </ProtectedRoute>
         <ProtectedRoute path="/test">
           <TestComp />
         </ProtectedRoute>
         <ProtectedRoute path="/my-forms">
+          <NavBar>
+          </NavBar>
+
           <MyForms />
         </ProtectedRoute>
         <ProtectedRoute path="/form-browser">
+          <NavBar>
+          </NavBar>
+
           <FormBrowser />
         </ProtectedRoute>
       </Switch>

@@ -39,7 +39,7 @@ const MyForms = () => {
                             >Show Me Code!!</button>
                             <button
                                 onClick={() => formDelete(form.id)}
-                            >Yeet Me</button>
+                            >Delete Me Forever </button>
                         </div>
                         <div>
                             {showMeTheCode ? <div style={{

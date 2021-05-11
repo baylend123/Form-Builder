@@ -1,18 +1,20 @@
 import React from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useState, useEffect, useRef } from 'react'
-import { renderToStaticMarkup } from 'react-dom/server'
+
 import parse from 'html-react-parser';
 import jsxToString from 'jsx-to-string';
 
+
 import './FormBuilder.css'
 import './form.css'
-let styleState;
+
 
 const FormBuilder = () => {
+
     const myForm = useRef(null)
     const [formContentText, setFormContentText] = useState('')
-    const [cssContentText, setCSSContentText] = useState('')
+
     let styleState = useSelector(state => state?.stylesReducer)
     const [stateFormBackgroundColor, setStateFormBackgroundColor] = useState('')
 
@@ -91,6 +93,7 @@ const FormBuilder = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 'jsx': string })
         })
+
 
     }
 
