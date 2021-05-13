@@ -1,6 +1,6 @@
 /* TODO Add site wide styles */
 body {
-    background-color: #8f9496
+ background-image: url('/images/white-concrete-wall_53876-92803.jpeg')
 }
 .main-page{
     display: flex;

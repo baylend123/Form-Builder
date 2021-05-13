@@ -134,19 +134,51 @@ const FormBuilder = () => {
             </div>
             <div style={{ marginTop: '40px' }}>
                 <button type="submit"
+                    style={{
+
+                        cursor: 'pointer',
+                        fontFamily: 'Source Code Pro ',
+                        width: '100%',
+                        height: '30px',
+                        borderRadius: '5px',
+                        backgroundColor: 'rgb(168,254,255)',
+                        opacity: '0.7',
+                        border: '1px solid white',
+                        textAlign: 'left'
+                    }}
                     onClick={saveToMyForms}
                 >
                     {addToMyFormsText}
                 </button>
             </div>
             <div className='code-area'>
-                <button onClick={getHtml}>Get JSX</button>
+                <button
+                    style={{
+
+                        cursor: 'pointer',
+                        fontFamily: 'Source Code Pro ',
+                        marginLeft: '20px',
+                        height: '20px',
+                        width: '100px',
+                        borderRadius: '5px',
+                        backgroundColor: 'rgb(168,254,255)',
+                        opacity: '0.7',
+                        border: '1px solid white',
+                        textAlign: 'left'
+                    }}
+                    onClick={getHtml}>Get JSX</button>
                 <pre className='HTML' style={{
-                    height: '200px',
+                    height: '180px',
                     width: '100%',
-                    overflow: 'scroll'
+                    overflow: 'scroll',
+                    overflowX: 'hidden'
                 }}>
-                    <h3>JSX</h3>
+                    <h3
+                        style={{
+                            marginLeft: '20px',
+
+                        }}
+                    >JSX</h3>
                     {formContentText}
                 </pre>
 

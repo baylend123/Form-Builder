@@ -73,6 +73,14 @@ const Sidebar = () => {
     const [openPasswordInput, setOpenPasswordInput] = useState(false)
     const [openButtonArea, setOpenButtonArea] = useState(false)
     const [openFormStylesArea, setOpenFormStylesArea] = useState(false)
+
+    //form styles state variable
+    const [formHeaderColor, setFormHeaderColor] = useState('')
+    const [formBackgroundColor, setFormBackgroundColor] = useState('')
+    const [formShadowColor, setFormShadowColorState] = useState('')
+    const [formBorderColor, setFormBorderColorState] = useState('')
+
+    //menu button array
     const menuButtonArray = [openFormHeader, openFormFont, openTextInput, openNumberInput, openEmailInput, openPasswordInput, openButtonArea, openFormStylesArea]
 
     const menuButtonFunc = (string) => {
@@ -141,6 +149,7 @@ const Sidebar = () => {
     }
     // setting form styles  into redux store for use in form builder component
     const setFormColor = (e) => {
+        setFormBackgroundColor(e.target.value)
         dispatch(changeFormBackgroundThunk(e.target.value))
 
     }
@@ -158,6 +167,7 @@ const Sidebar = () => {
         dispatch(formWidthThunk(e.target.value.toString() + 'px'))
     }
     const setHeaderColor = (e) => {
+        setFormHeaderColor(e.target.value)
         dispatch(formHeaderColorThunk(e.target.value))
     }
     const setFormFont2 = (e) => {
@@ -171,6 +181,7 @@ const Sidebar = () => {
         dispatch(formBorderSizeThunk(e.target.value.toString()))
     }
     const setFormBorderColor = (e) => {
+        setFormBorderColorState(e.target.value)
         dispatch(formBorderColorThunk(e.target.value))
     }
     const setFormShadowRight = (e) => {
@@ -183,6 +194,7 @@ const Sidebar = () => {
         dispatch(formShadowBlurThunk(e.target.value.toString()))
     }
     const setFormShadowColor = (e) => {
+        setFormShadowColorState(e.target.value)
         dispatch(formShadowColorThunk(e.target.value))
     }
 
@@ -202,6 +214,7 @@ const Sidebar = () => {
                         height: '40px',
                         borderRadius: '5px',
                         backgroundColor: 'rgb(168,254,255)',
+                        opacity: '0.7',
                         border: '1px solid white',
                         textAlign: 'left'
                     }}
@@ -212,6 +225,7 @@ const Sidebar = () => {
                         <input type="text" onChange={setHeader}></input>
                         <h3>Form Header Color</h3>
                         <input type='color'
+                            value={formHeaderColor}
                             onChange={setHeaderColor}
                         />
                     </>
@@ -229,6 +243,7 @@ const Sidebar = () => {
                         height: '40px',
                         borderRadius: '5px',
                         backgroundColor: 'rgb(168,254,255)',
+                        opacity: '0.7',
                         border: '1px solid white',
                         textAlign: 'left'
                     }}
@@ -275,6 +290,7 @@ const Sidebar = () => {
                         height: '40px',
                         borderRadius: '5px',
                         backgroundColor: 'rgb(168,254,255)',
+                        opacity: '0.7',
                         border: '1px solid white',
                         textAlign: 'left'
                     }}
@@ -377,6 +393,7 @@ const Sidebar = () => {
                             <div>
 
                                 <input type='color'
+                                    value={textInputcolor}
                                     name='textinputcolor'
                                     onChange={(e) => setTextInputColor(e.target.value)}
                                 />
@@ -449,6 +466,7 @@ const Sidebar = () => {
                                 <div>
 
                                     <input type='color'
+                                        value={textInputBorderColor}
                                         onChange={(e) => setTextInputBorderColor(e.target.value)}
                                     />
                                 </div>
@@ -506,6 +524,7 @@ const Sidebar = () => {
                                 <div>
 
                                     <input type='color'
+                                        value={textInputBoxShadowColor}
                                         onChange={(e) => steInputBoxShadowColor(e.target.value)}
                                     />
                                 </div>
@@ -528,6 +547,7 @@ const Sidebar = () => {
                         height: '40px',
                         borderRadius: '5px',
                         backgroundColor: 'rgb(168,254,255)',
+                        opacity: '0.7',
                         border: '1px solid white',
                         textAlign: 'left'
                     }}
@@ -624,6 +644,7 @@ const Sidebar = () => {
                             <div>
 
                                 <input type='color'
+                                    value={textInputcolor}
                                     name='textinputcolor'
                                     onChange={(e) => setTextInputColor(e.target.value)}
                                 />
@@ -687,6 +708,7 @@ const Sidebar = () => {
                                 <div>
 
                                     <input type='color'
+                                        value={textInputBorderColor}
                                         onChange={(e) => setTextInputBorderColor(e.target.value)}
                                     />
                                 </div>
@@ -747,6 +769,7 @@ const Sidebar = () => {
                                 <div>
 
                                     <input type='color'
+                                        value={textInputBoxShadowColor}
                                         onChange={(e) => steInputBoxShadowColor(e.target.value)}
                                     />
                                 </div>
@@ -768,6 +791,7 @@ const Sidebar = () => {
                         height: '40px',
                         borderRadius: '5px',
                         backgroundColor: 'rgb(168,254,255)',
+                        opacity: '0.7',
                         border: '1px solid white',
                         textAlign: 'left'
                     }}
@@ -865,6 +889,7 @@ const Sidebar = () => {
 
                                 <input type='color'
                                     name='textinputcolor'
+                                    value={textInputcolor}
                                     onChange={(e) => setTextInputColor(e.target.value)}
                                 />
                             </div>
@@ -924,6 +949,7 @@ const Sidebar = () => {
                                 <div>
 
                                     <input type='color'
+                                        value={textInputBorderColor}
                                         onChange={(e) => setTextInputBorderColor(e.target.value)}
                                     />
                                 </div>
@@ -980,6 +1006,7 @@ const Sidebar = () => {
                                 <div>
 
                                     <input type='color'
+                                        value={textInputBoxShadowColor}
                                         onChange={(e) => steInputBoxShadowColor(e.target.value)}
                                     />
                                 </div>
@@ -1002,6 +1029,7 @@ const Sidebar = () => {
                         height: '40px',
                         borderRadius: '5px',
                         backgroundColor: 'rgb(168,254,255)',
+                        opacity: '0.7',
                         border: '1px solid white',
                         textAlign: 'left'
                     }}
@@ -1098,6 +1126,7 @@ const Sidebar = () => {
                             <div>
 
                                 <input type='color'
+                                    value={textInputcolor}
                                     name='textinputcolor'
                                     onChange={(e) => setTextInputColor(e.target.value)}
                                 />
@@ -1158,6 +1187,7 @@ const Sidebar = () => {
                                 <div>
 
                                     <input type='color'
+                                        value={textInputBorderColor}
                                         onChange={(e) => setTextInputBorderColor(e.target.value)}
                                     />
                                 </div>
@@ -1215,6 +1245,7 @@ const Sidebar = () => {
                                 <div>
 
                                     <input type='color'
+                                        value={textInputBoxShadowColor}
                                         onChange={(e) => steInputBoxShadowColor(e.target.value)}
                                     />
                                 </div>
@@ -1236,6 +1267,7 @@ const Sidebar = () => {
                         height: '40px',
                         borderRadius: '5px',
                         backgroundColor: 'rgb(168,254,255)',
+                        opacity: '0.7',
                         border: '1px solid white',
                         textAlign: 'left'
                     }}
@@ -1312,6 +1344,7 @@ const Sidebar = () => {
                             </div>
                             <div>
                                 <input type='color'
+                                    value={buttonColor}
                                     onChange={(e) => setButtonColor(e.target.value)}
                                 >
 
@@ -1406,6 +1439,7 @@ const Sidebar = () => {
                             </div>
                             <div>
                                 <input type='color'
+                                    value={buttonBorderColor}
                                     onChange={(e) => setButtonBorderColor(e.target.value)}
                                 >
                                 </input>
@@ -1464,6 +1498,7 @@ const Sidebar = () => {
                                 <div>
 
                                     <input type='color'
+                                        value={buttonShadowColor}
                                         onChange={(e) => setButtonShadowColor(e.target.value)}
                                     />
                                 </div>
@@ -1487,6 +1522,7 @@ const Sidebar = () => {
                         height: '40px',
                         borderRadius: '5px',
                         backgroundColor: 'rgb(168,254,255)',
+                        opacity: '0.7',
                         border: '1px solid white',
                         textAlign: 'left'
                     }}
@@ -1506,6 +1542,7 @@ const Sidebar = () => {
                     <>
                         <h3>Form background color</h3>
                         <input type="color"
+                            value={formBackgroundColor}
                             onChange={setFormColor}
                         />
 
@@ -1572,6 +1609,7 @@ const Sidebar = () => {
                         </div>
                         <div>
                             <input type="color"
+                                value={formBorderColor}
                                 onChange={setFormBorderColor}
                             >
 
@@ -1613,6 +1651,7 @@ const Sidebar = () => {
                         </div>
                         <div>
                             <input type='color'
+                                value={formShadowColor}
                                 onChange={setFormShadowColor}
                             >
 
