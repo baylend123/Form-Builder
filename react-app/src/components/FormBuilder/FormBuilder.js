@@ -12,6 +12,8 @@ import './form.css'
 
 const FormBuilder = () => {
 
+    const fontLinkTag = '<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300&family=Bree+Serif&family=Cormorant+Garamond&family=Jost:wght@300&family=Lobster&family=Permanent+Marker&family=Questrial&family=Rokkitt:wght@300&family=Sacramento&family=Source+Code+Pro&display=swap" rel="stylesheet" >'
+
     const myForm = useRef(null)
     const [formContentText, setFormContentText] = useState('')
 
@@ -157,9 +159,9 @@ const FormBuilder = () => {
 
                         cursor: 'pointer',
                         fontFamily: 'Source Code Pro ',
-                        marginLeft: '20px',
-                        height: '20px',
-                        width: '100px',
+                        overflow: 'hidden',
+                        height: '10vh',
+                        width: '5vw',
                         borderRadius: '5px',
                         backgroundColor: 'rgb(168,254,255)',
                         opacity: '0.7',
@@ -167,20 +169,34 @@ const FormBuilder = () => {
                         textAlign: 'left'
                     }}
                     onClick={getHtml}>Get JSX</button>
-                <pre className='HTML' style={{
+                <h3
+                    style={{
+                        marginLeft: '20px',
+
+
+                    }}
+                >JSX</h3>
+                <pre style={{
                     height: '180px',
-                    width: '100%',
+                    width: '50vw',
                     overflow: 'scroll',
                     overflowX: 'hidden'
                 }}>
-                    <h3
-                        style={{
-                            marginLeft: '20px',
-
-                        }}
-                    >JSX</h3>
                     {formContentText}
                 </pre>
+
+
+                <h3>Link Tag For Fonts</h3>
+                <pre
+                    style={{
+                        height: '180px',
+                        width: '50vw',
+                        overflow: 'scroll',
+                        overflowY: 'hidden'
+                    }}>
+                    {fontLinkTag}
+                </pre>
+
 
             </div>
 
