@@ -9,25 +9,25 @@ const NavBar = () => {
   return (
     <nav>
       <div className='navbar'>
-        <div>
-          <NavLink to="/" exact={true} activeClassName="active"
+        <div  >
+          <NavLink to="/" exact={true} className='nav-link' activeClassName='nav-link-active'
             onClick={() => dispatch(logoutStylesThunk())}
           >
             Home
           </NavLink>
         </div>
-        <div>
-          <NavLink to="/my-forms" exact={true} activeClassName="active">
+        <div  >
+          <NavLink to="/my-forms" exact={true} className='nav-link' activeClassName='nav-link-active'>
             My Forms
           </NavLink>
         </div>
-        <div>
-          <NavLink to="/form-browser" exact={true} activeClassName="active">
+        <div className='nav-link'>
+          <NavLink to="/form-browser" exact={true} className='nav-link' activeClassName="nav-link-active">
             FormBrowser
           </NavLink>
         </div>
-        <div>
-          <LogoutButton />
+        <div  >
+          <LogoutButton className='nav-link' activeClassName='nav-link-active' />
         </div>
       </div>
     </nav>
