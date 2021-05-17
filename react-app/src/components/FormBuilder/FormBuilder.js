@@ -131,7 +131,7 @@ const FormBuilder = () => {
 
                     }}
                 >
-                    <h1 id="form-header" style={{ top: '10px', color: `${stateHeaderColor}`, fontFamily: stateFormFont, }}>form</h1>
+                    <h1 id="form-header" style={{ top: '10px', color: `${stateHeaderColor}`, fontFamily: stateFormFont, }}>Form Header</h1>
                 </form>
             </div>
             <div style={{ marginTop: '40px' }}>
@@ -177,7 +177,7 @@ const FormBuilder = () => {
                     }}
                 >JSX</h3>
                 <pre style={{
-                    height: '180px',
+                    height: '90%',
                     width: '50vw',
                     overflow: 'scroll',
                     overflowX: 'hidden'
@@ -189,7 +189,7 @@ const FormBuilder = () => {
                 <h3>Link Tag For Fonts</h3>
                 <pre
                     style={{
-                        height: '180px',
+                        height: '90%',
                         width: '50vw',
                         overflow: 'scroll',
                         overflowY: 'hidden'

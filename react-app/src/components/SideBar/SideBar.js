@@ -72,7 +72,7 @@ const Sidebar = () => {
     const [openEmailInput, setOpenEmailInput] = useState(false)
     const [openPasswordInput, setOpenPasswordInput] = useState(false)
     const [openButtonArea, setOpenButtonArea] = useState(false)
-    const [openFormStylesArea, setOpenFormStylesArea] = useState(false)
+    const [openFormStylesArea, setOpenFormStylesArea] = useState(true)
 
     //form styles state variable
     const [formHeaderColor, setFormHeaderColor] = useState('')

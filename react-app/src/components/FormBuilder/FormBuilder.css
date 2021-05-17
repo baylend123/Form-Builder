@@ -17,6 +17,8 @@ border-top: 4px solid #ccc9c9;
 height: 100%;
     border-radius: 10px;
 width: 100%;
+
+overflow-X: hidden
 }
 .HTML{
 

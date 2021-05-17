@@ -24,7 +24,7 @@ const MyForms = () => {
             flexDirection: 'column',
             alignItems: 'center',
         }}>
-            {myForms?.map((form => {
+            {myForms?.map(((form, i) => {
 
                 const jsxForm = parse(form.JSX)
                 const jsxString = jsxToString(jsxForm)
@@ -47,6 +47,7 @@ const MyForms = () => {
                                     border: '1px solid white',
                                     textAlign: 'left'
                                 }}
+
                                 onClick={() => setShowMeTheCode(!showMeTheCode)}
                             >Show Me Code!!</button>
                             <button
