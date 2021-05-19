@@ -6,6 +6,7 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
+
 import SideBar from "./components/SideBar";
 import FormBuilder from "./components/FormBuilder"
 import TestComp from "./components/TestComp"
@@ -73,6 +74,7 @@ function App() {
           <FormBrowser />
         </ProtectedRoute>
       </Switch>
+
     </BrowserRouter >
   );
 }

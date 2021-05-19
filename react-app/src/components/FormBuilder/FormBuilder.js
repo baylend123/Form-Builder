@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useState, useEffect, useRef } from 'react'
 
 import parse from 'html-react-parser';
@@ -90,7 +90,7 @@ const FormBuilder = () => {
         const string = form.outerHTML
 
 
-        const response = await fetch('/api/forms/add', {
+        await fetch('/api/forms/add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 'jsx': string })

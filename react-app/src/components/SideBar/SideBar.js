@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react'
+import { useState, Link } from 'react'
 
 import {
     changeFormBackgroundThunk,
@@ -19,6 +19,9 @@ import {
 } from '../../store/styles'
 import { useDispatch } from 'react-redux'
 import './Sidebar.css'
+import github from '../../images/download.png'
+
+
 const Sidebar = () => {
     const thanks = 'Hey, thanks for using my APP! Love You <3'
     const dispatch = useDispatch();
@@ -201,1487 +204,1498 @@ const Sidebar = () => {
 
 
     return (
-        <div className='sidebar'>
-            {/* form header change and style area */}
-            <div>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className='sidebar'>
+                {/* form header change and style area */}
+                <div>
 
-                <button
+                    <button
+                        style={{
+
+                            cursor: 'pointer',
+                            fontFamily: 'Source Code Pro ',
+                            width: '100%',
+                            height: '40px',
+                            borderRadius: '5px',
+                            backgroundColor: 'rgb(168,254,255)',
+                            opacity: '0.7',
+                            border: '1px solid white',
+                            textAlign: 'left'
+                        }}
+                        onClick={() => menuButtonFunc('header')}>Form Header</button>
+                    {openFormHeader ?
+                        <>
+                            <h3>Type what you want to be your header</h3>
+                            <input type="text" onChange={setHeader}></input>
+                            <h3>Form Header Color</h3>
+                            <input type='color'
+                                value={formHeaderColor}
+                                onChange={setHeaderColor}
+                            />
+                        </>
+                        : ''
+                    }
+                </div>
+                {/* form Font area */}
+                <div>
+
+                    <button
+                        style={{
+                            cursor: 'pointer',
+                            fontFamily: 'Source Code Pro ',
+                            width: '100%',
+                            height: '40px',
+                            borderRadius: '5px',
+                            backgroundColor: 'rgb(168,254,255)',
+                            opacity: '0.7',
+                            border: '1px solid white',
+                            textAlign: 'left'
+                        }}
+                        onClick={() => menuButtonFunc('font')}>Form Font</button>
+                </div>
+                <div>
+                    {openFormFont ?
+                        <>
+                            <label htmlFor="font-select">Select Font Below</label>
+                            <select name='font-select'
+
+                                onChange={setFormFont2}
+                            >
+
+                                <option value='Source Code Pro' style={{ fontFamily: ' Source Code Pro , monospace ' }}>Source Code Pro</option>
+                                <option value='Archivo' style={{ fontFamily: 'Archivo monospace' }}>Archivo</option>
+                                <option value='Bree Serif' style={{ fontFamily: 'Bree Serif, monospace' }}>Bree Serif</option>
+                                <option value='Cormorant Garamond' style={{ fontFamily: 'Cormorant Garamond, monospace' }}>Cormorant Garamond</option>
+                                <option value='Jost' style={{ fontFamily: 'Jost, monospace' }}>Jost</option>
+                                <option value='Lobster' style={{ fontFamily: 'Lobster, monospace' }}>Lobster</option>
+                                <option value='Permanent Marker' style={{ fontFamily: 'Permanent Marker, monospace' }}>Permanent Marker</option>
+                                <option value='Questrial' style={{ fontFamily: 'Questrial, monospace' }}>Questrial</option>
+                                <option value='Rokkitt' style={{ fontFamily: 'Rokkitt, monospace' }}>Rokkitt</option>
+                                <option value='Sacramento ' style={{ fontFamily: 'Sacramento, monospace' }}>Sacramento </option>
+
+
+                            </select>
+                            <h3>Example Text</h3>
+                            <p style={{ fontFamily: formFont }}>{thanks} </p>
+                        </>
+                        : ''
+                    }
+                </div>
+
+                {/* Text input styling and placeholder menu area  */}
+                <div>
+
+                    {/* open close menu button */}
+                    <button
+                        style={{
+                            cursor: 'pointer',
+                            fontFamily: 'Source Code Pro ',
+                            width: '100%',
+                            height: '40px',
+                            borderRadius: '5px',
+                            backgroundColor: 'rgb(168,254,255)',
+                            opacity: '0.7',
+                            border: '1px solid white',
+                            textAlign: 'left'
+                        }}
+                        onClick={() => menuButtonFunc('text')}>Text Input</button>
+                </div>
+                <div
                     style={{
+                        height: openTextInput ? '100%' : '',
+                        overflow: openTextInput ? 'scroll' : '',
 
-                        cursor: 'pointer',
-                        fontFamily: 'Source Code Pro ',
-                        width: '100%',
-                        height: '40px',
-                        borderRadius: '5px',
-                        backgroundColor: 'rgb(168,254,255)',
-                        opacity: '0.7',
-                        border: '1px solid white',
-                        textAlign: 'left'
+
                     }}
-                    onClick={() => menuButtonFunc('header')}>Form Header</button>
-                {openFormHeader ?
-                    <>
-                        <h3>Type what you want to be your header</h3>
-                        <input type="text" onChange={setHeader}></input>
-                        <h3>Form Header Color</h3>
-                        <input type='color'
-                            value={formHeaderColor}
-                            onChange={setHeaderColor}
-                        />
-                    </>
-                    : ''
-                }
-            </div>
-            {/* form Font area */}
-            <div>
-
-                <button
-                    style={{
-                        cursor: 'pointer',
-                        fontFamily: 'Source Code Pro ',
-                        width: '100%',
-                        height: '40px',
-                        borderRadius: '5px',
-                        backgroundColor: 'rgb(168,254,255)',
-                        opacity: '0.7',
-                        border: '1px solid white',
-                        textAlign: 'left'
-                    }}
-                    onClick={() => menuButtonFunc('font')}>Form Font</button>
-            </div>
-            <div>
-                {openFormFont ?
-                    <>
-                        <label htmlFor="font-select">Select Font Below</label>
-                        <select name='font-select'
-
-                            onChange={setFormFont2}
-                        >
-
-                            <option value='Source Code Pro' style={{ fontFamily: ' Source Code Pro , monospace ' }}>Source Code Pro</option>
-                            <option value='Archivo' style={{ fontFamily: 'Archivo monospace' }}>Archivo</option>
-                            <option value='Bree Serif' style={{ fontFamily: 'Bree Serif, monospace' }}>Bree Serif</option>
-                            <option value='Cormorant Garamond' style={{ fontFamily: 'Cormorant Garamond, monospace' }}>Cormorant Garamond</option>
-                            <option value='Jost' style={{ fontFamily: 'Jost, monospace' }}>Jost</option>
-                            <option value='Lobster' style={{ fontFamily: 'Lobster, monospace' }}>Lobster</option>
-                            <option value='Permanent Marker' style={{ fontFamily: 'Permanent Marker, monospace' }}>Permanent Marker</option>
-                            <option value='Questrial' style={{ fontFamily: 'Questrial, monospace' }}>Questrial</option>
-                            <option value='Rokkitt' style={{ fontFamily: 'Rokkitt, monospace' }}>Rokkitt</option>
-                            <option value='Sacramento ' style={{ fontFamily: 'Sacramento, monospace' }}>Sacramento </option>
-
-
-                        </select>
-                        <h3>Example Text</h3>
-                        <p style={{ fontFamily: formFont }}>{thanks} </p>
-                    </>
-                    : ''
-                }
-            </div>
-
-            {/* Text input styling and placeholder menu area  */}
-            <div>
-
-                {/* open close menu button */}
-                <button
-                    style={{
-                        cursor: 'pointer',
-                        fontFamily: 'Source Code Pro ',
-                        width: '100%',
-                        height: '40px',
-                        borderRadius: '5px',
-                        backgroundColor: 'rgb(168,254,255)',
-                        opacity: '0.7',
-                        border: '1px solid white',
-                        textAlign: 'left'
-                    }}
-                    onClick={() => menuButtonFunc('text')}>Text Input</button>
-            </div>
-            <div
-                style={{
-                    height: openTextInput ? '100%' : '',
-                    overflow: openTextInput ? 'scroll' : '',
-                    overflow: 'hidden',
-
-                }}
-            >
-                {openTextInput ?
-                    <>
-                        <div >
-
-                            {/* placeholder edit */}
-                            <h3>Placeholder for the input:</h3>
-                            <input value={textPlaceholder} type='text' onChange={(e) => setTextPlaceholder(e.target.value)} />
-                        </div>
-
-                        <div style={{ width: '200px' }}>
-                            <h3>Drag and drop the input into the form when you are done editing</h3>
-                        </div>
-                        {/* draggable div */}
-                        <div
-                            onDragStart={dragStart}
-                            draggable='true'
-                            id='elementId'
-                        >
-
-                            <input type='text'
-                                id='input-text'
-                                placeholder={textPlaceholder}
-                                style={{
-                                    fontFamily: `${formFont}`,
-                                    marginTop: '20px',
-                                    borderRadius: textInputRadius,
-                                    backgroundColor: textInputcolor,
-                                    border: `${textInputBorderSize}px ${textInputBorder} ${textInputBorderColor}`,
-                                    width: `${textInputWidth}px`,
-                                    boxShadow: `${textInputBoxShadowRight}px ${textInputBoxShadowBottom}px ${textInputBoxShadowBlur}px ${textInputBoxShadowColor}`
-                                }}
-                            ></input>
-                        </div>
-
-
-                        {/* styling area */}
-                        <h3>Text Input Styles</h3>
-
-                        <div
-                            style={{
-                                height: openTextInput ? '47%' : '',
-                                overflow: openTextInput ? 'scroll' : '',
-                                border: '1px solid white',
-                                overflowX: 'hidden',
-                            }}
-                        >
-
-
-                            {/* input width */}
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
-
-                                    <label htmlFor='textInputWidth' style={{ marginTop: '10px' }}>Text Input Width</label>
-                                </div>
-                                <div>
-
-                                    <input type='range' name='textInputWidth'
-                                        min={50}
-                                        max={700}
-                                        onChange={(e) => setTextInputWidth(e.target.value.toString())}
-                                    />
-                                </div>
-
-                            </div>
-
-
-                            {/* border radius edit slider */}
-                            <div>
-
-                                <label htmlFor='textradius'>Text Input Radius</label>
-                            </div>
-                            <div>
-
-                                <input type='range'
-                                    min={0}
-                                    max={30}
-                                    onChange={(e) => setTextInputRadius(e.target.value.toString() + 'px')}
-                                />
-                            </div>
-
-
-                            {/* background color picker */}
-                            <div>
-
-                                <label htmlFor='textinputcolor'>Text Input Background Color</label>
-                            </div>
-                            <div>
-
-                                <input type='color'
-                                    value={textInputcolor}
-                                    name='textinputcolor'
-                                    onChange={(e) => setTextInputColor(e.target.value)}
-                                />
-                            </div>
-
-
-                            {/* Border style picker area */}
-                            <div style={{ marginTop: '10px' }}>
-                                <label htmlFor='textborderstyle'>Text Border Style</label>
-                                <div style={{ border: '3px solid black', marginTop: '10px' }}>
-                                    none
-                                <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setTextInputBorder('')}
-
-                                    />
-                                </div>
-                                <div style={{ border: '3px solid black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setTextInputBorder('solid')}
-
-                                    />
-                                </div>
-                                <div style={{ border: '3px dotted black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setTextInputBorder('dotted')}
-
-                                    />
-                                </div>
-                                <div style={{ border: '3px dashed black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setTextInputBorder('dashed')}
-
-                                    />
-                                </div>
-
-                            </div>
-
-
-                            {/* border size picker */}
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
-
-                                    <label htmlFor='textInputBorderSize'>Text Input Border Size</label>
-                                </div>
-                                <div>
-
-                                    <input type='range'
-                                        min={0}
-                                        max={10}
-                                        onChange={(e) => setTextInputBorderSize(e.target.value.toString())}
-                                    />
-                                </div>
-                            </div>
-
-
-                            {/* border color picker */}
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
-
-                                    <label htmlFor='textInputBorderColor'>Text Input Border Color</label>
-                                </div>
-                                <div>
-
-                                    <input type='color'
-                                        value={textInputBorderColor}
-                                        onChange={(e) => setTextInputBorderColor(e.target.value)}
-                                    />
-                                </div>
-                            </div>
-
-
-                            {/* box shadow length right  */}
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowRight' >Box Shadow length Right </label>
-                                </div>
-                                <div>
-
-                                    <input name='textInputBoxShadowRight' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setInputBoxShadowRight(e.target.value.toString())}
-                                    />
-                                </div>
-
-                                {/* box shadow length bottom */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowBottom' >Box Shadow Length Bottom </label>
-                                </div>
-                                <div>
-
-                                    <input name='textInputBoxShadowBottom' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setInputBoxShadowBottom(e.target.value.toString())}
-                                    />
-                                </div>
-
-
-                                {/* box shadow blur */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowBlur' > Box Shadow blur </label>
-                                </div>
-                                <div>
-
-                                    <input name='textInputBoxShadowBlur' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setInputBoxShadowBlur(e.target.value.toString())}
-                                    />
-                                </div>
-                                {/* box shadow blur */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowColor' >Box Shadow color </label>
-                                </div>
-                                <div>
-
-                                    <input type='color'
-                                        value={textInputBoxShadowColor}
-                                        onChange={(e) => steInputBoxShadowColor(e.target.value)}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                    </>
-                    : ''
-                }
-            </div>
-
-            {/* Email Input styling nd placeholder area */}
-            <div>
-
-                <button
-                    style={{
-                        cursor: 'pointer',
-                        fontFamily: 'Source Code Pro ',
-                        width: '100%',
-                        height: '40px',
-                        borderRadius: '5px',
-                        backgroundColor: 'rgb(168,254,255)',
-                        opacity: '0.7',
-                        border: '1px solid white',
-                        textAlign: 'left'
-                    }}
-                    onClick={() => menuButtonFunc('email')}>Email Input</button>
-            </div>
-            <div
-                style={{
-                    height: openEmailInput ? '100%' : '',
-                    overflow: openEmailInput ? 'scroll' : '',
-                    overflow: 'hidden',
-                }} >
-                {openEmailInput ?
-                    <>
-                        <div >
-                            {/* placeholder edit */}
-                            <h3>Placeholder for the input:</h3>
-                            <input value={emailPlaceholder} type='text' onChange={(e) => setEmailPlaceholder(e.target.value)} />
-                        </div>
-                        <div style={{ width: '200px' }}>
-                            <h3>Drag and drop the input into the form when you are done editing</h3>
-                        </div>
-
-                        {/* draggable div */}
-                        <div
-                            onDragStart={dragStart}
-                            draggable='true'
-                            id='elementId'
-                        >
-
-                            <input type='email'
-                                style={{
-                                    fontFamily: `${formFont}`,
-                                    marginTop: '20px',
-                                    borderRadius: textInputRadius,
-                                    backgroundColor: textInputcolor,
-                                    border: `${textInputBorderSize}px ${textInputBorder} ${textInputBorderColor}`,
-                                    width: `${textInputWidth}px`,
-                                    boxShadow: `${textInputBoxShadowRight}px ${textInputBoxShadowBottom}px ${textInputBoxShadowBlur}px ${textInputBoxShadowColor}`
-                                }}
-
-                                placeholder={emailPlaceholder}
-
-                            ></input>
-                        </div>
-
-
-                        {/* styling for mail input */}
-                        <h3>Email Input Styles</h3>
-                        <div
-                            style={{
-                                height: openEmailInput ? '47%' : '',
-                                overflow: openEmailInput ? 'scroll' : '',
-                                border: '1px solid white',
-                                overflowX: 'hidden',
-                            }}
-                        >
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
-
-                                    <label htmlFor='textInputWidth' style={{ marginTop: '10px' }}>Email Input Width</label>
-                                </div>
-                                <div>
-
-                                    <input type='range' name='textInputWidth'
-                                        min={50}
-                                        max={700}
-                                        onChange={(e) => setTextInputWidth(e.target.value.toString())}
-                                    />
-                                </div>
-
-
-                                {/* border radius slider */}
-                            </div>
-                            <div>
-
-                                <label htmlFor='textradius'>Email Input Radius</label>
-                            </div>
-                            <div>
-
-                                <input type='range'
-                                    min={0}
-                                    max={30}
-
-                                    onChange={(e) => setTextInputRadius(e.target.value.toString() + 'px')}
-                                />
-                            </div>
-
-
-                            {/* input background color picker */}
-                            <div>
-
-                                <label htmlFor='textinputcolor'>Email Input Background Color</label>
-                            </div>
-                            <div>
-
-                                <input type='color'
-                                    value={textInputcolor}
-                                    name='textinputcolor'
-                                    onChange={(e) => setTextInputColor(e.target.value)}
-                                />
-                            </div>
-
-
-                            {/* border style picker */}
-                            <div style={{ marginTop: '10px' }}>
-                                <label htmlFor='textborderstyle'>Email Border Style</label>
-                                <div style={{ border: '3px solid black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setTextInputBorder('solid')}
-
-                                    />
-                                </div>
-                                <div style={{ border: '3px dotted black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setTextInputBorder('dotted')}
-
-                                    />
-                                </div>
-                                <div style={{ border: '3px dashed black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setTextInputBorder('dashed')}
-
-                                    />
-                                </div>
-
-                            </div>
-
-
-                            {/* border size picker */}
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
-
-                                    <label htmlFor='textInputBorderSize'>Email Input Border Size</label>
-                                </div>
-                                <div>
-
-                                    <input type='range'
-                                        min={0}
-                                        max={10}
-                                        onChange={(e) => setTextInputBorderSize(e.target.value.toString())}
-                                    />
-                                </div>
-                            </div>
-
-
-                            {/* border color */}
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
-
-                                    <label htmlFor='textInputBorderColor'>Email Input Border Color</label>
-                                </div>
-                                <div>
-
-                                    <input type='color'
-                                        value={textInputBorderColor}
-                                        onChange={(e) => setTextInputBorderColor(e.target.value)}
-                                    />
-                                </div>
-                            </div>
-
-
-                            {/* border shadow length right */}
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowRight' >Box Shadow length Right </label>
-                                </div>
-                                <div>
-
-                                    <input name='textInputBoxShadowRight' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setInputBoxShadowRight(e.target.value.toString())}
-                                    />
-                                </div>
-
-
-                                {/* border shadow length bottom */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowBottom' >Box Shadow Length Bottom </label>
-                                </div>
-                                <div>
-
-                                    <input name='textInputBoxShadowBottom' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setInputBoxShadowBottom(e.target.value.toString())}
-                                    />
-                                </div>
-
-
-                                {/* border shadow blur */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowBlur' > Box Shadow blur </label>
-                                </div>
-                                <div>
-
-                                    <input name='textInputBoxShadowBlur' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setInputBoxShadowBlur(e.target.value.toString())}
-                                    />
-                                </div>
-
-
-                                {/* blur color */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowColor' >Box Shadow color </label>
-                                </div>
-                                <div>
-
-                                    <input type='color'
-                                        value={textInputBoxShadowColor}
-                                        onChange={(e) => steInputBoxShadowColor(e.target.value)}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </>
-                    : ''
-                }
-
-            </div>
-            {/* password input area */}
-            <div>
-
-                <button
-                    style={{
-                        cursor: 'pointer',
-                        fontFamily: 'Source Code Pro ',
-                        width: '100%',
-                        height: '40px',
-                        borderRadius: '5px',
-                        backgroundColor: 'rgb(168,254,255)',
-                        opacity: '0.7',
-                        border: '1px solid white',
-                        textAlign: 'left'
-                    }}
-                    onClick={() => menuButtonFunc('password')}>Password Input</button>
-            </div>
-            <div
-                style={{
-                    height: openPasswordInput ? '100%' : '',
-                    overflow: openPasswordInput ? 'scroll' : '',
-                    overflow: 'hidden',
-                }} >
-
-                {openPasswordInput ?
-                    <>
-                        <div>
-                            {/* edit the placeholder for the password input */}
-                            <h3>Placeholder for the input:</h3>
-                            <input value={passwordPlaceholder} type='text' onChange={(e) => setPasswordPlaceholder(e.target.value)} />
-                        </div>
-                        <div style={{ width: '200px' }}>
-                            <h3>Drag and drop the input into the form when you are done editing</h3>
-                        </div>
-                        {/* draggable div to the form */}
-                        <div
-                            draggable='true'
-                            onDragStart={dragStart}
-                            id='elementId'
-                        >
-
-                            <input type='text'
-
-                                style={{
-                                    fontFamily: `${formFont}`,
-                                    webkitTextSecurity: 'disc',
-                                    marginTop: '20px',
-                                    borderRadius: textInputRadius,
-                                    backgroundColor: textInputcolor,
-                                    border: `${textInputBorderSize}px ${textInputBorder} ${textInputBorderColor}`,
-                                    width: `${textInputWidth}px`,
-                                    boxShadow: `${textInputBoxShadowRight}px ${textInputBoxShadowBottom}px ${textInputBoxShadowBlur}px ${textInputBoxShadowColor}`
-                                }}
-                                placeholder={passwordPlaceholder}
-                            ></input>
-
-                            {/* password input style area */}
-                        </div>
-                        <h3>Password Input Styles</h3>
-                        <div
-                            style={{
-                                height: openPasswordInput ? '47%' : '',
-                                overflow: openPasswordInput ? 'scroll' : '',
-                                border: '1px solid white',
-                                overflowX: 'hidden',
-                            }}
-                        >
-
-                            {/* input width */}
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
-
-                                    <label htmlFor='textInputWidth' style={{ marginTop: '10px' }}>Password Input Width</label>
-                                </div>
-                                <div>
-
-                                    <input type='range' name='textInputWidth'
-                                        min={50}
-                                        max={700}
-                                        onChange={(e) => setTextInputWidth(e.target.value.toString())}
-                                    />
-                                </div>
-
-                            </div>
-
-                            {/* border radius picker */}
-                            <div>
-
-                                <label htmlFor='textradius'>Password Input Border Radius</label>
-                            </div>
-                            <div>
-
-                                <input type='range'
-                                    min={0}
-                                    max={30}
-
-                                    onChange={(e) => setTextInputRadius(e.target.value.toString() + 'px')}
-                                />
-                            </div>
-
-                            {/* input background color picker */}
-                            <div>
-
-                                <label htmlFor='textinputcolor'>Password Input Background Color</label>
-                            </div>
-                            <div>
-
-                                <input type='color'
-                                    name='textinputcolor'
-                                    value={textInputcolor}
-                                    onChange={(e) => setTextInputColor(e.target.value)}
-                                />
-                            </div>
-
-                            {/* border style picker */}
-                            <div style={{ marginTop: '10px' }}>
-                                <label htmlFor='textborderstyle'>Password Border Style</label>
-                                <div style={{ border: '3px solid black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setTextInputBorder('solid')}
-
-                                    />
-                                </div>
-                                <div style={{ border: '3px dotted black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setTextInputBorder('dotted')}
-
-                                    />
-                                </div>
-                                <div style={{ border: '3px dashed black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setTextInputBorder('dashed')}
-
-                                    />
-                                </div>
-
-                            </div>
-
-                            {/* border style picker */}
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
-
-                                    <label htmlFor='textInputBorderSize'>Password Input Border Size</label>
-                                </div>
-                                <div>
-
-                                    <input type='range'
-                                        min={0}
-                                        max={10}
-                                        onChange={(e) => setTextInputBorderSize(e.target.value.toString())}
-                                    />
-                                </div>
-                            </div>
-
-                            {/* border color picker */}
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
-
-                                    <label htmlFor='textInputBorderColor'>Password Input Border Color</label>
-                                </div>
-                                <div>
-
-                                    <input type='color'
-                                        value={textInputBorderColor}
-                                        onChange={(e) => setTextInputBorderColor(e.target.value)}
-                                    />
-                                </div>
-                            </div>
-
-                            {/* box shadow length right */}
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowRight' >Box Shadow length Right </label>
-                                </div>
-                                <div>
-
-                                    <input name='textInputBoxShadowRight' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setInputBoxShadowRight(e.target.value.toString())}
-                                    />
-                                </div>
-
-                                {/* box shadow length bottom */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowBottom' >Box Shadow Length Bottom </label>
-                                </div>
-                                <div>
-
-                                    <input name='textInputBoxShadowBottom' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setInputBoxShadowBottom(e.target.value.toString())}
-                                    />
-                                </div>
-
-                                {/* box shadow blur */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowBlur' > Box Shadow blur </label>
-                                </div>
-                                <div>
-
-                                    <input name='textInputBoxShadowBlur' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setInputBoxShadowBlur(e.target.value.toString())}
-                                    />
-                                </div>
-
-                                {/* box shadow color */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowColor' >Box Shadow color </label>
-                                </div>
-                                <div>
-
-                                    <input type='color'
-                                        value={textInputBoxShadowColor}
-                                        onChange={(e) => steInputBoxShadowColor(e.target.value)}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                    </>
-                    : ''
-                }
-            </div>
-
-            {/* number input menu area */}
-            <div>
-
-                <button
-                    style={{
-                        cursor: 'pointer',
-                        fontFamily: 'Source Code Pro ',
-                        width: '100%',
-                        height: '40px',
-                        borderRadius: '5px',
-                        backgroundColor: 'rgb(168,254,255)',
-                        opacity: '0.7',
-                        border: '1px solid white',
-                        textAlign: 'left'
-                    }}
-                    onClick={() => menuButtonFunc('number')}>Number input</button>
-            </div>
-            <div
-                style={{
-                    height: openNumberInput ? '100%' : '',
-                    overflow: openNumberInput ? 'scroll' : '',
-                    overflow: 'hidden',
-                }} >
-
-                {openNumberInput ?
-                    <>
-                        <div >
-                            {/* label creation area */}
-                            <h3>Label for the number input</h3>
-                            <input value={numberInputLabel} type='text' onChange={(e) => setNumberInputLabel(e.target.value)} />
-                        </div>
-                        <div style={{ width: '200px' }}>
-                            <h3>Drag and drop the input into the form when you are done editing</h3>
-                        </div>
-
-                        {/* draggable div to form */}
-                        <div className='number-input-div'
-                            onDragStart={dragStart}
-                            draggable='true'
-                            id='elementId'
-                            style={{ marginTop: '20px', textAlign: 'center' }}
-                        >
+                >
+                    {openTextInput ?
+                        <>
                             <div >
-                                <label htmlFor='numberInput'>{numberInputLabel}</label>
+
+                                {/* placeholder edit */}
+                                <h3>Placeholder for the input:</h3>
+                                <input value={textPlaceholder} type='text' onChange={(e) => setTextPlaceholder(e.target.value)} />
                             </div>
-                            <input type='number'
-                                name="numberInput"
+
+                            <div style={{ width: '200px' }}>
+                                <h3>Drag and drop the input into the form when you are done editing</h3>
+                            </div>
+                            {/* draggable div */}
+                            <div
+                                onDragStart={dragStart}
+                                draggable='true'
+                                id='elementId'
+                            >
+
+                                <input type='text'
+                                    id='input-text'
+                                    placeholder={textPlaceholder}
+                                    style={{
+                                        fontFamily: `${formFont}`,
+                                        marginTop: '20px',
+                                        borderRadius: textInputRadius,
+                                        backgroundColor: textInputcolor,
+                                        border: `${textInputBorderSize}px ${textInputBorder} ${textInputBorderColor}`,
+                                        width: `${textInputWidth}px`,
+                                        boxShadow: `${textInputBoxShadowRight}px ${textInputBoxShadowBottom}px ${textInputBoxShadowBlur}px ${textInputBoxShadowColor}`
+                                    }}
+                                ></input>
+                            </div>
+
+
+                            {/* styling area */}
+                            <h3>Text Input Styles</h3>
+
+                            <div
                                 style={{
-                                    fontFamily: `${formFont}`,
-                                    borderRadius: textInputRadius,
-                                    backgroundColor: textInputcolor,
-                                    border: `${textInputBorderSize}px ${textInputBorder} ${textInputBorderColor}`,
-                                    width: `${textInputWidth}px`,
-                                    boxShadow: `${textInputBoxShadowRight}px ${textInputBoxShadowBottom}px ${textInputBoxShadowBlur}px ${textInputBoxShadowColor}`
+                                    height: openTextInput ? '47%' : '',
+                                    overflow: openTextInput ? 'scroll' : '',
+                                    border: '1px solid white',
+                                    overflowX: 'hidden',
                                 }}
+                            >
 
-                            ></input>
-                        </div>
 
-                        {/* number input styling */}
-                        <h3>Number Input Styles</h3>
-                        <div
-                            style={{
-                                height: openNumberInput ? '50%' : '',
-                                overflow: openNumberInput ? 'scroll' : '',
-                                border: '1px solid white',
-                                overflowX: 'hidden',
-                            }}
-                        >
-                            {/* input width */}
-                            <div style={{ marginTop: '10px' }}>
+                                {/* input width */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputWidth' style={{ marginTop: '10px' }}>Text Input Width</label>
+                                    </div>
+                                    <div>
+
+                                        <input type='range' name='textInputWidth'
+                                            min={50}
+                                            max={700}
+                                            onChange={(e) => setTextInputWidth(e.target.value.toString())}
+                                        />
+                                    </div>
+
+                                </div>
+
+
+                                {/* border radius edit slider */}
                                 <div>
 
-                                    <label htmlFor='textInputWidth' style={{ marginTop: '10px' }}>Number Input Width</label>
-                                </div>
-                                <div>
-
-                                    <input type='range' name='textInputWidth'
-                                        min={50}
-                                        max={700}
-                                        onChange={(e) => setTextInputWidth(e.target.value.toString())}
-                                    />
-                                </div>
-                            </div>
-
-                            {/* border radius edit */}
-                            <div>
-
-                                <label htmlFor='textradius'>Number Input Border Radius</label>
-                            </div>
-                            <div>
-
-                                <input type='range'
-                                    min={0}
-                                    max={30}
-
-                                    onChange={(e) => setTextInputRadius(e.target.value.toString() + 'px')}
-                                />
-                            </div>
-
-                            {/* background color chooser */}
-                            <div>
-
-                                <label htmlFor='textinputcolor'>Number Input Background Color</label>
-                            </div>
-                            <div>
-
-                                <input type='color'
-                                    value={textInputcolor}
-                                    name='textinputcolor'
-                                    onChange={(e) => setTextInputColor(e.target.value)}
-                                />
-                            </div>
-
-                            {/* border style area */}
-                            <div style={{ marginTop: '10px' }}>
-                                <label htmlFor='textborderstyle'>Number Border Style</label>
-                                <div style={{ border: '3px solid black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setTextInputBorder('solid')}
-
-                                    />
-                                </div>
-                                <div style={{ border: '3px dotted black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setTextInputBorder('dotted')}
-
-                                    />
-                                </div>
-                                <div style={{ border: '3px dashed black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setTextInputBorder('dashed')}
-
-                                    />
-                                </div>
-
-                            </div>
-
-                            {/* border size chooser */}
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
-
-                                    <label htmlFor='textInputBorderSize'>Number Input Border Size</label>
+                                    <label htmlFor='textradius'>Text Input Radius</label>
                                 </div>
                                 <div>
 
                                     <input type='range'
                                         min={0}
-                                        max={10}
-                                        onChange={(e) => setTextInputBorderSize(e.target.value.toString())}
+                                        max={30}
+                                        onChange={(e) => setTextInputRadius(e.target.value.toString() + 'px')}
                                     />
                                 </div>
-                            </div>
 
-                            {/* border color picker */}
-                            <div style={{ marginTop: '10px' }}>
+
+                                {/* background color picker */}
                                 <div>
 
-                                    <label htmlFor='textInputBorderColor'>Number Input Border Color</label>
+                                    <label htmlFor='textinputcolor'>Text Input Background Color</label>
                                 </div>
                                 <div>
 
                                     <input type='color'
-                                        value={textInputBorderColor}
-                                        onChange={(e) => setTextInputBorderColor(e.target.value)}
+                                        value={textInputcolor}
+                                        name='textinputcolor'
+                                        onChange={(e) => setTextInputColor(e.target.value)}
                                     />
+                                </div>
+
+
+                                {/* Border style picker area */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <label htmlFor='textborderstyle'>Text Border Style</label>
+                                    <div style={{ border: '3px solid black', marginTop: '10px' }}>
+                                        none
+                                <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setTextInputBorder('')}
+
+                                        />
+                                    </div>
+                                    <div style={{ border: '3px solid black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setTextInputBorder('solid')}
+
+                                        />
+                                    </div>
+                                    <div style={{ border: '3px dotted black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setTextInputBorder('dotted')}
+
+                                        />
+                                    </div>
+                                    <div style={{ border: '3px dashed black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setTextInputBorder('dashed')}
+
+                                        />
+                                    </div>
+
+                                </div>
+
+
+                                {/* border size picker */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputBorderSize'>Text Input Border Size</label>
+                                    </div>
+                                    <div>
+
+                                        <input type='range'
+                                            min={0}
+                                            max={10}
+                                            onChange={(e) => setTextInputBorderSize(e.target.value.toString())}
+                                        />
+                                    </div>
+                                </div>
+
+
+                                {/* border color picker */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputBorderColor'>Text Input Border Color</label>
+                                    </div>
+                                    <div>
+
+                                        <input type='color'
+                                            value={textInputBorderColor}
+                                            onChange={(e) => setTextInputBorderColor(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+
+
+                                {/* box shadow length right  */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowRight' >Box Shadow length Right </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowRight' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setInputBoxShadowRight(e.target.value.toString())}
+                                        />
+                                    </div>
+
+                                    {/* box shadow length bottom */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowBottom' >Box Shadow Length Bottom </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowBottom' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setInputBoxShadowBottom(e.target.value.toString())}
+                                        />
+                                    </div>
+
+
+                                    {/* box shadow blur */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowBlur' > Box Shadow blur </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowBlur' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setInputBoxShadowBlur(e.target.value.toString())}
+                                        />
+                                    </div>
+                                    {/* box shadow blur */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowColor' >Box Shadow color </label>
+                                    </div>
+                                    <div>
+
+                                        <input type='color'
+                                            value={textInputBoxShadowColor}
+                                            onChange={(e) => steInputBoxShadowColor(e.target.value)}
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
-                            {/* box shadow length right picker */}
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
+                        </>
+                        : ''
+                    }
+                </div>
 
-                                    <label htmlFor='textInputBoxShadowRight' >Box Shadow length Right </label>
-                                </div>
-                                <div>
+                {/* Email Input styling nd placeholder area */}
+                <div>
 
-                                    <input name='textInputBoxShadowRight' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setInputBoxShadowRight(e.target.value.toString())}
-                                    />
-                                </div>
-
-                                {/* box shadow length bottom picker */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowBottom' >Box Shadow Length Bottom </label>
-                                </div>
-                                <div>
-
-                                    <input name='textInputBoxShadowBottom' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setInputBoxShadowBottom(e.target.value.toString())}
-                                    />
-                                </div>
-
-
-                                {/* Box shadow blur picker */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowBlur' > Box Shadow blur </label>
-                                </div>
-                                <div>
-
-                                    <input name='textInputBoxShadowBlur' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setInputBoxShadowBlur(e.target.value.toString())}
-                                    />
-                                </div>
-
-                                {/* box shadow color picker */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowColor' >Box Shadow color </label>
-                                </div>
-                                <div>
-
-                                    <input type='color'
-                                        value={textInputBoxShadowColor}
-                                        onChange={(e) => steInputBoxShadowColor(e.target.value)}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </>
-                    : ''
-                }
-            </div>
-
-            {/* button text change and style picking area */}
-            <div>
-
-                <button
+                    <button
+                        style={{
+                            cursor: 'pointer',
+                            fontFamily: 'Source Code Pro ',
+                            width: '100%',
+                            height: '40px',
+                            borderRadius: '5px',
+                            backgroundColor: 'rgb(168,254,255)',
+                            opacity: '0.7',
+                            border: '1px solid white',
+                            textAlign: 'left'
+                        }}
+                        onClick={() => menuButtonFunc('email')}>Email Input</button>
+                </div>
+                <div
                     style={{
-                        cursor: 'pointer',
-                        fontFamily: 'Source Code Pro ',
-                        width: '100%',
-                        height: '40px',
-                        borderRadius: '5px',
-                        backgroundColor: 'rgb(168,254,255)',
-                        opacity: '0.7',
-                        border: '1px solid white',
-                        textAlign: 'left'
+                        height: openEmailInput ? '100%' : '',
+                        overflow: openEmailInput ? 'scroll' : '',
+
+                    }} >
+                    {openEmailInput ?
+                        <>
+                            <div >
+                                {/* placeholder edit */}
+                                <h3>Placeholder for the input:</h3>
+                                <input value={emailPlaceholder} type='text' onChange={(e) => setEmailPlaceholder(e.target.value)} />
+                            </div>
+                            <div style={{ width: '200px' }}>
+                                <h3>Drag and drop the input into the form when you are done editing</h3>
+                            </div>
+
+                            {/* draggable div */}
+                            <div
+                                onDragStart={dragStart}
+                                draggable='true'
+                                id='elementId'
+                            >
+
+                                <input type='email'
+                                    style={{
+                                        fontFamily: `${formFont}`,
+                                        marginTop: '20px',
+                                        borderRadius: textInputRadius,
+                                        backgroundColor: textInputcolor,
+                                        border: `${textInputBorderSize}px ${textInputBorder} ${textInputBorderColor}`,
+                                        width: `${textInputWidth}px`,
+                                        boxShadow: `${textInputBoxShadowRight}px ${textInputBoxShadowBottom}px ${textInputBoxShadowBlur}px ${textInputBoxShadowColor}`
+                                    }}
+
+                                    placeholder={emailPlaceholder}
+
+                                ></input>
+                            </div>
+
+
+                            {/* styling for mail input */}
+                            <h3>Email Input Styles</h3>
+                            <div
+                                style={{
+                                    height: openEmailInput ? '47%' : '',
+                                    overflow: openEmailInput ? 'scroll' : '',
+                                    border: '1px solid white',
+                                    overflowX: 'hidden',
+                                }}
+                            >
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputWidth' style={{ marginTop: '10px' }}>Email Input Width</label>
+                                    </div>
+                                    <div>
+
+                                        <input type='range' name='textInputWidth'
+                                            min={50}
+                                            max={700}
+                                            onChange={(e) => setTextInputWidth(e.target.value.toString())}
+                                        />
+                                    </div>
+
+
+                                    {/* border radius slider */}
+                                </div>
+                                <div>
+
+                                    <label htmlFor='textradius'>Email Input Radius</label>
+                                </div>
+                                <div>
+
+                                    <input type='range'
+                                        min={0}
+                                        max={30}
+
+                                        onChange={(e) => setTextInputRadius(e.target.value.toString() + 'px')}
+                                    />
+                                </div>
+
+
+                                {/* input background color picker */}
+                                <div>
+
+                                    <label htmlFor='textinputcolor'>Email Input Background Color</label>
+                                </div>
+                                <div>
+
+                                    <input type='color'
+                                        value={textInputcolor}
+                                        name='textinputcolor'
+                                        onChange={(e) => setTextInputColor(e.target.value)}
+                                    />
+                                </div>
+
+
+                                {/* border style picker */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <label htmlFor='textborderstyle'>Email Border Style</label>
+                                    <div style={{ border: '3px solid black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setTextInputBorder('solid')}
+
+                                        />
+                                    </div>
+                                    <div style={{ border: '3px dotted black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setTextInputBorder('dotted')}
+
+                                        />
+                                    </div>
+                                    <div style={{ border: '3px dashed black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setTextInputBorder('dashed')}
+
+                                        />
+                                    </div>
+
+                                </div>
+
+
+                                {/* border size picker */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputBorderSize'>Email Input Border Size</label>
+                                    </div>
+                                    <div>
+
+                                        <input type='range'
+                                            min={0}
+                                            max={10}
+                                            onChange={(e) => setTextInputBorderSize(e.target.value.toString())}
+                                        />
+                                    </div>
+                                </div>
+
+
+                                {/* border color */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputBorderColor'>Email Input Border Color</label>
+                                    </div>
+                                    <div>
+
+                                        <input type='color'
+                                            value={textInputBorderColor}
+                                            onChange={(e) => setTextInputBorderColor(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+
+
+                                {/* border shadow length right */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowRight' >Box Shadow length Right </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowRight' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setInputBoxShadowRight(e.target.value.toString())}
+                                        />
+                                    </div>
+
+
+                                    {/* border shadow length bottom */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowBottom' >Box Shadow Length Bottom </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowBottom' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setInputBoxShadowBottom(e.target.value.toString())}
+                                        />
+                                    </div>
+
+
+                                    {/* border shadow blur */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowBlur' > Box Shadow blur </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowBlur' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setInputBoxShadowBlur(e.target.value.toString())}
+                                        />
+                                    </div>
+
+
+                                    {/* blur color */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowColor' >Box Shadow color </label>
+                                    </div>
+                                    <div>
+
+                                        <input type='color'
+                                            value={textInputBoxShadowColor}
+                                            onChange={(e) => steInputBoxShadowColor(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                        : ''
+                    }
+
+                </div>
+                {/* password input area */}
+                <div>
+
+                    <button
+                        style={{
+                            cursor: 'pointer',
+                            fontFamily: 'Source Code Pro ',
+                            width: '100%',
+                            height: '40px',
+                            borderRadius: '5px',
+                            backgroundColor: 'rgb(168,254,255)',
+                            opacity: '0.7',
+                            border: '1px solid white',
+                            textAlign: 'left'
+                        }}
+                        onClick={() => menuButtonFunc('password')}>Password Input</button>
+                </div>
+                <div
+                    style={{
+                        height: openPasswordInput ? '100%' : '',
+                        overflow: openPasswordInput ? 'scroll' : '',
+
+                    }} >
+
+                    {openPasswordInput ?
+                        <>
+                            <div>
+                                {/* edit the placeholder for the password input */}
+                                <h3>Placeholder for the input:</h3>
+                                <input value={passwordPlaceholder} type='text' onChange={(e) => setPasswordPlaceholder(e.target.value)} />
+                            </div>
+                            <div style={{ width: '200px' }}>
+                                <h3>Drag and drop the input into the form when you are done editing</h3>
+                            </div>
+                            {/* draggable div to the form */}
+                            <div
+                                draggable='true'
+                                onDragStart={dragStart}
+                                id='elementId'
+                            >
+
+                                <input type='text'
+
+                                    style={{
+                                        fontFamily: `${formFont}`,
+                                        webkitTextSecurity: 'disc',
+                                        marginTop: '20px',
+                                        borderRadius: textInputRadius,
+                                        backgroundColor: textInputcolor,
+                                        border: `${textInputBorderSize}px ${textInputBorder} ${textInputBorderColor}`,
+                                        width: `${textInputWidth}px`,
+                                        boxShadow: `${textInputBoxShadowRight}px ${textInputBoxShadowBottom}px ${textInputBoxShadowBlur}px ${textInputBoxShadowColor}`
+                                    }}
+                                    placeholder={passwordPlaceholder}
+                                ></input>
+
+                                {/* password input style area */}
+                            </div>
+                            <h3>Password Input Styles</h3>
+                            <div
+                                style={{
+                                    height: openPasswordInput ? '47%' : '',
+                                    overflow: openPasswordInput ? 'scroll' : '',
+                                    border: '1px solid white',
+                                    overflowX: 'hidden',
+                                }}
+                            >
+
+                                {/* input width */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputWidth' style={{ marginTop: '10px' }}>Password Input Width</label>
+                                    </div>
+                                    <div>
+
+                                        <input type='range' name='textInputWidth'
+                                            min={50}
+                                            max={700}
+                                            onChange={(e) => setTextInputWidth(e.target.value.toString())}
+                                        />
+                                    </div>
+
+                                </div>
+
+                                {/* border radius picker */}
+                                <div>
+
+                                    <label htmlFor='textradius'>Password Input Border Radius</label>
+                                </div>
+                                <div>
+
+                                    <input type='range'
+                                        min={0}
+                                        max={30}
+
+                                        onChange={(e) => setTextInputRadius(e.target.value.toString() + 'px')}
+                                    />
+                                </div>
+
+                                {/* input background color picker */}
+                                <div>
+
+                                    <label htmlFor='textinputcolor'>Password Input Background Color</label>
+                                </div>
+                                <div>
+
+                                    <input type='color'
+                                        name='textinputcolor'
+                                        value={textInputcolor}
+                                        onChange={(e) => setTextInputColor(e.target.value)}
+                                    />
+                                </div>
+
+                                {/* border style picker */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <label htmlFor='textborderstyle'>Password Border Style</label>
+                                    <div style={{ border: '3px solid black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setTextInputBorder('solid')}
+
+                                        />
+                                    </div>
+                                    <div style={{ border: '3px dotted black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setTextInputBorder('dotted')}
+
+                                        />
+                                    </div>
+                                    <div style={{ border: '3px dashed black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setTextInputBorder('dashed')}
+
+                                        />
+                                    </div>
+
+                                </div>
+
+                                {/* border style picker */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputBorderSize'>Password Input Border Size</label>
+                                    </div>
+                                    <div>
+
+                                        <input type='range'
+                                            min={0}
+                                            max={10}
+                                            onChange={(e) => setTextInputBorderSize(e.target.value.toString())}
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* border color picker */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputBorderColor'>Password Input Border Color</label>
+                                    </div>
+                                    <div>
+
+                                        <input type='color'
+                                            value={textInputBorderColor}
+                                            onChange={(e) => setTextInputBorderColor(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* box shadow length right */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowRight' >Box Shadow length Right </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowRight' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setInputBoxShadowRight(e.target.value.toString())}
+                                        />
+                                    </div>
+
+                                    {/* box shadow length bottom */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowBottom' >Box Shadow Length Bottom </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowBottom' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setInputBoxShadowBottom(e.target.value.toString())}
+                                        />
+                                    </div>
+
+                                    {/* box shadow blur */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowBlur' > Box Shadow blur </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowBlur' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setInputBoxShadowBlur(e.target.value.toString())}
+                                        />
+                                    </div>
+
+                                    {/* box shadow color */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowColor' >Box Shadow color </label>
+                                    </div>
+                                    <div>
+
+                                        <input type='color'
+                                            value={textInputBoxShadowColor}
+                                            onChange={(e) => steInputBoxShadowColor(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </>
+                        : ''
+                    }
+                </div>
+
+                {/* number input menu area */}
+                <div>
+
+                    <button
+                        style={{
+                            cursor: 'pointer',
+                            fontFamily: 'Source Code Pro ',
+                            width: '100%',
+                            height: '40px',
+                            borderRadius: '5px',
+                            backgroundColor: 'rgb(168,254,255)',
+                            opacity: '0.7',
+                            border: '1px solid white',
+                            textAlign: 'left'
+                        }}
+                        onClick={() => menuButtonFunc('number')}>Number input</button>
+                </div>
+                <div
+                    style={{
+                        height: openNumberInput ? '100%' : '',
+                        overflow: openNumberInput ? 'scroll' : '',
+
+                    }} >
+
+                    {openNumberInput ?
+                        <>
+                            <div >
+                                {/* label creation area */}
+                                <h3>Label for the number input</h3>
+                                <input value={numberInputLabel} type='text' onChange={(e) => setNumberInputLabel(e.target.value)} />
+                            </div>
+                            <div style={{ width: '200px' }}>
+                                <h3>Drag and drop the input into the form when you are done editing</h3>
+                            </div>
+
+                            {/* draggable div to form */}
+                            <div className='number-input-div'
+                                onDragStart={dragStart}
+                                draggable='true'
+                                id='elementId'
+                                style={{ marginTop: '20px', textAlign: 'center' }}
+                            >
+                                <div >
+                                    <label htmlFor='numberInput'>{numberInputLabel}</label>
+                                </div>
+                                <input type='number'
+                                    name="numberInput"
+                                    style={{
+                                        fontFamily: `${formFont}`,
+                                        borderRadius: textInputRadius,
+                                        backgroundColor: textInputcolor,
+                                        border: `${textInputBorderSize}px ${textInputBorder} ${textInputBorderColor}`,
+                                        width: `${textInputWidth}px`,
+                                        boxShadow: `${textInputBoxShadowRight}px ${textInputBoxShadowBottom}px ${textInputBoxShadowBlur}px ${textInputBoxShadowColor}`
+                                    }}
+
+                                ></input>
+                            </div>
+
+                            {/* number input styling */}
+                            <h3>Number Input Styles</h3>
+                            <div
+                                style={{
+                                    height: openNumberInput ? '50%' : '',
+                                    overflow: openNumberInput ? 'scroll' : '',
+                                    border: '1px solid white',
+                                    overflowX: 'hidden',
+                                }}
+                            >
+                                {/* input width */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputWidth' style={{ marginTop: '10px' }}>Number Input Width</label>
+                                    </div>
+                                    <div>
+
+                                        <input type='range' name='textInputWidth'
+                                            min={50}
+                                            max={700}
+                                            onChange={(e) => setTextInputWidth(e.target.value.toString())}
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* border radius edit */}
+                                <div>
+
+                                    <label htmlFor='textradius'>Number Input Border Radius</label>
+                                </div>
+                                <div>
+
+                                    <input type='range'
+                                        min={0}
+                                        max={30}
+
+                                        onChange={(e) => setTextInputRadius(e.target.value.toString() + 'px')}
+                                    />
+                                </div>
+
+                                {/* background color chooser */}
+                                <div>
+
+                                    <label htmlFor='textinputcolor'>Number Input Background Color</label>
+                                </div>
+                                <div>
+
+                                    <input type='color'
+                                        value={textInputcolor}
+                                        name='textinputcolor'
+                                        onChange={(e) => setTextInputColor(e.target.value)}
+                                    />
+                                </div>
+
+                                {/* border style area */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <label htmlFor='textborderstyle'>Number Border Style</label>
+                                    <div style={{ border: '3px solid black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setTextInputBorder('solid')}
+
+                                        />
+                                    </div>
+                                    <div style={{ border: '3px dotted black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setTextInputBorder('dotted')}
+
+                                        />
+                                    </div>
+                                    <div style={{ border: '3px dashed black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setTextInputBorder('dashed')}
+
+                                        />
+                                    </div>
+
+                                </div>
+
+                                {/* border size chooser */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputBorderSize'>Number Input Border Size</label>
+                                    </div>
+                                    <div>
+
+                                        <input type='range'
+                                            min={0}
+                                            max={10}
+                                            onChange={(e) => setTextInputBorderSize(e.target.value.toString())}
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* border color picker */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputBorderColor'>Number Input Border Color</label>
+                                    </div>
+                                    <div>
+
+                                        <input type='color'
+                                            value={textInputBorderColor}
+                                            onChange={(e) => setTextInputBorderColor(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* box shadow length right picker */}
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowRight' >Box Shadow length Right </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowRight' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setInputBoxShadowRight(e.target.value.toString())}
+                                        />
+                                    </div>
+
+                                    {/* box shadow length bottom picker */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowBottom' >Box Shadow Length Bottom </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowBottom' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setInputBoxShadowBottom(e.target.value.toString())}
+                                        />
+                                    </div>
+
+
+                                    {/* Box shadow blur picker */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowBlur' > Box Shadow blur </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowBlur' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setInputBoxShadowBlur(e.target.value.toString())}
+                                        />
+                                    </div>
+
+                                    {/* box shadow color picker */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowColor' >Box Shadow color </label>
+                                    </div>
+                                    <div>
+
+                                        <input type='color'
+                                            value={textInputBoxShadowColor}
+                                            onChange={(e) => steInputBoxShadowColor(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                        : ''
+                    }
+                </div>
+
+                {/* button text change and style picking area */}
+                <div>
+
+                    <button
+                        style={{
+                            cursor: 'pointer',
+                            fontFamily: 'Source Code Pro ',
+                            width: '100%',
+                            height: '40px',
+                            borderRadius: '5px',
+                            backgroundColor: 'rgb(168,254,255)',
+                            opacity: '0.7',
+                            border: '1px solid white',
+                            textAlign: 'left'
+                        }}
+                        onClick={() => menuButtonFunc('buttons')}>Buttons</button>
+                </div>
+                <div
+                    style={{
+                        height: openButtonArea ? '100%' : '',
+                        overflow: openButtonArea ? 'scroll' : '',
+
                     }}
-                    onClick={() => menuButtonFunc('buttons')}>Buttons</button>
-            </div>
-            <div
-                style={{
-                    height: openButtonArea ? '100%' : '',
-                    overflow: openButtonArea ? 'scroll' : '',
-                    overflow: 'hidden',
-                }}
-            >
+                >
 
 
-                {openButtonArea ?
+                    {openButtonArea ?
 
-                    <>
-                        <div>
-                            <h3>Drag and drop your button when you are done styling</h3>
-                        </div>
-                        <h3>Submit Button :</h3>
-                        <input style={{ marginRight: '10px' }} type="text" onChange={setSubmitButtonText}></input>
-                        <button style={{
-                            marginTop: '20px',
-                            fontFamily: `${formFont}`,
-                            borderRadius: `${buttonBorderRadius}px`,
-                            border: `${buttonBorderSize}px ${buttonBorderType} ${buttonBorderColor}`,
-                            backgroundColor: buttonColor,
-                            height: `${buttonHeight}px`,
-                            width: `${buttonWidth}px`,
-                            boxShadow: `${buttonShadowRight}px ${buttonShadowBottom}px ${buttonShadowBlur}px ${buttonShadowColor}`
-                        }}
-                            type='submit'
-                            id='submit'
-                            draggable='true'
-                            onDragStart={dragStart}
-                        >
-                            Submit
+                        <>
+                            <div>
+                                <h3>Drag and drop your button when you are done styling</h3>
+                            </div>
+                            <h3>Submit Button :</h3>
+                            <input style={{ marginRight: '10px' }} type="text" onChange={setSubmitButtonText}></input>
+                            <button style={{
+                                marginTop: '20px',
+                                fontFamily: `${formFont}`,
+                                borderRadius: `${buttonBorderRadius}px`,
+                                border: `${buttonBorderSize}px ${buttonBorderType} ${buttonBorderColor}`,
+                                backgroundColor: buttonColor,
+                                height: `${buttonHeight}px`,
+                                width: `${buttonWidth}px`,
+                                boxShadow: `${buttonShadowRight}px ${buttonShadowBottom}px ${buttonShadowBlur}px ${buttonShadowColor}`
+                            }}
+                                type='submit'
+                                id='submit'
+                                draggable='true'
+                                onDragStart={dragStart}
+                            >
+                                Submit
                              </button>
-                        <h3>Normal Button :</h3>
-                        <input style={{ marginRight: '10px' }} type="text" onChange={setNormalButtonText}></input>
-                        <button style={{
-                            marginTop: '20px',
-                            fontFamily: `${formFont}`,
-                            borderRadius: `${buttonBorderRadius}px`,
-                            border: `${buttonBorderSize}px ${buttonBorderType} ${buttonBorderColor}`,
-                            backgroundColor: buttonColor,
-                            height: `${buttonHeight}px`,
-                            width: `${buttonWidth}px`,
-                            boxShadow: `${buttonShadowRight}px ${buttonShadowBottom}px ${buttonShadowBlur}px ${buttonShadowColor}`
-                        }}
+                            <h3>Normal Button :</h3>
+                            <input style={{ marginRight: '10px' }} type="text" onChange={setNormalButtonText}></input>
+                            <button style={{
+                                marginTop: '20px',
+                                fontFamily: `${formFont}`,
+                                borderRadius: `${buttonBorderRadius}px`,
+                                border: `${buttonBorderSize}px ${buttonBorderType} ${buttonBorderColor}`,
+                                backgroundColor: buttonColor,
+                                height: `${buttonHeight}px`,
+                                width: `${buttonWidth}px`,
+                                boxShadow: `${buttonShadowRight}px ${buttonShadowBottom}px ${buttonShadowBlur}px ${buttonShadowColor}`
+                            }}
 
-                            id='normal-button' draggable='true' onDragStart={dragStart}>Click me
+                                id='normal-button' draggable='true' onDragStart={dragStart}>Click me
                                 </button>
 
 
-                        {/* button styles area */}
-                        <h3>Button Styles</h3>
-                        <div
-                            style={{
-                                height: openButtonArea ? '43%' : '',
-                                overflow: openButtonArea ? 'scroll' : '',
-                                overflowX: 'hidden',
+                            {/* button styles area */}
+                            <h3>Button Styles</h3>
+                            <div
+                                style={{
+                                    height: openButtonArea ? '43%' : '',
+                                    overflow: openButtonArea ? 'scroll' : '',
+                                    overflowX: 'hidden',
 
-                                border: '1px solid white',
-                            }}
-                        >
-                            <div>
-                                <h3 style={{ marginTop: '10px' }}>Button Styles :</h3>
+                                    border: '1px solid white',
+                                }}
+                            >
+                                <div>
+                                    <h3 style={{ marginTop: '10px' }}>Button Styles :</h3>
 
-                            </div>
-                            <div>
-                                <label>Button Background Color :</label>
-                            </div>
-                            <div>
-                                <input type='color'
-                                    value={buttonColor}
-                                    onChange={(e) => setButtonColor(e.target.value)}
-                                >
-
-                                </input>
-                            </div>
-                            <div>
-                                <label htmlFor='button-border-radius'>Button Border Radius</label>
-                            </div>
-                            <div>
-                                <input type='range'
-                                    onChange={(e) => setButtonBorderRadius(e.target.value.toString())}
-                                    min={0}
-                                    max={30}
-                                ></input>
-                            </div>
-                            <div>
-                                <label >Button Width</label>
-                            </div>
-                            <div>
-                                <input type='range'
-                                    onChange={(e) => setButtonWidth(e.target.value.toString())}
-                                    min={50}
-                                    max={300}
-                                ></input>
-
-                            </div>
-                            <div>
-                                <label >Button height</label>
-                            </div>
-                            <div>
-                                <input type='range'
-                                    onChange={(e) => setButtonHeight(e.target.value.toString())}
-                                    min={10}
-                                    max={100}
-                                ></input>
-                            </div>
-                            <div>
-                                <label>Button Border Type</label>
-                            </div>
-                            <div>
-
-
-                                <div style={{ margin: '10px' }}>
-                                    None
-                                    <input type='radio'
-                                        onClick={() => setButtonBorderType('')}
+                                </div>
+                                <div>
+                                    <label>Button Background Color :</label>
+                                </div>
+                                <div>
+                                    <input type='color'
+                                        value={buttonColor}
+                                        onChange={(e) => setButtonColor(e.target.value)}
                                     >
 
                                     </input>
+                                </div>
+                                <div>
+                                    <label htmlFor='button-border-radius'>Button Border Radius</label>
+                                </div>
+                                <div>
+                                    <input type='range'
+                                        onChange={(e) => setButtonBorderRadius(e.target.value.toString())}
+                                        min={0}
+                                        max={30}
+                                    ></input>
+                                </div>
+                                <div>
+                                    <label >Button Width</label>
+                                </div>
+                                <div>
+                                    <input type='range'
+                                        onChange={(e) => setButtonWidth(e.target.value.toString())}
+                                        min={50}
+                                        max={300}
+                                    ></input>
 
                                 </div>
-
-                                <div style={{ border: '3px solid black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setButtonBorderType('solid')}
-
-                                    />
+                                <div>
+                                    <label >Button height</label>
                                 </div>
-                                <div style={{ border: '3px dotted black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setButtonBorderType('dotted')}
-
-                                    />
+                                <div>
+                                    <input type='range'
+                                        onChange={(e) => setButtonHeight(e.target.value.toString())}
+                                        min={10}
+                                        max={100}
+                                    ></input>
                                 </div>
-                                <div style={{ border: '3px dashed black', marginTop: '10px' }}>
-                                    <input
-                                        name='textborderstyle'
-                                        type='radio'
-                                        onClick={() => setButtonBorderType('dashed')}
+                                <div>
+                                    <label>Button Border Type</label>
+                                </div>
+                                <div>
 
-                                    />
+
+                                    <div style={{ margin: '10px' }}>
+                                        None
+                                    <input type='radio'
+                                            onClick={() => setButtonBorderType('')}
+                                        >
+
+                                        </input>
+
+                                    </div>
+
+                                    <div style={{ border: '3px solid black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setButtonBorderType('solid')}
+
+                                        />
+                                    </div>
+                                    <div style={{ border: '3px dotted black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setButtonBorderType('dotted')}
+
+                                        />
+                                    </div>
+                                    <div style={{ border: '3px dashed black', marginTop: '10px' }}>
+                                        <input
+                                            name='textborderstyle'
+                                            type='radio'
+                                            onClick={() => setButtonBorderType('dashed')}
+
+                                        />
+                                    </div>
+                                </div>
+                                <div>
+                                    <label>Button Border Size</label>
+                                </div>
+                                <div>
+                                    <input type='range'
+                                        min={0}
+                                        max={10}
+                                        onChange={(e) => setButtonBorderSize(e.target.value.toString())}
+                                    >
+
+                                    </input>
+                                </div>
+                                <div>
+                                    <label>Button Border Color</label>
+                                </div>
+                                <div>
+                                    <input type='color'
+                                        value={buttonBorderColor}
+                                        onChange={(e) => setButtonBorderColor(e.target.value)}
+                                    >
+                                    </input>
+                                </div>
+                                <div>
+                                    <label>Button Shadow Options</label>
+                                </div>
+
+                                <div style={{ marginTop: '10px' }}>
+                                    <div>
+                                        <label htmlFor='textInputBoxShadowRight' >Box Shadow length Right </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowRight' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setButtonShadowRight(e.target.value.toString())}
+                                        />
+                                    </div>
+
+                                    {/* box shadow length bottom picker */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowBottom' >Box Shadow Length Bottom </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowBottom' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setButtonShadowBottom(e.target.value.toString())}
+                                        />
+                                    </div>
+
+
+                                    {/* Box shadow blur picker */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowBlur' > Box Shadow blur </label>
+                                    </div>
+                                    <div>
+
+                                        <input name='textInputBoxShadowBlur' type='range'
+                                            min={0}
+                                            max={25}
+                                            onChange={(e) => setButtonShadowBlur(e.target.value.toString())}
+                                        />
+                                    </div>
+
+                                    {/* box shadow color picker */}
+                                    <div>
+
+                                        <label htmlFor='textInputBoxShadowColor' >Box Shadow color </label>
+                                    </div>
+                                    <div>
+
+                                        <input type='color'
+                                            value={buttonShadowColor}
+                                            onChange={(e) => setButtonShadowColor(e.target.value)}
+                                        />
+                                    </div>
                                 </div>
                             </div>
+
+                        </>
+                        : ''
+                    }
+
+                </div>
+                {/* form Styles area */}
+                <div>
+
+                    <button
+                        onClick={() => menuButtonFunc('form')}
+                        style={{
+                            cursor: 'pointer',
+                            fontFamily: 'Source Code Pro ',
+                            width: '100%',
+                            height: '40px',
+                            borderRadius: '5px',
+                            backgroundColor: 'rgb(168,254,255)',
+                            opacity: '0.7',
+                            border: '1px solid white',
+                            textAlign: 'left'
+                        }}
+                    >
+                        Form Styles
+                    </button>
+                </div>
+                <div
+                    style={{
+                        height: openFormStylesArea ? '100%' : '',
+                        overflow: openFormStylesArea ? 'scroll' : ''
+                    }}
+                >
+
+                    {/* form Background color picker */}
+                    {openFormStylesArea ?
+                        <>
+                            <h3>Form background color</h3>
+                            <input type="color"
+                                value={formBackgroundColor}
+                                onChange={setFormColor}
+                            />
+
+                            {/* form background border radius */}
+                            <h3>Form Border radius</h3>
+                            <input
+                                type='range'
+                                onChange={setFormBorderRadius}
+                                min={0}
+                                max={30}
+                                default={2}
+                            />
+
+                            <h3>Form Border Type</h3>
                             <div>
-                                <label>Button Border Size</label>
+
+                                <label>Choose a Border Type</label>
+                            </div>
+                            <div>
+
+                                <div style={{ margin: '10px' }}>
+                                    <input type='radio'
+                                        name='formBorderType'
+                                        onClick={() => setFormBorderType('none')}
+                                    ></input>
+
+                                </div>
+                                <div style={{ margin: '10px', border: '1px solid black' }}>
+                                    <input type='radio'
+                                        name='formBorderType'
+                                        onClick={() => setFormBorderType('solid')}
+                                    ></input>
+
+                                </div>
+                                <div style={{ margin: '10px', border: '1px dashed black' }}>
+                                    <input type='radio'
+                                        name='formBorderType'
+                                        onClick={() => setFormBorderType('dashed')}
+                                    ></input>
+
+                                </div>
+                                <div style={{ margin: '10px', border: '1px dotted black' }}>
+                                    <input type='radio'
+                                        name='formBorderType'
+                                        onClick={() => setFormBorderType('dotted')}
+                                    ></input>
+
+                                </div>
+
+                            </div>
+                            <div>
+                                <h3>Border Size</h3>
+                            </div>
+                            <div>
+                                <input type='range'
+                                    min={1}
+                                    max={10}
+                                    onChange={setFormBorderSize}
+                                ></input>
+                            </div>
+                            <div><h3>
+                                Border Color
+                            </h3>
+                            </div>
+                            <div>
+                                <input type="color"
+                                    value={formBorderColor}
+                                    onChange={setFormBorderColor}
+                                >
+
+                                </input>
+                            </div>
+
+                            <div>
+                                <h3>Form Shaddow Right</h3>
                             </div>
                             <div>
                                 <input type='range'
                                     min={0}
-                                    max={10}
-                                    onChange={(e) => setButtonBorderSize(e.target.value.toString())}
-                                >
-
-                                </input>
+                                    max={50}
+                                    onChange={setFormShadowRight}
+                                ></input>
                             </div>
                             <div>
-                                <label>Button Border Color</label>
+                                <h3>Form Shadow Bottom</h3>
+                            </div>
+                            <div>
+                                <input type='range'
+                                    min={0}
+                                    max={50}
+                                    onChange={setFormShadowBottom}
+                                ></input>
+                            </div>
+                            <div>
+                                <h3>Form Shadow Blur</h3>
+                            </div>
+                            <div>
+                                <input type='range'
+                                    min={0}
+                                    max={50}
+                                    onChange={setFormShadowBlur}
+                                ></input>
+                            </div>
+                            <div>
+                                <h3>Form Shadow Color</h3>
                             </div>
                             <div>
                                 <input type='color'
-                                    value={buttonBorderColor}
-                                    onChange={(e) => setButtonBorderColor(e.target.value)}
+                                    value={formShadowColor}
+                                    onChange={setFormShadowColor}
                                 >
+
                                 </input>
                             </div>
-                            <div>
-                                <label>Button Shadow Options</label>
-                            </div>
-
-                            <div style={{ marginTop: '10px' }}>
-                                <div>
-                                    <label htmlFor='textInputBoxShadowRight' >Box Shadow length Right </label>
-                                </div>
-                                <div>
-
-                                    <input name='textInputBoxShadowRight' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setButtonShadowRight(e.target.value.toString())}
-                                    />
-                                </div>
-
-                                {/* box shadow length bottom picker */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowBottom' >Box Shadow Length Bottom </label>
-                                </div>
-                                <div>
-
-                                    <input name='textInputBoxShadowBottom' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setButtonShadowBottom(e.target.value.toString())}
-                                    />
-                                </div>
-
-
-                                {/* Box shadow blur picker */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowBlur' > Box Shadow blur </label>
-                                </div>
-                                <div>
-
-                                    <input name='textInputBoxShadowBlur' type='range'
-                                        min={0}
-                                        max={25}
-                                        onChange={(e) => setButtonShadowBlur(e.target.value.toString())}
-                                    />
-                                </div>
-
-                                {/* box shadow color picker */}
-                                <div>
-
-                                    <label htmlFor='textInputBoxShadowColor' >Box Shadow color </label>
-                                </div>
-                                <div>
-
-                                    <input type='color'
-                                        value={buttonShadowColor}
-                                        onChange={(e) => setButtonShadowColor(e.target.value)}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                    </>
-                    : ''
-                }
-
-            </div>
-            {/* form Styles area */}
-            <div>
-
-                <button
-                    onClick={() => menuButtonFunc('form')}
-                    style={{
-                        cursor: 'pointer',
-                        fontFamily: 'Source Code Pro ',
-                        width: '100%',
-                        height: '40px',
-                        borderRadius: '5px',
-                        backgroundColor: 'rgb(168,254,255)',
-                        opacity: '0.7',
-                        border: '1px solid white',
-                        textAlign: 'left'
-                    }}
-                >
-                    Form Styles
-                    </button>
-            </div>
-            <div
-                style={{
-                    height: openFormStylesArea ? '100%' : '',
-                    overflow: openFormStylesArea ? 'scroll' : ''
-                }}
-            >
-
-                {/* form Background color picker */}
-                {openFormStylesArea ?
-                    <>
-                        <h3>Form background color</h3>
-                        <input type="color"
-                            value={formBackgroundColor}
-                            onChange={setFormColor}
-                        />
-
-                        {/* form background border radius */}
-                        <h3>Form Border radius</h3>
-                        <input
-                            type='range'
-                            onChange={setFormBorderRadius}
-                            min={0}
-                            max={30}
-                            default={2}
-                        />
-
-                        <h3>Form Border Type</h3>
-                        <div>
-
-                            <label>Choose a Border Type</label>
-                        </div>
-                        <div>
-
-                            <div style={{ margin: '10px' }}>
-                                <input type='radio'
-                                    name='formBorderType'
-                                    onClick={() => setFormBorderType('none')}
-                                ></input>
-
-                            </div>
-                            <div style={{ margin: '10px', border: '1px solid black' }}>
-                                <input type='radio'
-                                    name='formBorderType'
-                                    onClick={() => setFormBorderType('solid')}
-                                ></input>
-
-                            </div>
-                            <div style={{ margin: '10px', border: '1px dashed black' }}>
-                                <input type='radio'
-                                    name='formBorderType'
-                                    onClick={() => setFormBorderType('dashed')}
-                                ></input>
-
-                            </div>
-                            <div style={{ margin: '10px', border: '1px dotted black' }}>
-                                <input type='radio'
-                                    name='formBorderType'
-                                    onClick={() => setFormBorderType('dotted')}
-                                ></input>
-
-                            </div>
-
-                        </div>
-                        <div>
-                            <h3>Border Size</h3>
-                        </div>
-                        <div>
-                            <input type='range'
-                                min={1}
-                                max={10}
-                                onChange={setFormBorderSize}
-                            ></input>
-                        </div>
-                        <div><h3>
-                            Border Color
-                            </h3>
-                        </div>
-                        <div>
-                            <input type="color"
-                                value={formBorderColor}
-                                onChange={setFormBorderColor}
-                            >
-
-                            </input>
-                        </div>
-
-                        <div>
-                            <h3>Form Shaddow Right</h3>
-                        </div>
-                        <div>
+                            {/* form padding picker, CHANGE THIS */}
+                            <h3>Form Padding</h3>
                             <input type='range'
                                 min={0}
-                                max={50}
-                                onChange={setFormShadowRight}
-                            ></input>
-                        </div>
-                        <div>
-                            <h3>Form Shadow Bottom</h3>
-                        </div>
-                        <div>
+                                max={100}
+                                onChange={setFormPadding}
+                            />
+
+                            {/* form height */}
+                            <h3>Form height</h3>
                             <input type='range'
                                 min={0}
-                                max={50}
-                                onChange={setFormShadowBottom}
-                            ></input>
-                        </div>
-                        <div>
-                            <h3>Form Shadow Blur</h3>
-                        </div>
-                        <div>
+                                max={1000}
+                                onChange={setFormHeight}
+                            />
+
+                            {/* form width */}
+                            <h3>Form width</h3>
                             <input type='range'
                                 min={0}
-                                max={50}
-                                onChange={setFormShadowBlur}
-                            ></input>
-                        </div>
-                        <div>
-                            <h3>Form Shadow Color</h3>
-                        </div>
-                        <div>
-                            <input type='color'
-                                value={formShadowColor}
-                                onChange={setFormShadowColor}
-                            >
+                                max={1000}
+                                onChange={setFormWidth}
+                            />
+                        </>
+                        : ''}
+                </div>
+            </div >
 
-                            </input>
-                        </div>
-                        {/* form padding picker, CHANGE THIS */}
-                        <h3>Form Padding</h3>
-                        <input type='range'
-                            min={0}
-                            max={100}
-                            onChange={setFormPadding}
-                        />
-
-                        {/* form height */}
-                        <h3>Form height</h3>
-                        <input type='range'
-                            min={0}
-                            max={1000}
-                            onChange={setFormHeight}
-                        />
-
-                        {/* form width */}
-                        <h3>Form width</h3>
-                        <input type='range'
-                            min={0}
-                            max={1000}
-                            onChange={setFormWidth}
-                        />
-                    </>
-                    : ''}
+            <div style={{ width: '200px', height: '10vh', marginTop: '10px', display: 'flex', flexDirection: 'row' }} >
+                <img style={{ height: '10vh', width: '100px', borderRadius: '20px' }} src={github} ></img>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ marginTop: '10px' }}>Baylen Doss</div>
+                    <a style={{ marginTop: '10px' }} href="https://github.com/baylend123">GitHub</a>
+                    <a style={{ marginTop: '10px' }} href='https://www.linkedin.com/in/baylen-doss-6899541bb/'>LinkdIn</a>
+                </div>
             </div>
         </div >
 

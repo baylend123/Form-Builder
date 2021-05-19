@@ -69,6 +69,7 @@ const myFormsReducer = (state = {}, action) => {
                     return formObj
                 }
             })
+
             return {
                 ...state,
             }
