@@ -1,98 +1,14 @@
-# Flask React Project
-
-This is the backend for the Flask React project.
-
-## Getting started
-
-1. Clone this repository (only this branch)
-
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
-
-2. Install dependencies
-
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
-
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
-
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
-
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
-
-## Deploy to Heroku
-
-1. Create a new project on Heroku
-2. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-3. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-4. Run
-
-   ```bash
-   heroku login
-   ```
-
-5. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-6. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-7. Push your docker container to heroku from the root directory of your project.
-   This will build the dockerfile and push the image to your heroku container registry
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-8. Release your docker container to heroku
-
-   ```bash
-   heroku container:release web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. set up your database:
-
-   ```bash
-   heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-   heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-   ```
-
-10. Under Settings find "Config Vars" and add any additional/secret .env variables.
-
-11. profit
+# JSX Form Builder 
+   * Production Link [JSX-Form-Builder](https://jsx-form-builder.herokuapp.com)
+   * 1. Login, Sign Up, or use the Demo Login button on the splash page to get started 
+   * 2. Type into the input header input field what you want your form to say at the top, as well as choose a color
+   * 3. Click the next section called form font, use the sample text to see what each font looks like, and choose accordingly 
+   * 4. for each Text, Email, Number and Password inputs the fuction is the same, 
+         the only difference in the number input is that you are choosing a label rather than placeholder
+      * A. Type in the placeholder input field what you would like the placeholder to be for the input in question 
+      * B. Style the input to your liking via the style options in each section, the styles will stick for all inputs after you style one
+      * C. Drag and drop the styled input field onto the form, the style is unable to change once it is dropped 
+   * 5. Once you have all of the inputs you would like use the form styles area to style the form itself to your liking 
+   * 6. if you would like to save this form for latere use click the "Add tomy forms" button, and it can be referenced at any time on the My Forms page
+   * 7. if you would like to just get the code snippet for your own projects click the "Get JSX" button and copy paste the snippet into your own code
+   * dont forget to copy the link tag int your HTML head for the fonts to work in your project 
