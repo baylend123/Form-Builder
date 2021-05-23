@@ -10,7 +10,7 @@ const NavBar = () => {
     <nav>
       <div className='navbar'>
         <div  >
-          <NavLink to="/" exact={true} className='nav-link' activeClassName='nav-link-active'
+          <NavLink to="/home" exact={true} className='nav-link' activeClassName='nav-link-active'
             onClick={() => dispatch(logoutStylesThunk())}
           >
             Home

@@ -331,6 +331,7 @@ const Sidebar = () => {
                                     id='input-text'
                                     placeholder={textPlaceholder}
                                     style={{
+                                        cursor: 'pointer',
                                         fontFamily: `${formFont}`,
                                         marginTop: '20px',
                                         borderRadius: textInputRadius,
@@ -583,6 +584,7 @@ const Sidebar = () => {
 
                                 <input type='email'
                                     style={{
+                                        cursor: 'pointer',
                                         fontFamily: `${formFont}`,
                                         marginTop: '20px',
                                         borderRadius: textInputRadius,
@@ -828,8 +830,9 @@ const Sidebar = () => {
                                 <input type='text'
 
                                     style={{
+                                        cursor: 'pointer',
                                         fontFamily: `${formFont}`,
-                                        webkitTextSecurity: 'disc',
+                                        WebkitTextSecurity: 'disc',
                                         marginTop: '20px',
                                         borderRadius: textInputRadius,
                                         backgroundColor: textInputcolor,
@@ -1070,6 +1073,7 @@ const Sidebar = () => {
                                 <input type='number'
                                     name="numberInput"
                                     style={{
+                                        cursor: 'pointer',
                                         fontFamily: `${formFont}`,
                                         borderRadius: textInputRadius,
                                         backgroundColor: textInputcolor,
@@ -1295,6 +1299,7 @@ const Sidebar = () => {
                             <h3>Submit Button :</h3>
                             <input style={{ marginRight: '10px' }} type="text" onChange={setSubmitButtonText}></input>
                             <button style={{
+                                cursor: 'pointer',
                                 marginTop: '20px',
                                 fontFamily: `${formFont}`,
                                 borderRadius: `${buttonBorderRadius}px`,
@@ -1314,6 +1319,7 @@ const Sidebar = () => {
                             <h3>Normal Button :</h3>
                             <input style={{ marginRight: '10px' }} type="text" onChange={setNormalButtonText}></input>
                             <button style={{
+                                cursor: 'pointer',
                                 marginTop: '20px',
                                 fontFamily: `${formFont}`,
                                 borderRadius: `${buttonBorderRadius}px`,

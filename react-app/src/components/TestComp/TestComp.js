@@ -6,114 +6,114 @@ const TestComp = () => {
         <>
             <div id='form-div'
                 style={{
-                    "backgroundColor": "rgb(0, 225, 255)",
-                    "boxShadow": "rgb(255, 0, 0) 18px 17px 20px",
-                    "width": "343px",
-                    "height": "537px",
-                    "border": "5px dashed rgb(225, 255, 0)",
-                    "borderRadius": "19px",
-                    "fontFamily": "Sacramento"
+                    "backgroundColor": "rgb(0, 255, 110)",
+                    "boxShadow": "rgb(43, 0, 255) 20px 20px 26px",
+                    "width": "500px",
+                    "height": "615px",
+                    "border": "5px dashed rgb(255, 0, 0)",
+                    "fontFamily": "Sacramento",
+                    "borderRadius": "12px"
                 }}>
                 <form id='form'
                     style={{
                         "display": "flex",
                         "flexDirection": "column",
                         "alignItems": "center",
-                        "width": "343px",
-                        "height": "537px",
+                        "width": "500px",
+                        "height": "615px",
                         "fontFamily": "Sacramento"
                     }}>
                     <h1 id='form-header'
-                        style={{ "top": "10px", "color": "rgb(255, 0, 149)", "fontFamily": "Sacramento" }} key='0'>
-                        Sign Up Below..
+                        style={{ "top": "10px", "color": "rgb(255, 176, 66)", "fontFamily": "Sacramento" }} key='0'>
+                        Sign Up Below
     </h1>
                     <div draggable='true'
                         id='elementId' key='1'>
-                        <input type='text'
-                            id='input-text'
-                            placeholder='Username '
-                            style={{
-                                "fontFamily": "Sacramento",
-                                "marginTop": "20px",
-                                "border": "2px dotted rgb(255, 0, 0)",
-                                "width": "150px",
-                                "boxShadow": "rgb(0, 0, 0) 8px 6px 8px",
-                                "borderRadius": "4px",
-                                "backgroundColor": "rgb(0, 255, 30)"
-                            }} />
-                    </div>
-                    <div draggable='true'
-                        id='elementId' key='2'>
                         <input type='text'
                             id='input-text'
                             placeholder='First Name'
                             style={{
                                 "fontFamily": "Sacramento",
                                 "marginTop": "20px",
-                                "border": "2px dotted rgb(255, 0, 0)",
-                                "width": "150px",
-                                "boxShadow": "rgb(0, 0, 0) 8px 6px 8px",
-                                "borderRadius": "4px",
-                                "backgroundColor": "rgb(0, 255, 30)"
+                                "border": "3px dotted rgb(255, 221, 0)",
+                                "width": "147px",
+                                "boxShadow": "rgb(0, 0, 0) 9px 8px 13px",
+                                "borderRadius": "3px",
+                                "backgroundColor": "rgb(0, 157, 255)"
                             }} />
                     </div>
                     <div draggable='true'
-                        id='elementId' key='3'>
+                        id='elementId' key='2'>
                         <input type='text'
                             id='input-text'
                             placeholder='Last Name'
                             style={{
                                 "fontFamily": "Sacramento",
                                 "marginTop": "20px",
-                                "border": "2px dotted rgb(255, 0, 0)",
-                                "width": "150px",
-                                "boxShadow": "rgb(0, 0, 0) 8px 6px 8px",
-                                "borderRadius": "4px",
-                                "backgroundColor": "rgb(0, 255, 30)"
+                                "border": "3px dotted rgb(255, 221, 0)",
+                                "width": "147px",
+                                "boxShadow": "rgb(0, 0, 0) 9px 8px 13px",
+                                "borderRadius": "3px",
+                                "backgroundColor": "rgb(0, 157, 255)"
+                            }} />
+                    </div>
+                    <div draggable='true'
+                        id='elementId' key='3'>
+                        <input type='email'
+                            placeholder='Email'
+                            style={{
+                                "fontFamily": "Sacramento",
+                                "marginTop": "20px",
+                                "borderRadius": "3px",
+                                "backgroundColor": "rgb(0, 157, 255)",
+                                "border": "3px dotted rgb(255, 221, 0)",
+                                "width": "147px",
+                                "boxShadow": "rgb(0, 0, 0) 9px 8px 13px"
                             }} />
                     </div>
                     <div draggable='true'
                         id='elementId' key='4'>
-                        <input type='email'
-                            placeholder='Emal'
+                        <input type='text'
+                            id='input-text'
+                            placeholder='Desired username'
                             style={{
                                 "fontFamily": "Sacramento",
                                 "marginTop": "20px",
-                                "borderRadius": "4px",
-                                "backgroundColor": "rgb(0, 255, 30)",
-                                "border": "2px dotted rgb(255, 0, 0)",
-                                "width": "150px",
-                                "boxShadow": "rgb(0, 0, 0) 8px 6px 8px"
+                                "borderRadius": "3px",
+                                "backgroundColor": "rgb(0, 157, 255)",
+                                "border": "3px dotted rgb(255, 221, 0)",
+                                "width": "147px",
+                                "boxShadow": "rgb(0, 0, 0) 9px 8px 13px"
                             }} />
                     </div>
                     <div draggable='true'
                         id='elementId' key='5'>
                         <input type='text'
-                            placeholder='Pasword'
+                            placeholder='Password'
                             style={{
                                 "fontFamily": "Sacramento",
                                 "WebkitTextSecurity": "disc",
                                 "marginTop": "20px",
-                                "borderRadius": "4px",
-                                "backgroundColor": "rgb(0, 255, 30)",
-                                "border": "2px dotted rgb(255, 0, 0)",
-                                "width": "150px",
-                                "boxShadow": "rgb(0, 0, 0) 8px 6px 8px"
+                                "borderRadius": "3px",
+                                "backgroundColor": "rgb(0, 157, 255)",
+                                "border": "3px dotted rgb(255, 221, 0)",
+                                "width": "147px",
+                                "boxShadow": "rgb(0, 0, 0) 9px 8px 13px"
                             }} />
                     </div>
                     <div draggable='true'
                         id='elementId' key='6'>
                         <input type='text'
-                            placeholder='Confirm password'
+                            placeholder='confirm password'
                             style={{
                                 "fontFamily": "Sacramento",
                                 "WebkitTextSecurity": "disc",
                                 "marginTop": "20px",
-                                "borderRadius": "4px",
-                                "backgroundColor": "rgb(0, 255, 30)",
-                                "border": "2px dotted rgb(255, 0, 0)",
-                                "width": "150px",
-                                "boxShadow": "rgb(0, 0, 0) 8px 6px 8px"
+                                "borderRadius": "3px",
+                                "backgroundColor": "rgb(0, 157, 255)",
+                                "border": "3px dotted rgb(255, 221, 0)",
+                                "width": "147px",
+                                "boxShadow": "rgb(0, 0, 0) 9px 8px 13px"
                             }} />
                     </div>
                     <div className='number-input-div'
@@ -129,11 +129,11 @@ const TestComp = () => {
                             name='numberInput'
                             style={{
                                 "fontFamily": "Sacramento",
-                                "borderRadius": "4px",
-                                "backgroundColor": "rgb(0, 255, 30)",
-                                "border": "2px dotted rgb(255, 0, 0)",
-                                "width": "150px",
-                                "boxShadow": "rgb(0, 0, 0) 8px 6px 8px"
+                                "borderRadius": "3px",
+                                "backgroundColor": "rgb(0, 157, 255)",
+                                "border": "3px dotted rgb(255, 221, 0)",
+                                "width": "147px",
+                                "boxShadow": "rgb(0, 0, 0) 9px 8px 13px"
                             }} key='1' />
                     </div>
                     <button type='submit'
@@ -142,13 +142,13 @@ const TestComp = () => {
                         style={{
                             "marginTop": "20px",
                             "fontFamily": "Sacramento",
-                            "border": "2px dashed rgb(255, 0, 0)",
-                            "boxShadow": "rgb(0, 0, 0) 8px 8px 13px",
-                            "backgroundColor": "rgb(183, 173, 255)",
-                            "width": "141px",
-                            "borderRadius": "5px"
+                            "border": "2px dotted",
+                            "boxShadow": "rgb(0, 0, 0) 8px 8px 11px",
+                            "backgroundColor": "rgb(185, 209, 0)",
+                            "borderRadius": "6px",
+                            "width": "117px"
                         }} key='8'>
-                        Sign Me Up
+                        Sign Up
     </button>
                 </form>
             </div>

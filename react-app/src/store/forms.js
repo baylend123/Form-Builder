@@ -32,7 +32,7 @@ export const getMyFormsThunk = () => async (dispatch) => {
 export const formsThatArentMineThunk = () => async (dispatch) => {
     const notMyFormsReq = await fetch('/api/forms/all')
     const notMyFormsArray = await notMyFormsReq.json()
-    console.log(notMyFormsArray)
+
     if (notMyFormsArray) {
         dispatch(getFormsThatArentMine(notMyFormsArray.notMyForms))
     }
@@ -65,7 +65,7 @@ const myFormsReducer = (state = {}, action) => {
         case MYFORMDELETE:
             state.myForms = state.myForms.filter(formObj => {
                 if (formObj.id !== action.payload) {
-                    console.log(formObj)
+
                     return formObj
                 }
             })
