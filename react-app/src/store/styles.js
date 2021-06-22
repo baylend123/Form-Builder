@@ -158,52 +158,60 @@ export const formShadowColorThunk = (color) => async (dispatch) => {
 }
 
 const stylesReducer = (state = {}, action) => {
+    const newState = {...state}
     switch (action.type) {
         case FORMBACKGROUNDLOAD:
-            state.formBackground = action.payload
-            return { ...state }
+            newState.formBackground = action.payload
+            return newState
         case FORMHEADERCOLOR:
-            state.headerColor = action.payload
-            return { ...state }
-
+            newState.headerColor = action.payload
+            return newState
         case FORMRADIUS:
-            state.backgroundRadius = action.payload
-            return { ...state }
+            newState.backgroundRadius = action.payload
+            return newState
         case FORMPADDING:
-            state.padding = action.payload
-            return { ...state }
+            newState.padding = action.payload
+            return newState
         case FORMHEIGHT:
-            state.height = action.payload
-            return { ...state }
+            newState.height = action.payload
+            return newState
         case FORMWIDTH:
-            state.width = action.payload
-            return { ...state }
+            newState.width = action.payload
+            return newState
         case FORMFONT:
-            state.font = action.payload
-            return { ...state }
+
+            newState.font = action.payload
+            return newState
         case FORMBORDERTYPE:
-            state.borderType = action.payload
-            return { ...state }
+
+            newState.borderType = action.payload
+            return newState
         case FORMBORDERSIZE:
-            state.borderSize = action.payload
-            return { ...state }
+
+            newState.borderSize = action.payload
+            return newState
         case FORMBORDERCOLOR:
-            state.borderColor = action.payload
-            return { ...state }
+
+            newState.borderColor = action.payload
+            return newState
         case FORMSHADOWRIGHT:
-            state.shadowRight = action.payload
-            return { ...state }
+
+            newState.shadowRight = action.payload
+            return newState
         case FORMSHADOWBOTTOM:
-            state.shadowBottom = action.payload
-            return { ...state }
+
+            newState.shadowBottom = action.payload
+            return newState
         case FORMSHADOWBLUR:
-            state.shadowBlur = action.payload
-            return { ...state }
+
+            newState.shadowBlur = action.payload
+            return newState
         case FORMSHADOWCOLOR:
-            state.shadowColor = action.payload
-            return { ...state }
+
+            newState.shadowColor = action.payload
+            return newState
         case LOGOUT:
-            state = action.payload
+            newState = action.payload
             return state
 
         default:

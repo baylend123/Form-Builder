@@ -51,28 +51,24 @@ export const formDeleteThunk = (id) => async (dispatch) => {
 
 
 const myFormsReducer = (state = {}, action) => {
+    const newState = {...state}
     switch (action.type) {
         case MYFORMS:
-            state.myForms = action.payload
-            return {
-                ...state,
-            }
+            newState.myForms = action.payload
+            return newState
+
         case NOTMYFORMS:
-            state.notMyForms = action.payload
-            return {
-                ...state,
-            }
+            newState.notMyForms = action.payload
+            return newState
         case MYFORMDELETE:
-            state.myForms = state.myForms.filter(formObj => {
+            newState.myForms = state.myForms.filter(formObj => {
                 if (formObj.id !== action.payload) {
 
                     return formObj
                 }
             })
 
-            return {
-                ...state,
-            }
+            return newState
         default:
             return state
     }

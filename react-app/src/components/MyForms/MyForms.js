@@ -6,7 +6,7 @@ import parse from 'html-react-parser';
 import jsxToString from 'jsx-to-string';
 
 const MyForms = () => {
-    const [showMeTheCode, setShowMeTheCode] = useState(false)
+    const [showMeTheCode, setShowMeTheCode] = useState(null)
     const myForms = useSelector(state => state?.myFormsReducer?.myForms)
     const dispatch = useDispatch();
     useEffect(() => {
@@ -29,7 +29,7 @@ const MyForms = () => {
                 const jsxForm = parse(form.JSX)
                 const jsxString = jsxToString(jsxForm)
                 return (
-                    <>
+                    <div key={form.id}>
                         <div style={{ marginTop: '10px', marginBottom: '10px' }}>
                             {jsxForm}
                         </div>
@@ -48,7 +48,7 @@ const MyForms = () => {
                                     textAlign: 'left'
                                 }}
 
-                                onClick={() => setShowMeTheCode(!showMeTheCode)}
+                                onClick={() => setShowMeTheCode((showMeTheCode === form.id) ? null: form.id)}
                             >Show Me Code!!</button>
                             <button
                                 style={{
@@ -67,7 +67,7 @@ const MyForms = () => {
                             >Delete Me Forever </button>
                         </div>
                         <div>
-                            {showMeTheCode ? <div style={{
+                            {(showMeTheCode === form.id ) ? <div style={{
                                 width: '500px',
                                 height: '200px',
                                 border: '2px solid black',
@@ -78,7 +78,7 @@ const MyForms = () => {
                                 </pre>
                             </div> : ''}
                         </div>
-                    </>
+                    </div>
 
                 )
             }))}
