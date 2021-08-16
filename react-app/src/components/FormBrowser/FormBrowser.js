@@ -11,7 +11,7 @@ const FormBrowser = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(formsThatArentMineThunk())
-    }, [])
+    }, [dispatch])
 
 
     return (

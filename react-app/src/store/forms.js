@@ -62,10 +62,7 @@ const myFormsReducer = (state = {}, action) => {
             return newState
         case MYFORMDELETE:
             newState.myForms = state.myForms.filter(formObj => {
-                if (formObj.id !== action.payload) {
-
-                    return formObj
-                }
+                return formObj.id !== action.payload 
             })
 
             return newState

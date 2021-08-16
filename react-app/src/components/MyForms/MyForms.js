@@ -11,7 +11,7 @@ const MyForms = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getMyFormsThunk())
-    }, [myForms?.length])
+    }, [dispatch])
 
 
 

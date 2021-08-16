@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, Link } from 'react'
+import { useState } from 'react'
 import TextInput from '../TextInput'
 import EmailInput from '../EmailInput';
 import PasswordInput from '../PasswordInput';
@@ -28,33 +28,8 @@ import github from '../../images/download.png'
 const Sidebar = () => {
     const thanks = 'Hey, thanks for using my APP! Love You <3'
     const dispatch = useDispatch();
-
-
-    // input placeholder state variables
-    const [textPlaceholder, setTextPlaceholder] = useState('')
-    const [emailPlaceholder, setEmailPlaceholder] = useState('')
-    const [passwordPlaceholder, setPasswordPlaceholder] = useState('')
-
-
-    // number label state variables
-    const [numberInputLabel, setNumberInputLabel] = useState('')
-
-
-    // input styling state variables
-    const [textInputRadius, setTextInputRadius] = useState('')
-    const [textInputWidth, setTextInputWidth] = useState('100')
-    const [textInputcolor, setTextInputColor] = useState('')
-    const [textInputBorder, setTextInputBorder] = useState('')
-    const [textInputBorderSize, setTextInputBorderSize] = useState('2')
-    const [textInputBorderColor, setTextInputBorderColor] = useState('black')
-    const [textInputBoxShadowBottom, setInputBoxShadowBottom] = useState('2')
-    const [textInputBoxShadowRight, setInputBoxShadowRight] = useState('2')
-    const [textInputBoxShadowBlur, setInputBoxShadowBlur] = useState('2')
-    const [textInputBoxShadowColor, steInputBoxShadowColor] = useState('red')
-
     // Form Font Styling Variables
     const [formFont, setFormFont] = useState('')
-
 
     //button styling state variables
     const [buttonBorderRadius, setButtonBorderRadius] = useState('')
@@ -838,7 +813,7 @@ const Sidebar = () => {
             </div >
 
             <div style={{ width: '200px', height: '10vh', marginTop: '10px', display: 'flex', flexDirection: 'row' }} >
-                <img style={{ height: '10vh', width: '100px', borderRadius: '20px' }} src={github} ></img>
+                <img style={{ height: '10vh', width: '100px', borderRadius: '20px' }} src={github} alt=''></img>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <div style={{ marginTop: '10px' }}>Baylen Doss</div>
                     <a style={{ marginTop: '10px' }} href="https://github.com/baylend123">GitHub</a>

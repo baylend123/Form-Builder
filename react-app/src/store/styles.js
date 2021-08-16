@@ -309,7 +309,7 @@ let initialState ={
     textInputBoxShadowColor: 'lightblue',
 }
 const stylesReducer = (state = initialState, action) => {
-    const newState = {...state}
+    let newState = {...state}
     switch (action.type) {
         case FORMBACKGROUNDLOAD:
             newState.formBackground = action.payload
