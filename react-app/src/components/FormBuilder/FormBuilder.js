@@ -102,6 +102,7 @@ const FormBuilder = () => {
 
 
     return (
+        <div className='form-builder-conatiner'>
         <div className='form-builder'>
             <div
 
@@ -114,7 +115,7 @@ const FormBuilder = () => {
                     backgroundColor: stateFormBackgroundColor ? stateFormBackgroundColor : 'white',
                     borderRadius: stateFormRadius,
                     width: stateFormWidth ? stateFormWidth : '500px',
-                    height: stateFormHeight ? stateFormHeight : '500px',
+                    height: stateFormHeight ? stateFormHeight : '300px',
                     border: `${stateFormBorderSize ? stateFormBorderSize : '2'}px ${stateFormBorderType ? stateFormBorderType : 'solid'} ${stateFormBorderColor ? stateFormBorderColor : 'black'}`,
                     boxShadow: `${stateBorderShadowRight ? stateBorderShadowRight : '2'}px ${stateBorderShadowBottom ? stateBorderShadowBottom : '2'}px ${stateBorderShadowBlur ? stateBorderShadowBlur : '2'}px ${stateBorderShadowColor ? stateBorderShadowColor : 'black'}`
                 }}
@@ -153,6 +154,7 @@ const FormBuilder = () => {
                     {addToMyFormsText}
                 </button>
             </div>
+                </div>
             <div className='code-area'>
                 <button
                     style={{
@@ -199,8 +201,7 @@ const FormBuilder = () => {
 
 
             </div>
-
-        </div>
+</div>
     )
 }
 export default FormBuilder

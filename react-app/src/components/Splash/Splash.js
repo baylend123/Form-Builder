@@ -60,7 +60,9 @@ const Splash = () => {
                     onClick={demoLogin} >Demo Login</button>
             </span>
             <h2>Build and style a form with a GUI and get the coresponding JSX code for use in your own projects</h2>
-            <img src={testGif} alt='' />
+            <img style={{
+                width: '90vw'
+            }} src={testGif} alt='' />
 
         </div>
     )
