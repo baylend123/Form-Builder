@@ -12,21 +12,21 @@ import {textBorderRadiusThunk,
     textShadowBlurThunk,
     textShadowColorThunk
 } 
-    from '../../store/styles'
+    from '../../store/inputStyles'
 
 const PasswordInput =  () => {
     const dispatch = useDispatch()
-    const formFont = useSelector(state => state.stylesReducer.font)
-    const textInputRadius = useSelector(state => state.stylesReducer.textInputRadius)
-    const textInputWidth = useSelector(state => state.stylesReducer.textInputWidth)
-    const textInputcolor = useSelector(state => state.stylesReducer.textInputColor)
-    const textInputBorder = useSelector(state => state.stylesReducer.textInputBorder)
-    const textInputBorderSize = useSelector(state => state.stylesReducer.textInputBorderSize)
-    const textInputBorderColor = useSelector(state => state.stylesReducer.textInputBorderColor)
-    const textInputBoxShadowRight = useSelector(state => state.stylesReducer.textInputBoxShadowRight)
-    const textInputBoxShadowBottom = useSelector(state => state.stylesReducer.textInputBoxShadowBottom)
-    const textInputBoxShadowBlur = useSelector(state => state.stylesReducer.textInputBoxShadowBlur)
-    const textInputBoxShadowColor = useSelector(state => state.stylesReducer.textInputBoxShadowColor)
+    const formFont = useSelector(state => state.inputReducer.font)
+    const textInputRadius = useSelector(state => state.inputReducer.textInputRadius)
+    const textInputWidth = useSelector(state => state.inputReducer.textInputWidth)
+    const textInputcolor = useSelector(state => state.inputReducer.textInputColor)
+    const textInputBorder = useSelector(state => state.inputReducer.textInputBorder)
+    const textInputBorderSize = useSelector(state => state.inputReducer.textInputBorderSize)
+    const textInputBorderColor = useSelector(state => state.inputReducer.textInputBorderColor)
+    const textInputBoxShadowRight = useSelector(state => state.inputReducer.textInputBoxShadowRight)
+    const textInputBoxShadowBottom = useSelector(state => state.inputReducer.textInputBoxShadowBottom)
+    const textInputBoxShadowBlur = useSelector(state => state.inputReducer.textInputBoxShadowBlur)
+    const textInputBoxShadowColor = useSelector(state => state.inputReducer.textInputBoxShadowColor)
     const [passwordPlaceholder, setPasswordPlaceholder]= useState('Your Text Here')
     
     

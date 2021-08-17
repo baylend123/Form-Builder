@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import session from './session'
 import stylesReducer from './styles'
 import myFormsReducer from './forms'
+import inputReducer from './inputStyles'
 
 
 const rootReducer = combineReducers({
     session,
     stylesReducer,
-    myFormsReducer
+    myFormsReducer,
+    inputReducer
 });
 
 let enhancer;
