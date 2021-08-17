@@ -6,11 +6,13 @@ import myFormsReducer from './forms'
 import inputReducer from './inputStyles'
 
 
+
 const rootReducer = combineReducers({
     session,
     stylesReducer,
     myFormsReducer,
-    inputReducer
+    inputReducer,
+    
 });
 
 let enhancer;
