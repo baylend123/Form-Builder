@@ -161,7 +161,19 @@ export const formShadowColorThunk = (color) => async (dispatch) => {
 
 
 let initialState ={
-  
+  formBackground: 'white',
+  headerColor: 'black',
+  backgroundRadius: '10px',
+  padding: '0px',
+  height: '50vh',
+  width: '30vw',
+  borderType: 'solid',
+  borderSize: '2',
+  borderColor: 'black',
+  shadowRight: '5',
+  shadowBottom: '5',
+  shadowBlur: '5',
+  shadowColor: 'black'
 }
 const stylesReducer = (state = initialState, action) => {
     let newState = {...state}
@@ -185,7 +197,6 @@ const stylesReducer = (state = initialState, action) => {
             newState.width = action.payload
             return newState
         case FORMFONT:
-
             newState.font = action.payload
             return newState
         case FORMBORDERTYPE:
