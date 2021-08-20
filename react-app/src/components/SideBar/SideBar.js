@@ -1,23 +1,23 @@
 import React from 'react';
 import { useState } from 'react'
-import TextInput from '../TextInput'
-import EmailInput from '../EmailInput';
-import PasswordInput from '../PasswordInput';
-import NumberInput from '../NumberInput'
-import MenuButton from '../MenuButtonComponent'
-import ButtonArea from '../ButtonArea'
-import FormStyles from '../FormStyles';
+import TextInput from './TextInput'
+import EmailInput from './EmailInput';
+import PasswordInput from './PasswordInput';
+import NumberInput from './NumberInput'
+import MenuButton from './MenuButton'
+import ButtonArea from './ButtonArea'
+import FormStyles from './FormStyles';
 import './Sidebar.css'
-import FooterComponent from '../FooterComponent'
-import FontComponent from '../FontComponent'
-import HeaderColorComponent from '../HeaderColorComponent'
+import FooterComponent from './FooterComponent'
+import FontComponent from './FontComponent'
+import HeaderColorComponent from './HeaderColorComponent'
+// import MenuAreaComponent from './MenuAreaComponent'
 
 const Sidebar = () => {
     const [currentMenuItem, setCurrentMenuItem] = useState('form')
     const menuButtonFunc = (string) => {
         setCurrentMenuItem(string)
     }
-
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div className='sidebar'>

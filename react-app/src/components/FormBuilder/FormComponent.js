@@ -1,5 +1,6 @@
 import React from 'react'
 const FormComponent = ({styleState}) => {
+    console.log(styleState)
     const drop = e => {
         e.preventDefault();
         const elementId = e.dataTransfer.getData('elementId')

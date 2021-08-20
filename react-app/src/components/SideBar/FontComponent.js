@@ -1,15 +1,12 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import { formFontThunk } from '../../store/styles';
+import { changeFormStyle, } from '../../store/styles'
 const FontComponent = () => {
 
     const thanks = 'Hey, thanks for using my APP! Love You <3'
     const formFont = useSelector(state => state.stylesReducer.font)
     console.log(formFont)
     const dispatch = useDispatch()
-    const setFormFont2 = (e) => {
-        dispatch(formFontThunk(e.target.value))
-    }
 
 
     return(
@@ -17,7 +14,7 @@ const FontComponent = () => {
                             <label htmlFor="font-select">Select Font Below</label>
                             <select name='font-select'
 
-                                onChange={setFormFont2}
+                                onChange={(e) => dispatch(changeFormStyle(e.target.value, 'font'))}
                             >
 
                                 <option value='Source Code Pro' style={{ fontFamily: ' Source Code Pro , monospace ' }}>Source Code Pro</option>

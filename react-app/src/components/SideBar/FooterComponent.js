@@ -1,5 +1,5 @@
 import React from 'react'
-import github from '../images/download.png'
+import github from '../../images/download.png'
 const FooterComponent = () =>{
     return (
         <div style={{ width: '200px', height: '10vh', marginTop: '10px', display: 'flex', flexDirection: 'row' }} >

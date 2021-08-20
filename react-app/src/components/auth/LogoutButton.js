@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
-import { logoutStylesThunk } from "../../store/styles"
+import { logoutStyles } from "../../store/styles"
 
 const LogoutButton = () => {
   const dispatch = useDispatch();
   const onLogout = async (e) => {
     await dispatch(logout());
-    await dispatch(logoutStylesThunk());
+    await dispatch(logoutStyles());
   };
 
   return <button onClick={onLogout}>Logout</button>;

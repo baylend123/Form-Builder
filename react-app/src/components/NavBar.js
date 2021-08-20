@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom';
-import { logoutStylesThunk } from '../store/styles'
+import { logoutStyles } from '../store/styles'
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 const NavBar = () => {
@@ -11,7 +11,7 @@ const NavBar = () => {
       <div className='navbar'>
         <div  >
           <NavLink to="/home" exact={true} className='nav-link' activeClassName='nav-link-active'
-            onClick={() => dispatch(logoutStylesThunk())}
+            onClick={() => dispatch(logoutStyles())}
           >
             Home
           </NavLink>

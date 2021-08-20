@@ -5,11 +5,8 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-
-
 import SideBar from "./components/SideBar";
 import FormBuilder from "./components/FormBuilder"
-import TestComp from "./components/TestComp"
 import MyForms from "./components/MyForms"
 import FormBrowser from "./components/FormBrowser"
 import Splash from './components/Splash'
@@ -61,9 +58,6 @@ function App() {
             <FormBuilder />
 
           </div>
-        </ProtectedRoute>
-        <ProtectedRoute path="/test">
-          <TestComp />
         </ProtectedRoute>
         <ProtectedRoute path="/my-forms">
           <NavBar>

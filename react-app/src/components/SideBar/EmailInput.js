@@ -1,109 +1,55 @@
-import React from 'react';
+import React  from 'react';
 import {useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {textBorderRadiusThunk, 
-    textWidthThunk,
-    textColorThunk,
-    textBorderTypeThunk,
-    textBorderSizeThunk,
-    textBorderColorThunk,
-    textShadowRightThunk,
-    textShadowBottomThunk,
-    textShadowBlurThunk,
-    textShadowColorThunk
-} 
-    from '../../store/inputStyles'
-
-const PasswordInput =  () => {
+import {changeTextStyle}from '../../store/inputStyles'
+const EmailInput = () => {
     const dispatch = useDispatch()
-    const formFont = useSelector(state => state.inputReducer.font)
-    const textInputRadius = useSelector(state => state.inputReducer.textInputRadius)
-    const textInputWidth = useSelector(state => state.inputReducer.textInputWidth)
-    const textInputcolor = useSelector(state => state.inputReducer.textInputColor)
-    const textInputBorder = useSelector(state => state.inputReducer.textInputBorder)
-    const textInputBorderSize = useSelector(state => state.inputReducer.textInputBorderSize)
-    const textInputBorderColor = useSelector(state => state.inputReducer.textInputBorderColor)
-    const textInputBoxShadowRight = useSelector(state => state.inputReducer.textInputBoxShadowRight)
-    const textInputBoxShadowBottom = useSelector(state => state.inputReducer.textInputBoxShadowBottom)
-    const textInputBoxShadowBlur = useSelector(state => state.inputReducer.textInputBoxShadowBlur)
-    const textInputBoxShadowColor = useSelector(state => state.inputReducer.textInputBoxShadowColor)
-    const [passwordPlaceholder, setPasswordPlaceholder]= useState('Your Text Here')
+    const styles = useSelector(state => state.inputReducer)
+    const [emailPlaceholder, setEmailPlaceholder]= useState('Your Text Here')
     
     
     const dragStart = e => {
         const target = e.target
         e.dataTransfer.setData('elementId', target.id)
     }
-    
-    const setTextInputRadius = (data) => {
-        dispatch(textBorderRadiusThunk(data))
-    }
-    const setTextInputWidth = (data) => {
-        dispatch(textWidthThunk(data))
-    }
-    const setTextInputColor = (data) => {
-        dispatch(textColorThunk(data))
-    }
-    const setTextInputBorder = (data) => {
-        dispatch(textBorderTypeThunk(data))
-    }
-    const setTextInputBorderSize = (data) => {
-        dispatch(textBorderSizeThunk(data))
-    }
-    const setTextInputBorderColor = (data) => {
-        dispatch(textBorderColorThunk(data))
-    }
-    const setInputBoxShadowRight = (data) => {
-        dispatch(textShadowRightThunk(data))
-    }
-    const setInputBoxShadowBottom = (data) => {
-        dispatch(textShadowBottomThunk(data))
-    }
-    const setInputBoxShadowBlur = (data) => {
-        dispatch(textShadowBlurThunk(data))
-    }
-    const steInputBoxShadowColor =( data) => {
-        dispatch(textShadowColorThunk(data))
-    }
-    
-    
-    
     return (
         <>
-                            <div>
-                                {/* edit the placeholder for the password input */}
+                            <div >
+                                {/* placeholder edit */}
                                 <h3>Placeholder for the input:</h3>
-                                <input value={passwordPlaceholder} type='text' onChange={(e) => setPasswordPlaceholder(e.target.value)} />
+                                <input value={emailPlaceholder} type='text' onChange={(e) => setEmailPlaceholder(e.target.value)} />
                             </div>
                             <div style={{ width: '200px' }}>
                                 <h3>Drag and drop the input into the form when you are done editing</h3>
                             </div>
-                            {/* draggable div to the form */}
+
+                            {/* draggable div */}
                             <div
-                                draggable='true'
                                 onDragStart={dragStart}
+                                draggable='true'
                                 id='elementId'
                             >
 
-                                <input type='text'
-
+                                <input type='email'
                                     style={{
                                         cursor: 'pointer',
-                                        fontFamily: `${formFont}`,
-                                        WebkitTextSecurity: 'disc',
+                                        fontFamily: `${styles.formFont}`,
                                         marginTop: '20px',
-                                        borderRadius: textInputRadius,
-                                        backgroundColor: textInputcolor,
-                                        border: `${textInputBorderSize}px ${textInputBorder} ${textInputBorderColor}`,
-                                        width: `${textInputWidth}px`,
-                                        boxShadow: `${textInputBoxShadowRight}px ${textInputBoxShadowBottom}px ${textInputBoxShadowBlur}px ${textInputBoxShadowColor}`
+                                        borderRadius: styles.textInputRadius,
+                                        backgroundColor: styles.textInputcolor,
+                                        border: `${styles.textInputBorderSize}px ${styles.textInputBorder} ${styles.textInputBorderColor}`,
+                                        width: `${styles.textInputWidth}px`,
+                                        boxShadow: `${styles.textInputBoxShadowRight}px ${styles.textInputBoxShadowBottom}px ${styles.textInputBoxShadowBlur}px ${styles.textInputBoxShadowColor}`
                                     }}
-                                    placeholder={passwordPlaceholder}
-                                ></input>
 
-                                {/* password input style area */}
+                                    placeholder={emailPlaceholder}
+
+                                ></input>
                             </div>
-                            <h3>Password Input Styles</h3>
+
+
+                            {/* styling for mail input */}
+                            <h3>Email Input Styles</h3>
                             <div
                                 style={{
                                     height:'47%',
@@ -112,28 +58,26 @@ const PasswordInput =  () => {
                                     overflowX: 'hidden',
                                 }}
                             >
-
-                                {/* input width */}
                                 <div style={{ marginTop: '10px' }}>
                                     <div>
 
-                                        <label htmlFor='textInputWidth' style={{ marginTop: '10px' }}>Password Input Width</label>
+                                        <label htmlFor='textInputWidth' style={{ marginTop: '10px' }}>Email Input Width</label>
                                     </div>
                                     <div>
 
                                         <input type='range' name='textInputWidth'
                                             min={50}
                                             max={700}
-                                            onChange={(e) => setTextInputWidth(e.target.value.toString())}
+                                            onChange={(e) => dispatch(changeTextStyle(e.target.value.toString(), 'textInputWidth'))(e.target.value.toString())}
                                         />
                                     </div>
 
-                                </div>
 
-                                {/* border radius picker */}
+                                    {/* border radius slider */}
+                                </div>
                                 <div>
 
-                                    <label htmlFor='textradius'>Password Input Border Radius</label>
+                                    <label htmlFor='textradius'>Email Input Radius</label>
                                 </div>
                                 <div>
 
@@ -141,32 +85,34 @@ const PasswordInput =  () => {
                                         min={0}
                                         max={30}
 
-                                        onChange={(e) => setTextInputRadius(e.target.value.toString() + 'px')}
+                                        onChange={(e) => dispatch(changeTextStyle(e.target.value.toString() + 'px','textInputRadius' ))}
                                     />
                                 </div>
+
 
                                 {/* input background color picker */}
                                 <div>
 
-                                    <label htmlFor='textinputcolor'>Password Input Background Color</label>
+                                    <label htmlFor='textinputcolor'>Email Input Background Color</label>
                                 </div>
                                 <div>
 
                                     <input type='color'
+                                        value={styles.textInputcolor}
                                         name='textinputcolor'
-                                        value={textInputcolor}
-                                        onChange={(e) => setTextInputColor(e.target.value)}
+                                        onChange={(e) => dispatch(changeTextStyle(e.target.value.toString() + 'px','textInputRadius' ))}
                                     />
                                 </div>
 
+
                                 {/* border style picker */}
                                 <div style={{ marginTop: '10px' }}>
-                                    <label htmlFor='textborderstyle'>Password Border Style</label>
+                                    <label htmlFor='textborderstyle'>Email Border Style</label>
                                     <div style={{ border: '3px solid black', marginTop: '10px' }}>
                                         <input
                                             name='textborderstyle'
                                             type='radio'
-                                            onClick={() => setTextInputBorder('solid')}
+                                            onClick={() => dispatch(changeTextStyle('solid','textInputBorder' ))}
 
                                         />
                                     </div>
@@ -174,7 +120,7 @@ const PasswordInput =  () => {
                                         <input
                                             name='textborderstyle'
                                             type='radio'
-                                            onClick={() => setTextInputBorder('dotted')}
+                                            onClick={() => dispatch(changeTextStyle('dotted','textInputBorder' ))}
 
                                         />
                                     </div>
@@ -182,45 +128,48 @@ const PasswordInput =  () => {
                                         <input
                                             name='textborderstyle'
                                             type='radio'
-                                            onClick={() => setTextInputBorder('dashed')}
+                                            onClick={() => dispatch(changeTextStyle('dashed','textInputBorder' ))}
 
                                         />
                                     </div>
 
                                 </div>
 
-                                {/* border style picker */}
+
+                                {/* border size picker */}
                                 <div style={{ marginTop: '10px' }}>
                                     <div>
 
-                                        <label htmlFor='textInputBorderSize'>Password Input Border Size</label>
+                                        <label htmlFor='textInputBorderSize'>Email Input Border Size</label>
                                     </div>
                                     <div>
 
                                         <input type='range'
                                             min={0}
                                             max={10}
-                                            onChange={(e) => setTextInputBorderSize(e.target.value.toString())}
+                                            onChange={(e) => dispatch(changeTextStyle(e.target.value.toString(),'textInputBorderSize' ))}
                                         />
                                     </div>
                                 </div>
 
-                                {/* border color picker */}
+
+                                {/* border color */}
                                 <div style={{ marginTop: '10px' }}>
                                     <div>
 
-                                        <label htmlFor='textInputBorderColor'>Password Input Border Color</label>
+                                        <label htmlFor='textInputBorderColor'>Email Input Border Color</label>
                                     </div>
                                     <div>
 
                                         <input type='color'
-                                            value={textInputBorderColor}
-                                            onChange={(e) => setTextInputBorderColor(e.target.value)}
+                                            value={styles.textInputBorderColor}
+                                            onChange={(e) => dispatch(changeTextStyle(e.target.value,'textInputBorderColor' ))}
                                         />
                                     </div>
                                 </div>
 
-                                {/* box shadow length right */}
+
+                                {/* border shadow length right */}
                                 <div style={{ marginTop: '10px' }}>
                                     <div>
 
@@ -231,11 +180,12 @@ const PasswordInput =  () => {
                                         <input name='textInputBoxShadowRight' type='range'
                                             min={0}
                                             max={25}
-                                            onChange={(e) => setInputBoxShadowRight(e.target.value.toString())}
+                                            onChange={(e) => dispatch(changeTextStyle(e.target.value.toString(),'textInputBoxShadowRight' ))}
                                         />
                                     </div>
 
-                                    {/* box shadow length bottom */}
+
+                                    {/* border shadow length bottom */}
                                     <div>
 
                                         <label htmlFor='textInputBoxShadowBottom' >Box Shadow Length Bottom </label>
@@ -245,11 +195,12 @@ const PasswordInput =  () => {
                                         <input name='textInputBoxShadowBottom' type='range'
                                             min={0}
                                             max={25}
-                                            onChange={(e) => setInputBoxShadowBottom(e.target.value.toString())}
+                                            onChange={(e) => dispatch(changeTextStyle(e.target.value.toString(),'textInputBoxShadowBottom' ))}
                                         />
                                     </div>
 
-                                    {/* box shadow blur */}
+
+                                    {/* border shadow blur */}
                                     <div>
 
                                         <label htmlFor='textInputBoxShadowBlur' > Box Shadow blur </label>
@@ -259,11 +210,12 @@ const PasswordInput =  () => {
                                         <input name='textInputBoxShadowBlur' type='range'
                                             min={0}
                                             max={25}
-                                            onChange={(e) => setInputBoxShadowBlur(e.target.value.toString())}
+                                            onChange={(e) => dispatch(changeTextStyle(e.target.value.toString(),'textInputBoxShadowBlur' ))}
                                         />
                                     </div>
 
-                                    {/* box shadow color */}
+
+                                    {/* blur color */}
                                     <div>
 
                                         <label htmlFor='textInputBoxShadowColor' >Box Shadow color </label>
@@ -271,15 +223,13 @@ const PasswordInput =  () => {
                                     <div>
 
                                         <input type='color'
-                                            value={textInputBoxShadowColor}
-                                            onChange={(e) => steInputBoxShadowColor(e.target.value)}
+                                            value={styles.textInputBoxShadowColor}
+                                            onChange={(e) => dispatch(changeTextStyle(e.target.value.toString(),'textInputBoxShadowColor' ))}
                                         />
                                     </div>
                                 </div>
                             </div>
-
                         </>
     )
 }
-
-export default PasswordInput
+export default EmailInput

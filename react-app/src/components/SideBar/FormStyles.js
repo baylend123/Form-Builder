@@ -1,83 +1,26 @@
 import React from "react"
 import {
-    changeFormBackgroundThunk,
-    formBorderRadiusThunk,
-    formPaddingThunk,
-    formHeightThunk,
-    formWidthThunk,
-    formBorderTypeThunk,
-    formBorderColorThunk,
-    formBorderSizeThunk,
-    formShadowRightThunk,
-    formShadowBottomThunk,
-    formShadowBlurThunk,
-    formShadowColorThunk,
+    changeFormStyle
 } from '../../store/styles'
-import { useDispatch } from 'react-redux'
-import {useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 const FormStyles = () => {
     const dispatch = useDispatch()
+    const styles = useSelector(state => state.stylesReducer)
 
-    const [formBackgroundColor, setFormBackgroundColor] = useState('')
-    const [formShadowColor, setFormShadowColorState] = useState('')
-    const [formBorderColor, setFormBorderColorState] = useState('')
-
-
-
-    const setFormColor = (e) => {
-        setFormBackgroundColor(e.target.value)
-        dispatch(changeFormBackgroundThunk(e.target.value))
-
-    }
-    const setFormBorderRadius = (e) => {
-
-        dispatch(formBorderRadiusThunk(e.target.value.toString() + 'px'))
-    }
-    const setFormPadding = (e) => {
-        dispatch(formPaddingThunk(e.target.value.toString() + 'px'))
-    }
-    const setFormHeight = (e) => {
-        dispatch(formHeightThunk(e.target.value.toString() + 'px'))
-    }
-    const setFormWidth = (e) => {
-        dispatch(formWidthThunk(e.target.value.toString() + 'px'))
-    }
-    const setFormBorderType = (type) => {
-        dispatch(formBorderTypeThunk(type))
-    }
-    const setFormBorderSize = (e) => {
-        dispatch(formBorderSizeThunk(e.target.value.toString()))
-    }
-    const setFormBorderColor = (e) => {
-        setFormBorderColorState(e.target.value)
-        dispatch(formBorderColorThunk(e.target.value))
-    }
-    const setFormShadowRight = (e) => {
-        dispatch(formShadowRightThunk(e.target.value.toString()))
-    }
-    const setFormShadowBottom = (e) => {
-        dispatch(formShadowBottomThunk(e.target.value.toString()))
-    }
-    const setFormShadowBlur = (e) => {
-        dispatch(formShadowBlurThunk(e.target.value.toString()))
-    }
-    const setFormShadowColor = (e) => {
-        setFormShadowColorState(e.target.value)
-        dispatch(formShadowColorThunk(e.target.value))
-    }
     return (
         <>
                             <h3>Form background color</h3>
                             <input type="color"
-                                value={formBackgroundColor}
-                                onChange={setFormColor}
+                                value={styles.formBackground}
+                                onChange={(e) => dispatch(changeFormStyle(e.target.value, 'formBackground'))}
                             />
 
                             {/* form background border radius */}
                             <h3>Form Border radius</h3>
                             <input
                                 type='range'
-                                onChange={setFormBorderRadius}
+                                onChange={(e) => dispatch(changeFormStyle(e.target.value.toString() + 'px', 'backgroundRadius'))}
                                 min={0}
                                 max={30}
                                 default={2}
@@ -93,28 +36,28 @@ const FormStyles = () => {
                                 <div style={{ margin: '10px' }}>
                                     <input type='radio'
                                         name='formBorderType'
-                                        onClick={() => setFormBorderType('none')}
+                                        onClick={(e) => dispatch(changeFormStyle('none', 'borderType'))}
                                     ></input>
 
                                 </div>
                                 <div style={{ margin: '10px', border: '1px solid black' }}>
                                     <input type='radio'
                                         name='formBorderType'
-                                        onClick={() => setFormBorderType('solid')}
+                                        onClick={(e) => dispatch(changeFormStyle('solid', 'borderType'))}
                                     ></input>
 
                                 </div>
                                 <div style={{ margin: '10px', border: '1px dashed black' }}>
                                     <input type='radio'
                                         name='formBorderType'
-                                        onClick={() => setFormBorderType('dashed')}
+                                        onClick={(e) => dispatch(changeFormStyle('dashed', 'borderType'))}
                                     ></input>
 
                                 </div>
                                 <div style={{ margin: '10px', border: '1px dotted black' }}>
                                     <input type='radio'
                                         name='formBorderType'
-                                        onClick={() => setFormBorderType('dotted')}
+                                        onClick={(e) => dispatch(changeFormStyle('dotted', 'borderType'))}
                                     ></input>
 
                                 </div>
@@ -127,7 +70,7 @@ const FormStyles = () => {
                                 <input type='range'
                                     min={1}
                                     max={10}
-                                    onChange={setFormBorderSize}
+                                    onChange={(e) => dispatch(changeFormStyle(e.target.value.toString(), 'borderSize'))}
                                 ></input>
                             </div>
                             <div><h3>
@@ -136,8 +79,8 @@ const FormStyles = () => {
                             </div>
                             <div>
                                 <input type="color"
-                                    value={formBorderColor}
-                                    onChange={setFormBorderColor}
+                                    value={styles.borderColor}
+                                    onChange={(e) => dispatch(changeFormStyle(e.target.value, 'borderColor'))}
                                 >
 
                                 </input>
@@ -150,7 +93,7 @@ const FormStyles = () => {
                                 <input type='range'
                                     min={0}
                                     max={50}
-                                    onChange={setFormShadowRight}
+                                    onChange={(e) => dispatch(changeFormStyle(e.target.value.toString(), 'shadowRight'))}
                                 ></input>
                             </div>
                             <div>
@@ -160,7 +103,7 @@ const FormStyles = () => {
                                 <input type='range'
                                     min={0}
                                     max={50}
-                                    onChange={setFormShadowBottom}
+                                    onChange={(e) => dispatch(changeFormStyle(e.target.value.toString(), 'shadowBottom'))}
                                 ></input>
                             </div>
                             <div>
@@ -170,7 +113,7 @@ const FormStyles = () => {
                                 <input type='range'
                                     min={0}
                                     max={50}
-                                    onChange={setFormShadowBlur}
+                                    onChange={(e) => dispatch(changeFormStyle(e.target.value.toString(), 'shadowBlur'))}
                                 ></input>
                             </div>
                             <div>
@@ -178,8 +121,8 @@ const FormStyles = () => {
                             </div>
                             <div>
                                 <input type='color'
-                                    value={formShadowColor}
-                                    onChange={setFormShadowColor}
+                                    value={styles.shadowColor}
+                                    onChange={(e) => dispatch(changeFormStyle(e.target.value, 'shadowColor'))}
                                 >
 
                                 </input>
@@ -189,7 +132,7 @@ const FormStyles = () => {
                             <input type='range'
                                 min={0}
                                 max={100}
-                                onChange={setFormPadding}
+                                onChange={(e) => dispatch(changeFormStyle(e.target.value.toString() + 'px', 'padding'))}
                             />
 
                             {/* form height */}
@@ -197,7 +140,7 @@ const FormStyles = () => {
                             <input type='range'
                                 min={0}
                                 max={1000}
-                                onChange={setFormHeight}
+                                onChange={(e) => dispatch(changeFormStyle(e.target.value.toString() + 'px', 'height'))}
                             />
 
                             {/* form width */}
@@ -205,7 +148,7 @@ const FormStyles = () => {
                             <input type='range'
                                 min={0}
                                 max={1000}
-                                onChange={setFormWidth}
+                                onChange={(e) => dispatch(changeFormStyle(e.target.value.toString() + 'px', 'width'))}
                             />
                         </>
     )
