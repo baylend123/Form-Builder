@@ -13,7 +13,7 @@ pipeline {
                 container('kube-python-node-agent'){  
                     echo "in container"
                     sh '''
-                    pipenv install
+                    which python
                     '''
           
                 }
