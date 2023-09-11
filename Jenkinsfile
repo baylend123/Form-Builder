@@ -7,7 +7,7 @@ pipeline {
                     spec:
                     containers:
                     - name: app
-                        image: baylend123/formbuilder
+                    image: baylend123/formbuilder
                     '''
                 }
     }
@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage("Build"){
             steps {
-                container(''){  
+                container('app'){  
                     echo "in container"
                     sh '''
                     ls
