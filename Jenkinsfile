@@ -13,6 +13,7 @@ pipeline {
                 container('kube-python-node-agent'){  
                     echo "Building"
                     sh '''
+                    python --version
                     '''
                 }
             }
