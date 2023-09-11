@@ -10,10 +10,11 @@ pipeline {
     stages {
         stage("Build"){
             steps {
-                echo "Building"
-                sh '''
-           
-                '''
+                container('kube-python-node-agent'){  
+                    echo "Building"
+                    sh '''
+                    '''
+                }
             }
         }
         stage("Test"){
