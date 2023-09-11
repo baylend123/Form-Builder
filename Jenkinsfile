@@ -11,14 +11,15 @@ pipeline {
         stage("Build"){
             steps {
                 container('kube-python-node-agent'){  
-                    echo "Before install"
+                    echo "in container"
                     sh '''
-                    ls in container
+                    ls
                     '''
-                    echo "after install"
+          
                 }
+                echo "ouside container"
                 sh '''
-                ls in workpace
+                ls 
                 '''
             }
         }
