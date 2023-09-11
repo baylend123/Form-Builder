@@ -1,6 +1,8 @@
 pipeline {
     agent{
-            docker { image 'nikolaik/python-nodejs' }   
+            node{
+                label "kube-python-node-agent"
+            }  
     }
     triggers{
             pollSCM '*/5 * * * *'
