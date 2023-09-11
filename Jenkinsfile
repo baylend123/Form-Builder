@@ -1,7 +1,7 @@
 pipeline {
     agent{
         node{
-            label "kube-python-node-agent"
+             docker { image 'nikolaik/python-nodejs' }
         }
     }
     triggers{
