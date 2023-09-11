@@ -20,7 +20,8 @@ pipeline {
                 container('app'){  
                     echo "in container"
                     sh '''
-                    ls
+                    pipenv install --system --deploy --ignore-pipfile
+                    flask run
                     '''
                 }
                 echo "ouside container"
