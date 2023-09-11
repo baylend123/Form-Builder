@@ -1,15 +1,8 @@
 pipeline {
     agent{
-            kubernetes {
-                yaml '''
-                    apiVersion: v1
-                    kind: Pod
-                    spec:
-                      containers:
-                      - name: app
-                        image: nikolaik/python-nodejs
-                    '''
-                }
+            node{
+                label "kube-python-node-agent"
+            }
     }
     triggers{
             pollSCM '*/5 * * * *'
@@ -17,7 +10,7 @@ pipeline {
     stages {
         stage("Build"){
             steps {
-                container('app'){  
+                container('kube-python-node-agent'){  
                     echo "in container"
                     sh '''
                     pipenv install --system --deploy --ignore-pipfile
