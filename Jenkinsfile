@@ -13,10 +13,13 @@ pipeline {
                 container('kube-python-node-agent'){  
                     echo "Before install"
                     sh '''
-                    pipenv install
+                    ls in container
                     '''
                     echo "after install"
                 }
+                sh '''
+                ls in workpace
+                '''
             }
         }
         stage("Test"){
