@@ -5,9 +5,9 @@ pipeline {
                     apiVersion: v1
                     kind: Pod
                     spec:
-                    containers:
-                    - name: app
-                    image: baylend123/formbuilder
+                      containers:
+                      - name: app
+                        image: baylend123/formbuilder
                     '''
                 }
     }
