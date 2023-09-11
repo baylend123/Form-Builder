@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo "Building"
                 sh '''
-                pip install requirements.txt
+           
                 '''
             }
         }
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo "Delivering"
                 sh '''
-                pip install pipenv
+           
                 '''
             }
         }
