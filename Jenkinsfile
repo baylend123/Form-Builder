@@ -10,9 +10,14 @@ pipeline {
     stages {
         stage("Build"){
             steps {
-                sh '''
-                pipenv install
-                '''
+                container('kube-python-node-agent'){  
+                    echo "in container"
+                    sh '''
+                    pipenv install
+                    '''
+          
+                }
+                echo "ouside container"
             }
         }
         stage("Test"){
