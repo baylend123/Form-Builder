@@ -11,9 +11,6 @@ pipeline {
         stage("Build"){
             steps {
                 echo "Building"
-                sh '''
-                pip install pipenv
-                '''
             }
         }
         stage("Test"){
@@ -24,6 +21,9 @@ pipeline {
         stage("Deliver"){
             steps {
                 echo "Delivering"
+                sh '''
+                pip install pipenv
+                '''
             }
         }
     }
