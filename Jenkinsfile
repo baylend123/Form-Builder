@@ -14,8 +14,8 @@ pipeline {
                     echo "in container"
                     sh '''
                     pipenv install --python /usr/local/bin/python
+                    flask db migrate
                     '''
-          
                 }
                 echo "ouside container"
             }
