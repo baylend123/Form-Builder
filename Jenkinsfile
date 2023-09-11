@@ -1,8 +1,15 @@
 pipeline {
     agent{
-            node{
-                label "kube-python-node-agent"
-            }  
+            kubernetes {
+                yaml '''
+                    apiVersion: v1
+                    kind: Pod
+                    spec:
+                    containers:
+                    - name: app
+                        image: baylend123/formbuilder
+                    '''
+                }
     }
     triggers{
             pollSCM '*/5 * * * *'
@@ -10,12 +17,10 @@ pipeline {
     stages {
         stage("Build"){
             steps {
-                container('kube-python-node-agent'){  
+                container(''){  
                     echo "in container"
                     sh '''
-                    pipenv install --python /usr/local/bin/python
-                    pipenv shell
-                    flask db migrate
+                    ls
                     '''
                 }
                 echo "ouside container"
