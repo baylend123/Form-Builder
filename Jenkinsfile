@@ -7,7 +7,7 @@ pipeline {
                     spec:
                       containers:
                       - name: app
-                        image: baylend123/formbuilder
+                        image: nikolaik/python-nodejs
                     '''
                 }
     }
