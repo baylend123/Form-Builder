@@ -3,10 +3,10 @@ pipeline {
         node{
             label "kube-python-node-agent"
         }
-        triggers{
+    }
+    triggers{
             pollSCM '*/5 * * * *'
         }
-    }
     stages {
         stage("Build"){
             steps {
